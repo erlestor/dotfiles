@@ -1,3 +1,7 @@
+# My config / dotfiles
+
+Managed by [chezmoi](https://www.chezmoi.io/)
+
 ## Other stuff to do when setting up
 
 ### Set up your environment variables in windows
