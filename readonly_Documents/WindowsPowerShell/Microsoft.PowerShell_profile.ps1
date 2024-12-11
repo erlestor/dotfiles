@@ -42,6 +42,9 @@ function yasbstart {
   cd "/Program Files/yasb-main"
   python src/main.py
 }
+function chezmoic {
+  cd "$HOME/.local/share/chezmoi"
+}
 
 # KOMOREBI
 $Env:KOMOREBI_CONFIG_HOME = "C:\Users\erlen\.config\komorebi"

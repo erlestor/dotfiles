@@ -37,6 +37,9 @@ return {
   {
     "ggandor/leap.nvim",
     event = "VimEnter",
+    config = function()
+      require("leap").add_default_mappings()
+    end,
   },
 
   {
@@ -165,4 +168,8 @@ return {
   },
   -- smart splits. to switch panes seamlessly between wezterm and neovim
   { "mrjones2014/smart-splits.nvim", event = "VimEnter" },
+  {
+    "ThePrimeagen/vim-be-good",
+    cmd = "VimBeGood",
+  },
 }

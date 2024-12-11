@@ -33,6 +33,7 @@
   "smart-splits.nvim": { "branch": "master", "commit": "38ccf53f90274b8a67072c283d61646fdcbb862b" },
   "telescope.nvim": { "branch": "master", "commit": "85922dde3767e01d42a08e750a773effbffaea3e" },
   "ui": { "branch": "v3.0", "commit": "2c0de3a4977d5276ff1e6c1621dc5d29061b7252" },
+  "vim-be-good": { "branch": "master", "commit": "0ae3de14eb8efc6effe7704b5e46495e91931cc5" },
   "volt": { "branch": "main", "commit": "8d35e03c70490190149a77c59155618ef4370721" },
   "vue-goto-definition.nvim": { "branch": "main", "commit": "cefd5147d5892b75e3c017bcfb46d2a776275088" },
   "which-key.nvim": { "branch": "main", "commit": "68e37e12913a66b60073906f5d3f14dee0de19f2" }
