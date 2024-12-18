@@ -6,7 +6,7 @@ Managed by [chezmoi](https://www.chezmoi.io/)
 
 ### Installation
 
-- Install powershell7 (winget)
+- Install powershell 7 (winget)
 
 ### Set up your environment variables in windows
 

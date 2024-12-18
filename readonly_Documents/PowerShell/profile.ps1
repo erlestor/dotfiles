@@ -14,8 +14,8 @@ function d {
 $config = "$HOME/.local/share/chezmoi"
 # powershell
 function pwshc {
-  cd $config/readonly_Documents/WindowsPowerShell
-  nvim Microsoft.PowerShell_profile.ps1
+  cd $config/readonly_Documents/PowerShell
+  nvim profile.ps1
 }
 function nvimc {
 	cd $config/AppData/local/nvim
