@@ -4,12 +4,18 @@ Managed by [chezmoi](https://www.chezmoi.io/)
 
 ## Other stuff to do when setting up
 
+### Installation
+
+- Install powershell7 (winget)
+
 ### Set up your environment variables in windows
 
 ```ts
 KOMOREBI_AHK_EXE = "C:/Program Files/AutoHotkey/v2/AutoHotkey64"
 KOMOREBI_CONFIG_HOME = "C:\Users\erlen\.config\komorebi"
 ```
+- Make sure to add powershell 7 to path and system32 powershell path
+
 ## Resources (docs)
 ### Window manager and statusbar
 - [komorebi](https://lgug2z.github.io/komorebi/)
