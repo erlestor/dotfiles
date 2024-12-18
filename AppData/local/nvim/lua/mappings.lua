@@ -1,4 +1,4 @@
-require "nvchad.mappings"
+require("nvchad.mappings")
 
 local map = vim.keymap.set
 
@@ -39,7 +39,7 @@ map("n", "<leader>d", '"_d')
 map("v", "<leader>d", '"_d')
 
 -- q is used for macros, but since I haven't learned to use them it's just annoying
-map("n", "q", "nop")
+-- map("n", "q", "nop")
 map("n", "Q", "nop")
 
 -- replace each instance of the word you're on
@@ -47,24 +47,24 @@ map("n", "<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
 
 -- show diagnostics (error) window
 map("n", "gl", function()
-  local bufnr, _ = vim.diagnostic.open_float()
-  vim.api.nvim_buf_set_option(bufnr, "filetype", vim.o.filetype)
+	local bufnr, _ = vim.diagnostic.open_float()
+	vim.api.nvim_buf_set_option(bufnr, "filetype", vim.o.filetype)
 end)
 
 -- open lazygit
 map("n", "<leader>gg", ":LazyGit<CR>")
 
 -- simpler go to start or end of line
-map("n", "H", "0")
+map("n", "H", "^")
 map("n", "L", "$")
 
 -- Smart insert in blank line (auto indent)
 map("n", "i", function()
-  if #vim.fn.getline "." == 0 then
-    return [["_cc]]
-  else
-    return "i"
-  end
+	if #vim.fn.getline(".") == 0 then
+		return [["_cc]]
+	else
+		return "i"
+	end
 end, { expr = true })
 
 -- better indenting. keep selection after indent so i can spam

@@ -9,19 +9,35 @@ config.front_end = "OpenGL"
 -- config.webgpu_preferred_adapter = gpus[1]
 -- config.front_end = "WebGpu"
 config.max_fps = 144
-config.default_prog = { "powershell.exe", "-NoLogo" }
+config.default_prog = { "pwsh", "-NoLogo" }
+config.window_close_confirmation = "NeverPrompt"
 
 -- COLORS
 config.color_scheme = "OneHalfDark"
 config.colors = {
 	tab_bar = {
+		background = "rgba(0,0,0,0)",
 		active_tab = {
-			fg_color = "#073642",
-			bg_color = "#2aa198",
+			fg_color = "#000000",
+			bg_color = "#56b6c2",
+		},
+		inactive_tab = {
+			fg_color = "#FFFFFF",
+			bg_color = "rgba(0,0,0,0)",
+		},
+		new_tab = {
+			fg_color = "rgba(0,0,0,1)",
+			bg_color = "rgba(0,0,0,0)",
+			intensity = "Half",
 		},
 	},
+	background = "#1e1f2a",
 }
-
+config.foreground_text_hsb = {
+	hue = 1.0,
+	saturation = 1.0,
+	brightness = 1.2,
+}
 config.window_decorations = "RESIZE"
 
 -- FONT
@@ -55,9 +71,8 @@ wezterm.on("user-var-changed", function(window, _, name, value)
 end)
 
 -- BACKGROUND
-local default_background_opacity = 0.8
 config.win32_system_backdrop = "Acrylic"
-config.window_background_opacity = default_background_opacity
+config.window_background_opacity = 0.7
 config.text_background_opacity = 1
 
 -- TABS. some of these are overridden by tabline plugin
@@ -69,23 +84,24 @@ config.switch_to_last_active_tab_when_closing_tab = true
 
 -- STATUSLINE
 wezterm.on("update-right-status", function(window, pane)
+	window:set_left_status(" Workspace: " .. window:active_workspace() .. "  ")
 	window:set_right_status(
-		"Workspace: "
-			.. window:active_workspace()
-			.. " | domain: "
+		"Domain: "
 			.. pane:get_domain_name()
 			.. " | "
+			.. wezterm.nerdfonts.fa_clock_o
+			.. "  "
 			.. wezterm.strftime("%H:%M")
 			.. " "
 	)
 end)
 
 -- DOMAINS
-config.unix_domains = {
-	{
-		name = "unix",
-	},
-}
+-- config.unix_domains = {
+-- 	{
+-- 		name = "unix",
+-- 	},
+-- }
 -- config.default_gui_startup_args = { "connect", "unix" }
 
 -- KEYS
@@ -114,6 +130,7 @@ smart_splits.apply_to_config(config, {
 })
 
 -- TABLINE
+-- Kan ta i bruk hvis den støtte renaming av tabs
 -- local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
 -- tabline.setup({
 -- 	options = {
@@ -121,6 +138,10 @@ smart_splits.apply_to_config(config, {
 -- 	},
 -- 	sections = {
 -- 		tabline_a = {},
+-- 		tab_active = {
+-- 			"index",
+-- 			"process",
+-- 		},
 -- 	},
 -- })
 -- tabline.apply_to_config(config)
@@ -128,15 +149,13 @@ smart_splits.apply_to_config(config, {
 -- BAR
 -- local bar = wezterm.plugin.require("https://github.com/adriankarlen/bar.wezterm")
 -- bar.apply_to_config(config, {
--- 	-- padding = {
--- 	-- 	left = 2,
--- 	-- 	right = 2,
--- 	-- },
--- 	-- separator = {
--- 	-- 	space = 4,
--- 	-- 	left_icon = "",
--- 	-- 	right_icon = "",
--- 	-- },
+-- 	padding = {
+-- 		left = 1,
+-- 		right = 1,
+-- 	},
+-- 	separator = {
+-- 		space = 1,
+-- 	},
 -- 	modules = {
 -- 		pane = {
 -- 			enabled = false,

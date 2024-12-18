@@ -73,4 +73,4 @@ autocmd("VimLeavePre", {
 })
 
 -- relative line numbers as default
-vim.op.relativenumber = true
+vim.opt.relativenumber = true

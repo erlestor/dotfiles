@@ -10,50 +10,52 @@ function d {
 	cd $HOME\Documents\Koding\cot\deploii
   nvim .
 }
+# CONFIGS
+$config = "$HOME/.local/share/chezmoi"
 # powershell
 function pwshc {
-	nvim $PROFILE
+  cd $config/readonly_Documents/WindowsPowerShell
+  nvim Microsoft.PowerShell_profile.ps1
 }
 function nvimc {
-	cd $HOME/AppData/local/nvim
+	cd $config/AppData/local/nvim
   nvim .
 }
 # wezterm config
 function termc {
-	cd $HOME/.config/wezterm
+	cd $config/dot_config/wezterm
   nvim .
 }
 # autohotkey
 function ahkc {
-  cd "$HOME/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup"
+  cd "$config/AppData/Roaming/Microsoft/Windows/readonly_Start Menu/readonly_Programs/readonly_Startup"
   nvim hotkeys.ahk
 }
 # komorebi wm config
 function komoc {
-  cd $HOME/.config/komorebi
+  cd $config/dot_config/komorebi
   nvim .
 }
 # yasb statusbar config
 function yasbc {
-  cd $HOME/.config/yasb
+  cd $config/dot_config/yasb
   nvim .
 }
-function yasbstart {
-  cd "/Program Files/yasb-main"
-  python src/main.py
-}
 function chezmoic {
-  cd "$HOME/.local/share/chezmoi"
+  cd $config
+  nvim .
+}
+function cdStartup {
+  cd "$HOME/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup"
 }
 
 # KOMOREBI
 $Env:KOMOREBI_CONFIG_HOME = "C:\Users\erlen\.config\komorebi"
 $Env:KOMOREBI_AHK_EXE = "C:\Program Files\AutoHotkey\v2\AutoHotkey64.exe"
 
+# CHOCOLATEY
 # Import the Chocolatey Profile that contains the necessary code to enable
 # tab-completions to function for `choco`.
-# Be aware that if you are missing these lines from your profile, tab completion
-# for `choco` will not function.
 # See https://ch0.co/tab-completion for details.
 $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
 if (Test-Path($ChocolateyProfile)) {
@@ -66,3 +68,9 @@ oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\amro.omp.json" | Invoke-Exp
 # AUTO COMPLETE
 Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
 #Set-PSReadLineOption -PredictionSource History
+
+# OTHER HOTKEYS
+Set-PSReadLineKeyHandler -Chord Ctrl+u -Function PreviousHistory
+Set-PSReadLineKeyHandler -Chord Ctrl+i -Function NextHistory
+# vim kind of stuff
+Set-PSReadLineOption -EditMode Vi

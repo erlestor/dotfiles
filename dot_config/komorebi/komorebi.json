@@ -78,6 +78,23 @@
       "kind": "Title",
       "id": "Trackmania",
       "matching_strategy": "Equals"
+    },
+    {
+      "kind": "Exe",
+      "id": "BakkesMod.exe",
+      "matching_strategy": "Equals"
+    },
+    {
+      "kind": "Title",
+      "id": "Discord Updater",
+      "matching_strategy": "Equals"
+    }
+  ],
+  "floating_applications": [
+    {
+      "kind": "Exe",
+      "id": "explorer.exe",
+      "matching_strategy": "Equals"
     }   
   ]
 }

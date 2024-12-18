@@ -96,12 +96,40 @@ local keys = {
 		key = "RightArrow",
 		action = act.AdjustPaneSize({ "Right", 5 }),
 	},
+	-- toggle vertical split
+	{
+		mods = "LEADER",
+		key = "h",
+		action = wezterm.action_callback(function(_, pane)
+			local tab = pane:tab()
+			local panes = tab:panes_with_info()
+			if #panes == 1 then
+				pane:split({
+					direction = "Bottom",
+					size = 0.2,
+				})
+			elseif not panes[1].is_zoomed then
+				panes[1].pane:activate()
+				tab:set_zoomed(true)
+			elseif panes[1].is_zoomed then
+				tab:set_zoomed(false)
+				panes[2].pane:activate()
+			end
+		end),
+	},
+	{
+		mods = "LEADER",
+		key = "m",
+		action = wezterm.action_callback(function(_, pane)
+			pane:move_to_new_tab()
+		end),
+	},
 	-- WORKSPACES
 	{
 		mods = "LEADER",
 		key = "l",
 		-- action = act.ShowLauncherArgs({ flags = "WORKSPACES|DOMAINS" }),
-		action = act.ShowLauncherArgs({ flags = "WORKSPACES" }),
+		action = act.ShowLauncherArgs({ flags = "WORKSPACES|DOMAINS" }),
 	},
 	{
 		-- rename workspace

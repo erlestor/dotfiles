@@ -15,8 +15,8 @@ Komorebic(cmd) {
 !k::Komorebic("focus up")
 !l::Komorebic("focus right")
 
-!+[::Komorebic("cycle-focus previous")
-!+]::Komorebic("cycle-focus next")
+;!+[::Komorebic("cycle-focus previous")
+;!+]::Komorebic("cycle-focus next")
 
 ; Focus displays
 !a::Komorebic("cycle-monitor previous")
@@ -82,23 +82,38 @@ Komorebic(cmd) {
   Komorebic("focus-workspaces 2")
 }
 
-
-; Open applications. Using RAlt which is AltGr on my corsair keyboard
-RAlt & t::Run "C:\Program Files\WezTerm\wezterm-gui.exe"
-RAlt & a::{
-  if WinExist("ahk_exe Arc.exe") {
-      ; If Arc is running, activate it and send the New Window shortcut
-      WinActivate("ahk_exe Arc.exe")
-      Send("^n") ; Adjust this to Arc's actual shortcut for new window
-  } else {
-      ; If Arc is not running, start it
-      Run("Arc.exe")
-  }
+; Move all windows one screen to the left
+; Assuming no split windows and windows on middle and right screen
+!,::{
+  Komorebic("focus right")
+  Komorebic("focus right")
+  Komorebic("focus right")
+  Komorebic("move-to-monitor 2")
 }
-;RAlt & LShift & d::Run "discord.exe"
-RAlt & s::Run "spotify.exe"
-RAlt & d::Run "C:/Program Files/Docker/Docker/Docker Desktop.exe"
-RAlt & p::Run "C:/Users/erlen/AppData/Local/Postman/Postman.exe"
-RAlt & m::Run "C:/Users/erlen/AppData/Local/MongoDBCompass/MongoDBCompass.exe"
-RAlt & o::Run "C:/Users/erlen/AppData/Local/Programs/Obsidian/Obsidian.exe"
 
+!.::{
+  Komorebic("focus left")
+  Komorebic("focus left")
+  Komorebic("focus left")
+  Komorebic("move-to-monitor 1")
+}
+
+!+,::{
+  Komorebic("focus right")
+  Komorebic("focus right")
+  Komorebic("focus left")
+  Komorebic("move left")
+  Komorebic("focus right")
+  Komorebic("focus right")
+  Komorebic("move left")
+}
+
+!+.::{
+  Komorebic("focus left")
+  Komorebic("focus left")
+  Komorebic("focus right")
+  Komorebic("move right")
+  Komorebic("focus left")
+  Komorebic("focus left")
+  Komorebic("move right")
+}
