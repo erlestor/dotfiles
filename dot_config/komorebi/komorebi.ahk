@@ -82,22 +82,21 @@ Komorebic(cmd) {
   Komorebic("focus-workspaces 2")
 }
 
+; Swap windows on left and right screen
+!,::{
+;  Komorebic("focus right")
+;  Komorebic("focus right")
+;  Komorebic("focus right")
+;  Komorebic("move-to-monitor 2")
+;  Komorebic("focus left")
+;  Komorebic("focus left")
+  Komorebic("focus right")
+  Komorebic("focus right")
+  Komorebic("focus right")
+  Komorebic("swap-workspaces-with-monitor 2")
+}
 ; Move all windows one screen to the left
 ; Assuming no split windows and windows on middle and right screen
-!,::{
-  Komorebic("focus right")
-  Komorebic("focus right")
-  Komorebic("focus right")
-  Komorebic("move-to-monitor 2")
-}
-
-!.::{
-  Komorebic("focus left")
-  Komorebic("focus left")
-  Komorebic("focus left")
-  Komorebic("move-to-monitor 1")
-}
-
 !+,::{
   Komorebic("focus right")
   Komorebic("focus right")

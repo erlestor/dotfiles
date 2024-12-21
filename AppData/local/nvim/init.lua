@@ -55,22 +55,5 @@ vim.schedule(function()
 	require("mappings")
 end)
 
--- set wezterm padding to 0 when opening nvim
-local autocmd = vim.api.nvim_create_autocmd
-
--- "FocusGained", "FocusLost"
-autocmd("VimEnter", {
-	callback = function()
-		--NVIM_ENTER=1
-		vim.cmd([[call chansend(v:stderr, "\033]1337;SetUserVar=NVIM_ENTER=MQ==\007")]])
-	end,
-})
-autocmd("VimLeavePre", {
-	callback = function()
-		--NVIM_ENTER=0
-		vim.cmd([[call chansend(v:stderr, "\033]1337;SetUserVar=NVIM_ENTER=MA==\007")]])
-	end,
-})
-
 -- relative line numbers as default
 vim.opt.relativenumber = true

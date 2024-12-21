@@ -65,12 +65,13 @@ if (Test-Path($ChocolateyProfile)) {
 # OH MY POSH PROMPT
 oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\amro.omp.json" | Invoke-Expression
 
-# AUTO COMPLETE
-Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
-#Set-PSReadLineOption -PredictionSource History
+# IDK
+Set-PSReadLineOption -EditMode Vi
+Set-PSReadLineOption -PredictionSource HistoryAndPlugin
+Set-PSReadLineOption -PredictionViewStyle Inline
 
 # OTHER HOTKEYS
 Set-PSReadLineKeyHandler -Chord Ctrl+u -Function PreviousHistory
 Set-PSReadLineKeyHandler -Chord Ctrl+i -Function NextHistory
-# vim kind of stuff
-Set-PSReadLineOption -EditMode Vi
+Set-PSReadLineKeyHandler -Key Tab -Function AcceptSuggestion
+
