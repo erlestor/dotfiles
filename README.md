@@ -14,7 +14,7 @@ Managed by [chezmoi](https://www.chezmoi.io/)
 KOMOREBI_AHK_EXE = "C:/Program Files/AutoHotkey/v2/AutoHotkey64"
 KOMOREBI_CONFIG_HOME = "C:\Users\erlen\.config\komorebi"
 ```
-- Make sure to add powershell 7 to path and system32 powershell path
+- Make sure to add powershell 7 to path and remove system32 powershell path
 
 ## Resources (docs)
 ### Window manager and statusbar
