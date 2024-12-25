@@ -6,7 +6,7 @@
   "default_workspace_padding": 6,
   "default_container_padding": 2,
   "border": true,
-  "border_width": 2,
+  "border_width": 4,
   "border_offset": -1,
   "adjust_window_size_when_changing_font_size": false,
   "stackbar": {
@@ -21,7 +21,6 @@
     "enabled": false,
     "duration": 100,
     "fps": 144
-
   },
   "monitors": [
     {
@@ -87,6 +86,11 @@
     {
       "kind": "Title",
       "id": "Discord Updater",
+      "matching_strategy": "Equals"
+    },
+    {
+      "kind": "Title",
+      "id": "Razer Central",
       "matching_strategy": "Equals"
     }
   ],

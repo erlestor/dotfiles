@@ -5,6 +5,9 @@ function e {
 function c {
 	cls
 }
+function lsa {
+  ls -a
+}
 # open repositories/files
 function d {
 	cd $HOME\Documents\Koding\cot\deploii
@@ -75,3 +78,4 @@ Set-PSReadLineKeyHandler -Chord Ctrl+u -Function PreviousHistory
 Set-PSReadLineKeyHandler -Chord Ctrl+i -Function NextHistory
 Set-PSReadLineKeyHandler -Key Tab -Function AcceptSuggestion
 
+# FORCE GIT PUSH

@@ -1,5 +1,4 @@
-local wezterm = require("wezterm")
--- local act = wezterm.action
+local wezterm = require("wezterm") -- local act = wezterm.action
 -- local mux = wezterm.mux
 local config = wezterm.config_builder()
 
@@ -11,6 +10,7 @@ config.front_end = "OpenGL"
 config.max_fps = 144
 config.default_prog = { "pwsh", "-NoLogo" }
 config.window_close_confirmation = "NeverPrompt"
+config.quit_when_all_windows_are_closed = false
 
 -- COLORS
 config.color_scheme = "OneHalfDark"
@@ -104,11 +104,11 @@ wezterm.on("update-right-status", function(window, pane)
 end)
 
 -- DOMAINS
--- config.unix_domains = {
--- 	{
--- 		name = "unix",
--- 	},
--- }
+config.unix_domains = {
+	{
+		name = "unix",
+	},
+}
 -- config.default_gui_startup_args = { "connect", "unix" }
 
 -- KEYS
