@@ -78,4 +78,3 @@ Set-PSReadLineKeyHandler -Chord Ctrl+u -Function PreviousHistory
 Set-PSReadLineKeyHandler -Chord Ctrl+i -Function NextHistory
 Set-PSReadLineKeyHandler -Key Tab -Function AcceptSuggestion
 
-# FORCE GIT PUSH
