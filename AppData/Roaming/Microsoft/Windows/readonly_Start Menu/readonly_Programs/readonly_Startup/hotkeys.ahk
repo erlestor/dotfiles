@@ -6,36 +6,6 @@
 Capslock::Esc
 
 ; ---------------------------------------------------------------------------------------------------------
-; Use Ctrl+Shift+J to launch/restore wezterm
-
-SwitchToTerminal() {
-  windowHandleId := WinExist("ahk_exe wezterm-gui.exe")
-  windowExistsAlready := windowHandleId > 0
-
-  ; If the Windows Terminal is already open, determine if we should put it in focus or minimize it.
-  if (windowExistsAlready = true) {
-    activeWindowHandleId := WinExist("A")
-    windowIsAlreadyActive := activeWindowHandleId == windowHandleId
-
-    if (windowIsAlreadyActive) {
-      ; Minimize the window.
-      WinMinimize "ahk_id" windowHandleId
-    }
-    else {
-      ; Put the window in focus.
-      WinActivate "ahk_id" windowHandleId
-      WinShow "ahk_id" windowHandleId
-    }
-  }
-  ; Else it's not already open, so launch it.
-  else {
-    Run "wezterm"
-  }
-}
-
-^+j::SwitchToTerminal()
-
-; ---------------------------------------------------------------------------------------------------------
 ; Open applications. Using RAlt which is AltGr on my corsair keyboard
 
 RAlt & t::Run "C:\Program Files\WezTerm\wezterm-gui.exe"
@@ -51,12 +21,12 @@ RAlt & o::Run "C:/Users/erlen/AppData/Local/Programs/Obsidian/Obsidian.exe"
 ; Trying to use ; as a modifier for a symbol layer
 
 ; Handle the ";" key release
-`;:: {
-  SendText(";")
-}
+;`;:: {
+;  SendText(";")
+;}
 
 ; Shift behavior for ":"
-+`;::SendText(":")
+;+`;::SendText(":")
 
 ; incase i need to do something extra for each press
 SendSymbol(symbol) {
