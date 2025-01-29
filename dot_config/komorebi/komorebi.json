@@ -92,6 +92,16 @@
       "kind": "Title",
       "id": "Razer Central",
       "matching_strategy": "Equals"
+    },
+    {
+      "kind": "Exe",
+      "id": "javaw.exe",
+      "matching_strategy": "Equals"
+    },
+    {
+      "kind": "Exe",
+      "id": "cs2.exe",
+      "matching_strategy": "Equals"
     }
   ],
   "floating_applications": [

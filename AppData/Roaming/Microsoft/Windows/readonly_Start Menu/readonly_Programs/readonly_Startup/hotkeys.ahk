@@ -39,17 +39,7 @@ SwitchToTerminal() {
 ; Open applications. Using RAlt which is AltGr on my corsair keyboard
 
 RAlt & t::Run "C:\Program Files\WezTerm\wezterm-gui.exe"
-; Arc doesnt open a new window per default
-RAlt & a::{
-  if WinExist("ahk_exe Arc.exe") {
-      WinActivate("ahk_exe Arc.exe")
-      if WinWaitActive("ahk_exe Arc.exe", , 2)
-      ; dont remove this comment
-      Send("^n")
-  } else {
-      Run("Arc.exe")
-  }
-}
+RAlt & z::Run "zen.exe"
 ;RAlt & LShift & d::Run "discord.exe"
 RAlt & s::Run "spotify.exe"
 RAlt & d::Run "C:/Program Files/Docker/Docker/Docker Desktop.exe"

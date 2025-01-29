@@ -4,14 +4,12 @@ return {
 		event = "BufWritePre", -- uncomment for format on save
 		opts = require("configs.conform"),
 	},
-
 	{
 		"neovim/nvim-lspconfig",
 		config = function()
 			require("configs.lspconfig")
 		end,
 	},
-
 	{
 		"nvim-treesitter/nvim-treesitter",
 		opts = {
@@ -34,7 +32,6 @@ return {
 			},
 		},
 	},
-
 	{
 		"ggandor/leap.nvim",
 		event = "VimEnter",
@@ -42,7 +39,6 @@ return {
 			require("leap").add_default_mappings()
 		end,
 	},
-
 	{
 		"kylechui/nvim-surround",
 		version = "*", -- for stability?
@@ -53,7 +49,23 @@ return {
 			})
 		end,
 	},
-
+	{
+		"nvim-tree/nvim-tree.lua",
+		config = function()
+			require("nvim-tree").setup({
+				filters = {
+					git_ignored = false,
+					dotfiles = false,
+					custom = {},
+				},
+				renderer = {
+					root_folder_label = function(_)
+						return "  .."
+					end,
+				},
+			})
+		end,
+	},
 	{
 		"nvimdev/dashboard-nvim",
 		event = "VimEnter",
@@ -64,7 +76,6 @@ return {
 		end,
 		dependencies = { { "nvim-tree/nvim-web-devicons" } },
 	},
-
 	-- doesn't work. if it works these are all defaults and can be deleted
 	{
 		"catgoose/vue-goto-definition.nvim",
@@ -93,7 +104,6 @@ return {
 			debounce = 200,
 		},
 	},
-
 	{
 		"rmagatti/auto-session",
 		lazy = false,
@@ -102,7 +112,6 @@ return {
 			-- log_level = 'debug',
 		},
 	},
-
 	-- i think this works out of the box so im super confused
 	{
 		"windwp/nvim-autopairs",
@@ -110,7 +119,6 @@ return {
 		config = true,
 		-- use opts = {} for passing setup options
 	},
-
 	-- doesnt work rn
 	{
 		"windwp/nvim-ts-autotag",
@@ -122,12 +130,10 @@ return {
 			})
 		end,
 	},
-
 	-- only some functions are working :(
 	{
 		"dinhhuy258/git.nvim",
 	},
-
 	{
 		"kdheepak/lazygit.nvim",
 		lazy = true,
@@ -148,7 +154,6 @@ return {
 			{ "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
 		},
 	},
-
 	-- dont think this shit works
 	-- {
 	--   "nmac427/guess-indent.nvim",
@@ -156,7 +161,6 @@ return {
 	--     require("guess-indent").setup {}
 	--   end,
 	-- },
-
 	-- markdown preview
 	-- install without yarn or npm
 	{
