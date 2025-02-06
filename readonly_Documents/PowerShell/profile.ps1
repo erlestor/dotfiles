@@ -81,3 +81,5 @@ Set-PSReadLineKeyHandler -Chord Ctrl+u -Function PreviousHistory
 Set-PSReadLineKeyHandler -Chord Ctrl+i -Function NextHistory
 Set-PSReadLineKeyHandler -Key Tab -Function AcceptSuggestion
 
+# Set default editor for lazygit
+$env:EDITOR = "nvim"

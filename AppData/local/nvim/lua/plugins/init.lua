@@ -1,8 +1,34 @@
 return {
-	-- customize plugins
+	{
+		"folke/snacks.nvim",
+		priority = 1000,
+		lazy = false,
+		---@type snacks.Config
+		opts = {
+			-- only modules listed here are actually loaded
+			notifier = {},
+			lazygit = {},
+		},
+		keys = {
+			{
+				"<leader>un",
+				function()
+					Snacks.notifier.hide()
+				end,
+				desc = "Dismiss All Notifications",
+			},
+			{
+				"<leader>gg",
+				function()
+					Snacks.lazygit()
+				end,
+				desc = "Lazygit",
+			},
+		},
+	},
 	{
 		"stevearc/conform.nvim",
-		event = "BufWritePre", -- uncomment for format on save
+		event = "BufWritePre",
 		opts = require("configs.conform"),
 	},
 	{
@@ -46,12 +72,10 @@ return {
 	},
 	{
 		"kylechui/nvim-surround",
-		version = "*", -- for stability?
+		version = "*",
 		event = "VeryLazy",
 		config = function()
-			require("nvim-surround").setup({
-				-- customize config here
-			})
+			require("nvim-surround").setup({})
 		end,
 	},
 	{
@@ -71,65 +95,7 @@ return {
 			})
 		end,
 	},
-	{
-		"nvimdev/dashboard-nvim",
-		event = "VimEnter",
-		config = function()
-			require("dashboard").setup({
-				-- config
-			})
-		end,
-		dependencies = { { "nvim-tree/nvim-web-devicons" } },
-	},
-	-- doesn't work. if it works these are all defaults and can be deleted
-	-- {
-	-- 	"catgoose/vue-goto-definition.nvim",
-	-- 	event = "BufReadPre",
-	-- 	opts = {
-	-- 		filters = {
-	-- 			auto_imports = true,
-	-- 			auto_components = true,
-	-- 			import_same_file = true,
-	-- 			declaration = true,
-	-- 			duplicate_filename = true,
-	-- 		},
-	-- 		filetypes = { "vue", "typescript" },
-	-- 		detection = {
-	-- 			nuxt = function()
-	-- 				return vim.fn.glob(".nuxt/") ~= ""
-	-- 			end,
-	-- 			vue3 = function()
-	-- 				return vim.fn.filereadable("vite.config.ts") == 1 or vim.fn.filereadable("src/App.vue") == 1
-	-- 			end,
-	-- 			priority = { "nuxt", "vue3" },
-	-- 		},
-	-- 		lsp = {
-	-- 			override_definition = true, -- override vim.lsp.buf.definition
-	-- 		},
-	-- 		debounce = 200,
-	-- 	},
-	-- },
-	-- also doesn't work
-	-- {
-	-- 	"rushjs1/nuxt-goto.nvim",
-	-- 	ft = "vue",
-	-- },
-	{
-		"rmagatti/auto-session",
-		lazy = false,
-		opts = {
-			suppressed_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
-			-- log_level = 'debug',
-		},
-	},
-	-- i think this works out of the box so im super confused
-	{
-		"windwp/nvim-autopairs",
-		event = "InsertEnter",
-		config = true,
-		-- use opts = {} for passing setup options
-	},
-	-- doesnt work rn
+	-- renaming doesn't work rn
 	{
 		"windwp/nvim-ts-autotag",
 		lazy = false,
@@ -145,35 +111,6 @@ return {
 		"dinhhuy258/git.nvim",
 	},
 	{
-		"kdheepak/lazygit.nvim",
-		lazy = true,
-		cmd = {
-			"LazyGit",
-			"LazyGitConfig",
-			"LazyGitCurrentFile",
-			"LazyGitFilter",
-			"LazyGitFilterCurrentFile",
-		},
-		-- optional for floating window border decoration
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-		},
-		-- setting the keybinding for LazyGit with 'keys' is recommended in
-		-- order to load the plugin when the command is run for the first time
-		keys = {
-			{ "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
-		},
-	},
-	-- dont think this shit works
-	-- {
-	--   "nmac427/guess-indent.nvim",
-	--   config = function()
-	--     require("guess-indent").setup {}
-	--   end,
-	-- },
-	-- markdown preview
-	-- install without yarn or npm
-	{
 		"iamcco/markdown-preview.nvim",
 		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
 		ft = { "markdown" },
@@ -181,35 +118,24 @@ return {
 			vim.fn["mkdp#util#install"]()
 		end,
 	},
-	-- smart splits. to switch panes seamlessly between wezterm and neovim
+	-- to switch panes seamlessly between wezterm and neovim
 	{ "mrjones2014/smart-splits.nvim", event = "VimEnter" },
 	{
 		"ThePrimeagen/vim-be-good",
 		cmd = "VimBeGood",
 	},
-	-- TODO highlighter
-	-- Didnt work
-	-- TODO: hei
 	{
 		"folke/todo-comments.nvim",
 		event = "VeryLazy",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		opts = {},
 	},
-	-- noice.nvim
 	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
-		opts = {
-			-- add any options here
-		},
 		dependencies = {
 			-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
 			"MunifTanjim/nui.nvim",
-			-- OPTIONAL:
-			--   `nvim-notify` is only needed, if you want to use the notification view.
-			--   If not available, we use `mini` as the fallback
-			"rcarriga/nvim-notify",
 		},
 		config = function()
 			require("noice").setup({
@@ -225,15 +151,6 @@ return {
 		end,
 	},
 	{
-		"rcarriga/nvim-notify",
-		config = function()
-			require("notify").setup({
-				background_colour = "#000000",
-			})
-		end,
-	},
-	-- copilot.lua
-	{
 		"zbirenbaum/copilot.lua",
 		cmd = "Copilot",
 		event = "InsertEnter",
@@ -246,5 +163,22 @@ return {
 				},
 			})
 		end,
+	},
+	{
+		"nvimdev/dashboard-nvim",
+		event = "VimEnter",
+		config = function()
+			require("dashboard").setup({})
+		end,
+		dependencies = { { "nvim-tree/nvim-web-devicons" } },
+	},
+	{
+		"rmagatti/auto-session",
+		lazy = false,
+		---@module "auto-session"
+		---@type AutoSession.Config
+		opts = {
+			suppressed_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
+		},
 	},
 }

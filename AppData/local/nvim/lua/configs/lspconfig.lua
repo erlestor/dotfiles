@@ -4,8 +4,17 @@ require("nvchad.configs.lspconfig").defaults()
 local lspconfig = require("lspconfig")
 local nvlsp = require("nvchad.configs.lspconfig")
 
+-- lsp remaps
+local custom_on_attach = function(client, bufnr)
+	nvlsp.on_attach(client, bufnr)
+	-- KEYMAPS HERE
+	-- copied from nuxt-goto readme
+	-- local opts = { noremap = true, silent = true, buffer = bufnr }
+	-- vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+end
+
 lspconfig.ts_ls.setup({
-	on_attach = nvlsp.on_attach,
+	on_attach = custom_on_attach(),
 	on_init = nvlsp.on_init,
 	capabilities = nvlsp.capabilities,
 	init_options = {
@@ -39,7 +48,7 @@ local function get_typescript_server_path(root_dir)
 end
 
 lspconfig.volar.setup({
-	on_attach = nvlsp.on_attach,
+	on_attach = custom_on_attach(),
 	on_init = nvlsp.on_init,
 	capabilities = nvlsp.capabilities,
 	on_new_config = function(new_config, new_root_dir)
@@ -63,15 +72,6 @@ local servers = {
 	"somesass_ls",
 	"pyright",
 }
-
--- lsp remaps
-local custom_on_attach = function(client, bufnr)
-	nvlsp.on_attach(client, bufnr)
-	-- KEYMAPS HERE
-	-- copied from nuxt-goto readme
-	-- local opts = { noremap = true, silent = true, buffer = bufnr }
-	-- vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-end
 
 for _, lsp in ipairs(servers) do
 	lspconfig[lsp].setup({

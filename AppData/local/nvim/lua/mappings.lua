@@ -3,9 +3,8 @@ require("nvchad.mappings")
 local map = vim.keymap.set
 
 map("n", ";", ":", { desc = "CMD enter command mode" })
-map("i", "jk", "<ESC>")
 
--- Ctrl+S to save no amtter the mode
+-- Ctrl+S to save no matter the mode
 map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
 
 -- Shift + j/k to go to places down/up
@@ -52,7 +51,8 @@ map("n", "gl", function()
 end)
 
 -- open lazygit
-map("n", "<leader>gg", ":LazyGit<CR>")
+-- is in snacks.nvim now
+-- map("n", "<leader>gg", ":LazyGit<CR>")
 
 -- simpler go to start or end of line
 map("n", "H", "^")
@@ -78,9 +78,6 @@ map("v", ">", ">gv")
 -- map("n", "<C-Down>", "<cmd>resize -2<cr>", { desc = "Decrease window height" })
 -- map("n", "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease window width" })
 -- map("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
-
--- rename variable
-map("n", "<leader>r", vim.lsp.buf.rename)
 
 -- SMART SPLITS
 -- moving between splits
@@ -108,3 +105,11 @@ map("n", "<leader>fl", require("telescope.builtin").resume)
 
 -- COPILOT
 map("n", "<leader>cc", require("copilot.suggestion").toggle_auto_trigger)
+
+-- Buffers and dashboard
+map("n", "<leader>bd", ":%bd<CR>", { desc = "Delete all buffers" })
+map("n", "<leader>dd", ":Dashboard<CR>", { desc = "Open dashboard" })
+map("n", "<leader>db", function()
+	vim.cmd("%bd")
+	vim.cmd("Dashboard")
+end, { desc = "Delete buffers and open dashboard" })
