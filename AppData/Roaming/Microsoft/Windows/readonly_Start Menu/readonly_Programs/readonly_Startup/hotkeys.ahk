@@ -36,41 +36,41 @@ SendSymbol(symbol) {
 ; symbola som funke bra allerede og som ikke rolles: \ | ; : , . / ?
 
 ; left pinky
-`; & q::SendSymbol("'")
+;`; & q::SendSymbol("'")
 ;`; & a::SendSymbol("!")
-`; & a::SendSymbol("-")
-`; & z::SendSymbol("^")
+;`; & a::SendSymbol("-")
+;`; & z::SendSymbol("^")
 ; left ring finger
-`; & w::SendSymbol("<")
-`; & s::SendSymbol('"')
-`; & x::SendSymbol("!")
+;`; & w::SendSymbol("<")
+;`; & s::SendSymbol('"')
+;`; & x::SendSymbol("!")
 ; left middle finger
-`; & e::SendSymbol("{")
-`; & d::SendSymbol("(")
-`; & c::SendSymbol("[")
+;`; & e::SendSymbol("{")
+;`; & d::SendSymbol("(")
+;`; & c::SendSymbol("[")
 ; left pointer finger
-`; & r::SendSymbol("}")
-`; & f::SendSymbol(")")
-`; & v::SendSymbol("]")
+;`; & r::SendSymbol("}")
+;`; & f::SendSymbol(")")
+;`; & v::SendSymbol("]")
 ; left pointer finger ->
-`; & t::SendSymbol(">")
-`; & g::SendSymbol("")
-`; & b::SendSymbol("")
+;`; & t::SendSymbol(">")
+;`; & g::SendSymbol("")
+;`; & b::SendSymbol("")
 
 ; right pointer finger <-
-`; & y::SendSymbol("")
-`; & h::SendSymbol("")
-`; & n::SendSymbol("")
+;`; & y::SendSymbol("")
+;`; & h::SendSymbol("")
+;`; & n::SendSymbol("")
 ; right pointer finger
-`; & u::SendSymbol("")
-`; & j::SendSymbol("=")
-`; & m::SendSymbol("")
+;`; & u::SendSymbol("")
+;`; & j::SendSymbol("=")
+;`; & m::SendSymbol("")
 ; right middle finger
-`; & i::SendSymbol("")
-`; & k::SendSymbol("-")
-`; & ,::SendSymbol("")
+;`; & i::SendSymbol("")
+;`; & k::SendSymbol("-")
+;`; & ,::SendSymbol("")
 ; right ring finger
-`; & o::SendSymbol("")
-`; & l::SendSymbol("")
-`; & .::SendSymbol("")
+;`; & o::SendSymbol("")
+;`; & l::SendSymbol("")
+;`; & .::SendSymbol("")
 
