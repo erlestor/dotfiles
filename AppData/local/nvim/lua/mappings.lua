@@ -105,3 +105,6 @@ map("n", "<C-S-A-l>", require("smart-splits").resize_right)
 
 -- TELESCOPE
 map("n", "<leader>fl", require("telescope.builtin").resume)
+
+-- COPILOT
+map("n", "<leader>cc", require("copilot.suggestion").toggle_auto_trigger)

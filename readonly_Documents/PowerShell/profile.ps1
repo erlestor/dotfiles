@@ -8,6 +8,9 @@ function c {
 function lsa {
   ls -a
 }
+function wssh {
+  wezterm connect SSHMUX:$args
+}
 # open repositories/files
 function d {
 	cd $HOME\Documents\Koding\cot\deploii
