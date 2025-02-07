@@ -89,7 +89,7 @@ vim.api.nvim_create_autocmd("FileType", {
 -- this is kinda bad. CursorLine is the only thing that worked, but that is used elsewhere (probably)
 vim.cmd([[
   "hi NvimTreeCursorLine guibg=#3a3a3a gui=NONE
-  hi CursorLine guibg=#5a5a5a gui=NONE
+  hi CursorLine guibg=#454853 gui=NONE
   "hi NvimTreeCursor guifg=NONE guibg=NONE gui=NONE
 ]])
 

@@ -84,12 +84,6 @@ Komorebic(cmd) {
 
 ; Swap windows on left and right screen
 !,::{
-;  Komorebic("focus right")
-;  Komorebic("focus right")
-;  Komorebic("focus right")
-;  Komorebic("move-to-monitor 2")
-;  Komorebic("focus left")
-;  Komorebic("focus left")
   Komorebic("focus right")
   Komorebic("focus right")
   Komorebic("focus right")
