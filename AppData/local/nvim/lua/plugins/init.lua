@@ -7,7 +7,12 @@ return {
 		opts = {
 			-- only modules listed here are actually loaded
 			notifier = {},
-			lazygit = {},
+			lazygit = {
+				os = {
+					-- the default just doesn't work on windows smh
+					editCommand = 'cmd /c if "%NVIM%"=="" (nvim -- %s) else (nvim --server %NVIM% --remote-send q && nvim --server %NVIM% --remote-tab %s)',
+				},
+			},
 		},
 		keys = {
 			{
@@ -21,6 +26,7 @@ return {
 				"<leader>gg",
 				function()
 					Snacks.lazygit()
+					-- Snacks.lazygit.open()
 				end,
 				desc = "Lazygit",
 			},
@@ -85,12 +91,15 @@ return {
 				filters = {
 					git_ignored = false,
 					dotfiles = false,
-					custom = {},
+					custom = { "^.git$" },
 				},
 				renderer = {
 					root_folder_label = function(_)
 						return "  .."
 					end,
+				},
+				view = {
+					cursorline = true,
 				},
 			})
 		end,
@@ -157,6 +166,7 @@ return {
 		config = function()
 			require("copilot").setup({
 				suggestion = {
+					auto_trigger = true,
 					keymap = {
 						accept = "<C-y>",
 					},
@@ -168,7 +178,69 @@ return {
 		"nvimdev/dashboard-nvim",
 		event = "VimEnter",
 		config = function()
-			require("dashboard").setup({})
+			require("dashboard").setup({
+				theme = "doom",
+				config = {
+					center = {
+						{
+							icon = " ",
+							desc = "Find File",
+							key = "f",
+							key_hl = "Number",
+							key_format = " %s",
+							action = "Telescope find_files",
+						},
+						{
+							icon = " ",
+							desc = "Find Text",
+							key = "w",
+							key_hl = "Number",
+							key_format = " %s",
+							action = "Telescope live_grep",
+						},
+						{
+							icon = " ",
+							desc = "New File",
+							key = "n",
+							key_hl = "Number",
+							key_format = " %s",
+							action = "ene | startinsert",
+						},
+						{
+							icon = " ",
+							desc = "Restore Session",
+							key = "r",
+							key_hl = "Number",
+							key_format = " %s",
+							action = "SessionRestore",
+						},
+						{
+							icon = " ",
+							desc = "Browse Sessions",
+							key = "s",
+							key_hl = "Number",
+							key_format = " %s",
+							action = "SessionSearch",
+						},
+						{
+							icon = "󰒲 ",
+							desc = "Lazy",
+							key = "l",
+							key_hl = "Number",
+							key_format = " %s",
+							action = "Lazy",
+						},
+						{
+							icon = " ",
+							desc = "Quit",
+							key = "q",
+							key_hl = "Number",
+							key_format = " %s",
+							action = "qa",
+						},
+					},
+				},
+			})
 		end,
 		dependencies = { { "nvim-tree/nvim-web-devicons" } },
 	},

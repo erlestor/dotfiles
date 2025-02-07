@@ -1,6 +1,6 @@
-require "nvchad.options"
+require("nvchad.options")
 
--- add yours here!
+local o = vim.o
 
--- local o = vim.o
--- o.cursorlineopt ='both' -- to enable cursorline!
+-- o.cursorlineopt = "both" -- to enable cursorline in editor!
+o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"

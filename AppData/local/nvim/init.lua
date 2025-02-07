@@ -1,3 +1,7 @@
+-- disable netrw. recommended by nvim-tree for conflicts
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 -- sync terminal background color with neovim
 vim.api.nvim_create_autocmd({ "UIEnter", "ColorScheme" }, {
 	callback = function()
@@ -78,5 +82,32 @@ vim.api.nvim_create_autocmd("FileType", {
 	pattern = "typescript",
 	callback = function()
 		vim.bo.commentstring = "// %s"
+	end,
+})
+
+-- override nvim-tree cursor and cursorline highlight groups
+-- this is kinda bad. CursorLine is the only thing that worked, but that is used elsewhere (probably)
+vim.cmd([[
+  "hi NvimTreeCursorLine guibg=#3a3a3a gui=NONE
+  hi CursorLine guibg=#5a5a5a gui=NONE
+  "hi NvimTreeCursor guifg=NONE guibg=NONE gui=NONE
+]])
+
+-- hide cursor in nvim-tree
+vim.api.nvim_create_autocmd({ "WinEnter", "BufWinEnter" }, {
+	pattern = "NvimTree*",
+	callback = function()
+		local def = vim.api.nvim_get_hl_by_name("Cursor", true)
+		vim.api.nvim_set_hl(0, "Cursor", vim.tbl_extend("force", def, { blend = 100 }))
+		vim.opt.guicursor:append("a:Cursor/lCursor")
+	end,
+})
+
+vim.api.nvim_create_autocmd({ "BufLeave", "WinClosed" }, {
+	pattern = "NvimTree*",
+	callback = function()
+		local def = vim.api.nvim_get_hl_by_name("Cursor", true)
+		vim.api.nvim_set_hl(0, "Cursor", vim.tbl_extend("force", def, { blend = 0 }))
+		vim.opt.guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20"
 	end,
 })
