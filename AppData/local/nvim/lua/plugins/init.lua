@@ -115,10 +115,6 @@ return {
 			})
 		end,
 	},
-	-- only some functions are working :(
-	{
-		"dinhhuy258/git.nvim",
-	},
 	{
 		"iamcco/markdown-preview.nvim",
 		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
