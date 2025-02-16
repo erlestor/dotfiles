@@ -108,3 +108,6 @@ map("n", "<leader>db", function()
 	vim.cmd("%bd")
 	vim.cmd("Dashboard")
 end, { desc = "Delete buffers and open dashboard" })
+
+-- Quit faster
+map("n", "<leader>q", ":qa<CR>")
