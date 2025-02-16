@@ -253,12 +253,21 @@ return {
 			suppressed_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
 		},
 	},
+	-- these two should probably be on an event when a file is opened
 	{
 		"echasnovski/mini.ai",
 		event = "VeryLazy",
 		version = false,
 		config = function()
 			require("mini.ai").setup()
+		end,
+	},
+	{
+		"echasnovski/mini.splitjoin",
+		event = "VeryLazy",
+		version = false,
+		config = function()
+			require("mini.splitjoin").setup()
 		end,
 	},
 }

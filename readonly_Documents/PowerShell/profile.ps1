@@ -83,3 +83,6 @@ Set-PSReadLineKeyHandler -Key Tab -Function AcceptSuggestion
 
 # Set default editor for lazygit
 $env:EDITOR = "nvim"
+
+# Aliases
+Set-Alias -Name "p" -Value "pnpm"
