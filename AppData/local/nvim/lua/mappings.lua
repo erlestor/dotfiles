@@ -96,7 +96,10 @@ map("n", "<C-S-A-l>", require("smart-splits").resize_right)
 map("n", "<leader>fl", require("telescope.builtin").resume, { desc = "telescope redo last search" })
 
 -- COPILOT
-map("n", "<leader>cc", require("copilot.suggestion").toggle_auto_trigger, { desc = "copilot toggle suggestions" })
+map("n", "<leader>ct", require("copilot.suggestion").toggle_auto_trigger, { desc = "copilot toggle suggestions" })
+
+-- COPILOT CHAT
+map("n", "<leader>cc", ":CopilotChatOpen<CR>", { desc = "Copilot open chat" })
 
 -- Buffers and dashboard
 map("n", "<leader>bd", ":%bd<CR>", { desc = "Delete all buffers" })
