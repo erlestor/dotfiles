@@ -5,9 +5,6 @@ function e {
 function c {
 	cls
 }
-function lsa {
-  ls -a
-}
 function wssh {
   wezterm connect SSHMUX:$args
 }
