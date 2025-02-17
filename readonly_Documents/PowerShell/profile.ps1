@@ -48,6 +48,10 @@ function chezmoic {
   cd $config
   nvim .
 }
+function sshdc {
+  cd c:/programdata/ssh
+  nvim sshd_config
+}
 function cdStartup {
   cd "$HOME/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup"
 }
@@ -78,7 +82,7 @@ Set-PSReadLineKeyHandler -Chord Ctrl+u -Function PreviousHistory
 Set-PSReadLineKeyHandler -Chord Ctrl+i -Function NextHistory
 Set-PSReadLineKeyHandler -Key Tab -Function AcceptSuggestion
 
-# Set default editor for lazygit
+# Set default editor for lazygit. doesnt work lmao
 $env:EDITOR = "nvim"
 
 # Aliases
