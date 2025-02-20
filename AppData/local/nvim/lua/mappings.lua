@@ -29,25 +29,19 @@ map("n", "n", "nzzzv")
 map("n", "N", "Nzzzv")
 
 map("x", "<leader>p", '"_dP', { desc = "Paste over text without overriding register" })
+
 -- these are currently done by default
 -- copy to clipboard
-map("n", "<leader>y", '"+y', { desc = "Copy to clipboard" })
-map("v", "<leader>y", '"+y', { desc = "Copy to clipboard" })
-map("n", "<leader>Y", '"+Y', { desc = "Copy to clipboard" })
+-- map("n", "<leader>y", '"+y', { desc = "Copy to clipboard" })
+-- map("v", "<leader>y", '"+y', { desc = "Copy to clipboard" })
+-- map("n", "<leader>Y", '"+Y', { desc = "Copy to clipboard" })
 -- delete to clipboard
-map("n", "<leader>d", '"_d', { desc = "Delete to clipboard" })
-map("v", "<leader>d", '"_d', { desc = "Delete to clipboard" })
+-- map("n", "<leader>d", '"_d', { desc = "Delete to clipboard" })
+-- map("v", "<leader>d", '"_d', { desc = "Delete to clipboard" })
 
 -- q is used for macros, but since I haven't learned to use them it's just annoying
 map("n", "q", "nop")
 map("n", "Q", "nop")
-
-map(
-	"n",
-	"<leader>s",
-	":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>",
-	{ desc = "Replace each instane of the current word" }
-)
 
 -- simpler go to start or end of line
 map("n", "H", "^")
@@ -66,15 +60,7 @@ end, { expr = true })
 map("v", "<", "<gv")
 map("v", ">", ">gv")
 
--- Resize window using <ctrl> arrow keys
--- only works temporary. if i say hide a terminal it will reset in size
--- but to fix that i probably need a plugin
--- map("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
--- map("n", "<C-Down>", "<cmd>resize -2<cr>", { desc = "Decrease window height" })
--- map("n", "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease window width" })
--- map("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
-
--- SMART SPLITS
+-- SMART SPLITS (wezterm)
 -- moving between splits
 map("n", "<C-h>", require("smart-splits").move_cursor_left)
 map("n", "<C-j>", require("smart-splits").move_cursor_down)
@@ -97,8 +83,6 @@ map("n", "<leader>fl", require("telescope.builtin").resume, { desc = "telescope 
 
 -- COPILOT
 map("n", "<leader>ct", require("copilot.suggestion").toggle_auto_trigger, { desc = "copilot toggle suggestions" })
-
--- COPILOT CHAT
 map("n", "<leader>cc", ":CopilotChatOpen<CR>", { desc = "Copilot open chat" })
 
 -- Buffers and dashboard

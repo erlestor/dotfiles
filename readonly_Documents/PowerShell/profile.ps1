@@ -1,4 +1,8 @@
-# SHORTCUT FUNCTIONS
+# Aliases
+Set-Alias -Name "p" -Value "pnpm"
+Set-Alias docker-start "C:/Program Files/Docker/Docker/Docker Desktop.exe"
+
+# shortcut functions
 function e {
 	exit
 }
@@ -8,6 +12,7 @@ function c {
 function wssh {
   wezterm connect SSHMUX:$args
 }
+
 # open repositories/files
 # this was supposed to help when I open a new tab after writing "d" and it not updating cwd
 function cd-nvim {
@@ -16,18 +21,21 @@ function cd-nvim {
   )
   cd $directory
 
-# Manually emit the OSC 7 sequence
-# this is for the terminal to know the cwd. so wezterm can use it when creating a new tab
-# doesnt fully work tho
+  # Emit OSC 7 sequence to update cwd in terminal
   $cwd = Get-Location
   $osc7 = "`e]7;file://$($env:COMPUTERNAME)$($cwd.Path.Replace('\', '/'))`a"
   Write-Host -NoNewline $osc7
 
   nvim .
 }
+
 function d {
   cd-nvim $HOME\Documents\Koding\cot\deploii
 }
+function dcd {
+  cd $HOME\Documents\Koding\cot\deploii
+}
+
 # CONFIGS
 $config = "$HOME/.local/share/chezmoi"
 # powershell
@@ -72,10 +80,6 @@ function lazygitc {
 function cdStartup {
   cd "$HOME/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup"
 }
-
-# Aliases
-Set-Alias -Name "p" -Value "pnpm"
-Set-Alias docker-start "C:/Program Files/Docker/Docker/Docker Desktop.exe"
 
 # KOMOREBI
 $Env:KOMOREBI_CONFIG_HOME = "C:\Users\erlen\.config\komorebi"
