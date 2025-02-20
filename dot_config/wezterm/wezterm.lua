@@ -138,11 +138,11 @@ tabline.setup({
 		tabline_c = {},
 		tab_active = {
 			{ "index", padding = { left = 1, right = 0 } },
-			"tab",
+			{ "tab", icons_enabled = false },
 		},
 		tab_inactive = {
 			{ "index", padding = { left = 1, right = 0 } },
-			"tab",
+			{ "tab", icons_enabled = false },
 		},
 		tabline_x = {},
 		tabline_y = { "battery", { "datetime", padding = 2 } },
