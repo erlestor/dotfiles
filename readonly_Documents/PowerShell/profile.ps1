@@ -9,9 +9,24 @@ function wssh {
   wezterm connect SSHMUX:$args
 }
 # open repositories/files
-function d {
-	cd $HOME\Documents\Koding\cot\deploii
+# this was supposed to help when I open a new tab after writing "d" and it not updating cwd
+function cd-nvim {
+  param (
+      [string]$directory
+  )
+  cd $directory
+
+# Manually emit the OSC 7 sequence
+# this is for the terminal to know the cwd. so wezterm can use it when creating a new tab
+# doesnt fully work tho
+  $cwd = Get-Location
+  $osc7 = "`e]7;file://$($env:COMPUTERNAME)$($cwd.Path.Replace('\', '/'))`a"
+  Write-Host -NoNewline $osc7
+
   nvim .
+}
+function d {
+  cd-nvim $HOME\Documents\Koding\cot\deploii
 }
 # CONFIGS
 $config = "$HOME/.local/share/chezmoi"
@@ -21,13 +36,11 @@ function pwshc {
   nvim profile.ps1
 }
 function nvimc {
-	cd $config/AppData/local/nvim
-  nvim .
+	cd-nvim $config/AppData/local/nvim
 }
 # wezterm config
 function termc {
-	cd $config/dot_config/wezterm
-  nvim .
+	cd-nvim $config/dot_config/wezterm
 }
 # autohotkey
 function ahkc {
@@ -36,17 +49,17 @@ function ahkc {
 }
 # komorebi wm config
 function komoc {
-  cd $config/dot_config/komorebi
-  nvim .
+  cd-nvim $config/dot_config/komorebi
 }
 # yasb statusbar config
 function yasbc {
-  cd $config/dot_config/yasb
-  nvim .
+  cd-nvim $config/dot_config/yasb
 }
 function chezmoic {
+  cd-nvim $config
+}
+function chezmoicd {
   cd $config
-  nvim .
 }
 function sshdc {
   cd c:/programdata/ssh
@@ -59,6 +72,10 @@ function lazygitc {
 function cdStartup {
   cd "$HOME/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup"
 }
+
+# Aliases
+Set-Alias -Name "p" -Value "pnpm"
+Set-Alias docker-start "C:/Program Files/Docker/Docker/Docker Desktop.exe"
 
 # KOMOREBI
 $Env:KOMOREBI_CONFIG_HOME = "C:\Users\erlen\.config\komorebi"
@@ -89,6 +106,3 @@ Set-PSReadLineKeyHandler -Key Tab -Function AcceptSuggestion
 # Set default editor for lazygit. doesnt work lmao
 $env:EDITOR = "nvim"
 
-# Aliases
-Set-Alias -Name "p" -Value "pnpm"
-Set-Alias docker-start "C:/Program Files/Docker/Docker/Docker Desktop.exe"

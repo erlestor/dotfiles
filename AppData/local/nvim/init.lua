@@ -74,9 +74,6 @@ vim.schedule(function()
 	require("mappings")
 end)
 
--- relative line numbers as default
-vim.opt.relativenumber = true
-
 -- override commentstring for typescript to add a space
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "typescript",
