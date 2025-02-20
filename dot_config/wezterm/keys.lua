@@ -169,37 +169,36 @@ local keys = {
 	},
 	-- WORKSPACES | RESURRECT
 	{
+		-- save session manually
 		key = "S",
 		mods = "LEADER|SHIFT",
 		action = wezterm.action_callback(function(_, _)
-			local state = resurrect.workspace_state.get_workspace_state()
-			resurrect.save_state(state)
+			resurrect.state_manager.save_state(resurrect.workspace_state.get_workspace_state())
 			resurrect.window_state.save_window_action()
 		end),
 	},
 	{
-		-- fuzzy find saved workspaces
-		mods = "LEADER",
+		-- fuzzy find workspace
 		key = "r",
+		mods = "LEADER",
 		action = wezterm.action_callback(function(win, pane)
-			resurrect.fuzzy_load(win, pane, function(id, _)
+			resurrect.fuzzy_loader.fuzzy_load(win, pane, function(id, label)
 				local type = string.match(id, "^([^/]+)") -- match before '/'
 				id = string.match(id, "([^/]+)$") -- match after '/'
 				id = string.match(id, "(.+)%..+$") -- remove file extention
 				local opts = {
-					window = win:mux_window(),
 					relative = true,
 					restore_text = true,
 					on_pane_restore = resurrect.tab_state.default_on_pane_restore,
 				}
 				if type == "workspace" then
-					local state = resurrect.load_state(id, "workspace")
+					local state = resurrect.state_manager.load_state(id, "workspace")
 					resurrect.workspace_state.restore_workspace(state, opts)
 				elseif type == "window" then
-					local state = resurrect.load_state(id, "window")
+					local state = resurrect.state_manager.load_state(id, "window")
 					resurrect.window_state.restore_window(pane:window(), state, opts)
 				elseif type == "tab" then
-					local state = resurrect.load_state(id, "tab")
+					local state = resurrect.state_manager.load_state(id, "tab")
 					resurrect.tab_state.restore_tab(pane:tab(), state, opts)
 				end
 			end)
@@ -210,8 +209,8 @@ local keys = {
 		key = "d",
 		mods = "LEADER|SHIFT",
 		action = wezterm.action_callback(function(win, pane)
-			resurrect.fuzzy_load(win, pane, function(id)
-				resurrect.delete_state(id)
+			resurrect.fuzzy_loader.fuzzy_load(win, pane, function(id)
+				resurrect.state_manager.delete_state(id)
 			end, {
 				title = "Delete State",
 				description = "Select session to delete and press Enter = accept, Esc = cancel, / = filter",

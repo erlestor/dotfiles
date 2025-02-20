@@ -116,3 +116,6 @@ map(
 	'<cmd>lua require("renamer").rename()<cr>',
 	{ noremap = true, silent = true, desc = "Rename variable" }
 )
+
+-- SESSIONS
+map("n", "<leader>sd", ":SessionDelete<CR>", { desc = "Delete session" })

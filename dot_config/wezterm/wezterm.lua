@@ -17,19 +17,6 @@ config.color_scheme = "OneHalfDark"
 config.colors = {
 	tab_bar = {
 		background = "rgba(0,0,0,0)",
-		active_tab = {
-			fg_color = "#000000",
-			bg_color = "#56b6c2",
-		},
-		inactive_tab = {
-			fg_color = "#FFFFFF",
-			bg_color = "rgba(0,0,0,0)",
-		},
-		new_tab = {
-			fg_color = "rgba(0,0,0,1)",
-			bg_color = "rgba(0,0,0,0)",
-			intensity = "Half",
-		},
 	},
 	background = "#1e1f2a",
 }
@@ -82,26 +69,15 @@ config.win32_system_backdrop = "Acrylic"
 config.window_background_opacity = 0.7
 config.text_background_opacity = 1
 
--- TABS. some of these are overridden by tabline plugin
+-- TABS. some of these are important for tabline plugin
+-- See: https://github.com/michaelbrusegard/tabline.wez/discussions/3
 config.hide_tab_bar_if_only_one_tab = false
+config.show_new_tab_button_in_tab_bar = false
 config.tab_bar_at_bottom = true
 config.use_fancy_tab_bar = false
 config.tab_max_width = 32
 config.switch_to_last_active_tab_when_closing_tab = true
-
--- STATUSLINE
-wezterm.on("update-right-status", function(window, pane)
-	window:set_left_status(" Workspace: " .. window:active_workspace() .. "  ")
-	window:set_right_status(
-		"Domain: "
-			.. pane:get_domain_name()
-			.. " | "
-			.. wezterm.nerdfonts.fa_clock_o
-			.. "  "
-			.. wezterm.strftime("%H:%M")
-			.. " "
-	)
-end)
+config.status_update_interval = 500
 
 -- DOMAINS
 -- config.unix_domains = {
@@ -117,13 +93,13 @@ config.keys = require("keys")
 
 -- RESURRECT
 local resurrect = wezterm.plugin.require("https://github.com/MLFlexer/resurrect.wezterm")
-resurrect.periodic_save({
+resurrect.state_manager.periodic_save({
 	interval_seconds = 300,
 	save_tabs = true,
 	save_windows = true,
 	save_workspaces = true,
 })
-resurrect.set_max_nlines(5000)
+resurrect.state_manager.set_max_nlines(5000)
 
 -- SMART SPLITS
 local smart_splits = wezterm.plugin.require("https://github.com/mrjones2014/smart-splits.nvim")
@@ -138,48 +114,40 @@ smart_splits.apply_to_config(config, {
 
 -- TABLINE
 -- Kan ta i bruk hvis den støtte renaming av tabs
--- local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
--- tabline.setup({
--- 	options = {
--- 		theme = "OneHalfDark",
--- 	},
--- 	sections = {
--- 		tabline_a = {},
--- 		tab_active = {
--- 			"index",
--- 			"process",
--- 		},
--- 	},
--- })
--- tabline.apply_to_config(config)
-
--- BAR
--- local bar = wezterm.plugin.require("https://github.com/adriankarlen/bar.wezterm")
--- bar.apply_to_config(config, {
--- 	padding = {
--- 		left = 1,
--- 		right = 1,
--- 	},
--- 	separator = {
--- 		space = 1,
--- 	},
--- 	modules = {
--- 		pane = {
--- 			enabled = false,
--- 		},
--- 		username = {
--- 			enabled = false,
--- 		},
--- 		hostname = {
--- 			enabled = false,
--- 		},
--- 		cwd = {
--- 			enabled = false,
--- 		},
--- 		clock = {
--- 			icon = false,
--- 		},
--- 	},
--- })
+local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
+tabline.setup({
+	options = {
+		theme = "OneHalfDark",
+		theme_overrides = {
+			normal_mode = {
+				b = { bg = "rgba(0,0,0,0)" },
+				y = { bg = "rgba(0,0,0,0)" },
+			},
+			tab = {
+				active = { bg = "rgba(0,0,0,0)" },
+				inactive = { bg = "rgba(0,0,0,0)" },
+				inactive_hover = { bg = "rgba(0,0,0,0)" },
+			},
+		},
+		section_separators = "",
+		component_separators = "",
+		tab_separators = "",
+	},
+	sections = {
+		tabline_a = {},
+		tabline_c = {},
+		tab_active = {
+			{ "index", padding = { left = 1, right = 0 } },
+			"tab",
+		},
+		tab_inactive = {
+			{ "index", padding = { left = 1, right = 0 } },
+			"tab",
+		},
+		tabline_x = {},
+		tabline_y = { "battery", { "datetime", padding = 2 } },
+	},
+	extensions = { "resurrect" },
+})
 
 return config
