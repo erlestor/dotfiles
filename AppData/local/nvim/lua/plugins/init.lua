@@ -22,6 +22,13 @@ return {
 				desc = "Dismiss All Notifications",
 			},
 			{
+				"<leader>nn",
+				function()
+					Snacks.notifier.show_history()
+				end,
+				desc = "Notification history",
+			},
+			{
 				"<leader>gg",
 				function()
 					Snacks.lazygit()
@@ -294,6 +301,17 @@ return {
 		config = function()
 			require("renamer").setup()
 		end,
+	},
+	{
+		-- testing custom nuxt-goto plugin
+		-- dir = "~/Documents/Koding/neovim-plugins/nuxt-goto.nvim",
+		"erlestor/nuxt-goto.nvim",
+		branch = "monorepo-support",
+		ft = "vue",
+		event = "BufEnter",
+		opts = {
+			check_directories = { "/apps/web" },
+		},
 	},
 
 	-- Copilot

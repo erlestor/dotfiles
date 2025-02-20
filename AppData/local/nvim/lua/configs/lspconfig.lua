@@ -9,8 +9,8 @@ local custom_on_attach = function(client, bufnr)
 	nvlsp.on_attach(client, bufnr)
 	-- KEYMAPS HERE
 	-- copied from nuxt-goto readme
-	-- local opts = { noremap = true, silent = true, buffer = bufnr }
-	-- vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+	local opts = { noremap = true, silent = true, buffer = bufnr }
+	vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
 end
 
 lspconfig.ts_ls.setup({
