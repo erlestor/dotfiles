@@ -111,3 +111,24 @@ end, { desc = "Delete buffers and open dashboard" })
 
 -- Quit faster
 map("n", "<leader>q", ":qa<CR>")
+
+-- RENAMER
+-- Overrides toggling relative line numbers, which I don't use anyways
+map(
+	"i",
+	"<F2>",
+	'<cmd>lua require("renamer").rename()<cr>',
+	{ noremap = true, silent = true, desc = "Rename variable" }
+)
+map(
+	"n",
+	"<leader>rn",
+	'<cmd>lua require("renamer").rename()<cr>',
+	{ noremap = true, silent = true, desc = "Rename variable" }
+)
+map(
+	"v",
+	"<leader>rn",
+	'<cmd>lua require("renamer").rename()<cr>',
+	{ noremap = true, silent = true, desc = "Rename variable" }
+)

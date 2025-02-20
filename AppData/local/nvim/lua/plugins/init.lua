@@ -286,6 +286,15 @@ return {
 			require("mini.splitjoin").setup()
 		end,
 	},
+	{
+		"filipdutescu/renamer.nvim",
+		event = "BufEnter",
+		branch = "master",
+		dependencies = { { "nvim-lua/plenary.nvim" } },
+		config = function()
+			require("renamer").setup()
+		end,
+	},
 
 	-- Copilot
 	{
