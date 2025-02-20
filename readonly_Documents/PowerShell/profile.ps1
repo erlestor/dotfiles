@@ -52,6 +52,10 @@ function sshdc {
   cd c:/programdata/ssh
   nvim sshd_config
 }
+function lazygitc {
+  cd $config/appdata/local/lazygit
+  nvim config.yml
+}
 function cdStartup {
   cd "$HOME/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup"
 }
