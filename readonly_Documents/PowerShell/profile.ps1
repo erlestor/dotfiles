@@ -87,3 +87,4 @@ $env:EDITOR = "nvim"
 
 # Aliases
 Set-Alias -Name "p" -Value "pnpm"
+Set-Alias docker-start "C:/Program Files/Docker/Docker/Docker Desktop.exe"
