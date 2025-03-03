@@ -94,7 +94,7 @@ map("n", "<leader>db", function()
 end, { desc = "Delete buffers and open dashboard" })
 
 -- Quit faster
-map("n", "<leader>q", ":qa<CR>")
+map("n", "<leader>qa", ":qa<CR>")
 
 -- RENAMER
 -- Overrides toggling relative line numbers, which I don't use anyways

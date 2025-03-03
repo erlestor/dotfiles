@@ -124,8 +124,8 @@ tabline.setup({
 				y = { bg = "rgba(0,0,0,0)" },
 			},
 			tab = {
-				active = { bg = "rgba(0,0,0,0)" },
-				inactive = { bg = "rgba(0,0,0,0)" },
+				active = { fg = "#ffffff", bg = "rgba(0,0,0,0)" },
+				inactive = { fg = "#61afef", bg = "rgba(0,0,0,0)" },
 				inactive_hover = { bg = "rgba(0,0,0,0)" },
 			},
 		},

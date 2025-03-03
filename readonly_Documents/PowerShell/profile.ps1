@@ -1,5 +1,6 @@
 # Aliases
 Set-Alias -Name "p" -Value "pnpm"
+Set-Alias -Name "lg" -Value "lazygit"
 Set-Alias docker-start "C:/Program Files/Docker/Docker/Docker Desktop.exe"
 
 # shortcut functions

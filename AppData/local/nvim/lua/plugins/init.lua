@@ -1,15 +1,42 @@
 return {
 	-- UI Enhancements
 	{
+		"willothy/flatten.nvim",
+		config = true,
+		lazy = false,
+		priority = 1001,
+		opts = {
+			integrations = {
+				wezterm = true,
+			},
+			window = { open = "smart" },
+			hooks = {
+				pre_open = function()
+					-- Check if the lazygit window is open and close it
+					local lazygit_buf = vim.fn.bufnr("lazygit")
+					if lazygit_buf ~= -1 then
+						-- avoids notifications but has weird effects
+						-- require("snacks.lazygit")()
+						vim.api.nvim_buf_delete(lazygit_buf, { force = true })
+					end
+				end,
+			},
+		},
+	},
+	{
 		"folke/snacks.nvim",
 		priority = 1000,
 		lazy = false,
+		dependencies = {
+			"willothy/flatten.nvim",
+		},
 		---@type snacks.Config
 		opts = {
 			notifier = {},
 			lazygit = {
-				os = {
-					editCommand = 'cmd /c if "%NVIM%"=="" (nvim -- %s) else (nvim --server %NVIM% --remote-send q && nvim --server %NVIM% --remote-tab %s)',
+				configure = true,
+				config = {
+					os = { editPreset = "" },
 				},
 			},
 		},
@@ -243,6 +270,7 @@ return {
 				view = {
 					cursorline = true,
 				},
+				update_focused_file = { enable = true, exclude = false },
 			})
 		end,
 	},
