@@ -102,13 +102,27 @@
       "kind": "Exe",
       "id": "cs2.exe",
       "matching_strategy": "Equals"
-    }
-  ],
-  "floating_applications": [
+    },
+    {
+      "kind": "Exe",
+      "id": "Battle.net.exe",
+      "matching_strategy": "Equals"
+    },
+    {
+      "kind": "Class",
+      "id": "MozillaDialogClass",
+      "matching_strategy": "Equals"
+    },
     {
       "kind": "Exe",
       "id": "explorer.exe",
       "matching_strategy": "Equals"
-    }   
-  ]
+    },
+    {
+      "kind": "Exe",
+      "id": "MultiMC.exe",
+      "matching_strategy": "Equals"
+    }
+  ],
+  "floating_applications": []
 }

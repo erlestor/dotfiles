@@ -1,10 +1,12 @@
 watch_stylesheet: true
 watch_config: true
 debug: false
+
 komorebi:
   start_command: "komorebic start --ahk"
   stop_command: "komorebic stop --ahk"
   reload_command: "komorebic stop --ahk && komorebic start --ahk"
+
 bars:
   primary-bar:
     enabled: true
@@ -46,6 +48,7 @@ bars:
           "wallpapers",
           "weather",
           "volume",
+          "bluetooth",
           "clock",
           "power_menu",
         ]
@@ -129,10 +132,10 @@ widgets:
   weather:
     type: "yasb.weather.WeatherWidget"
     options:
-      label: "<span>{icon}</span> {temp_c}"
-      label_alt: "{location}: Min {min_temp_c}, Max {max_temp_c}, Humidity {humidity}"
+      label: "<span>{icon}</span> {temp}"
+      label_alt: "{location}: Min {min_temp}, Max {max_temp}, Humidity {humidity}"
       api_key: "24b6c2cda6d84066b0304531241908"
-      update_interval: 600
+      update_interval: 3600
       hide_decimal: true
       location: "Norway Trondheim 7040"
       callbacks:
@@ -155,13 +158,33 @@ widgets:
       label: "<span>{icon}</span> {level}"
       label_alt: "{volume}"
       volume_icons:
-        - "\ueee8"
-        - "\uf026"
-        - "\uf027"
-        - "\uf027"
-        - "\uf028"
+        - "\ueee8" # Icon for muted
+        - "\uf026" # Icon for 0-10% volume
+        - "\uf027" # Icon for 11-30% volume
+        - "\uf027" # Icon for 31-60% volume
+        - "\uf028" # Icon for 61-100% volume
+      # audio_menu:
+      #   blur: True
+      #   round_corners: True
+      #   round_corners_type: "normal"
+      #   border_color: "System"
+      #   alignment: "right"
+      #   direction: "down"
       callbacks:
-        on_right: "exec cmd.exe /c start ms-settings:sound"
+        # on_left: "toggle_volume_menu"
+        on_right: "toggle_mute"
+
+  bluetooth:
+    type: "yasb.bluetooth.BluetoothWidget"
+    options:
+      label: "<span>{icon}</span>"
+      label_alt: "{device_name}"
+      icons:
+        bluetooth_on: "\udb80\udcaf"
+        bluetooth_off: "\udb80\udcb2"
+        bluetooth_connected: "\udb80\udcb1"
+      callbacks:
+        on_right: "exec cmd.exe /c start ms-settings:bluetooth"
 
   power_menu:
     type: "yasb.power_menu.PowerMenuWidget"
@@ -261,14 +284,14 @@ widgets:
       gallery:
         enabled: true
         blur: true
-        image_width: 296
-        image_per_page: 6
+        image_width: 220
+        image_per_page: 8
         show_buttons: false
         orientation: "portrait"
-        image_spacing: 10
+        image_spacing: 8
         lazy_load: true
-        lazy_load_delay: 10
-        lazy_load_fadein: 200
+        lazy_load_delay: 80
+        lazy_load_fadein: 400
         image_corner_radius: 20
         enable_cache: true
 

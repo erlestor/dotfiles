@@ -40,7 +40,7 @@ map("x", "<leader>p", '"_dP', { desc = "Paste over text without overriding regis
 -- map("v", "<leader>d", '"_d', { desc = "Delete to clipboard" })
 
 -- q is used for macros, but since I haven't learned to use them it's just annoying
-map("n", "q", "nop")
+-- map("n", "q", "nop")
 map("n", "Q", "nop")
 
 -- simpler go to start or end of line
@@ -119,3 +119,6 @@ map(
 
 -- SESSIONS
 map("n", "<leader>sd", ":SessionDelete<CR>", { desc = "Delete session" })
+
+-- Basically snippets
+map("v", "<leader>lg", 'yoconsole.log("<esc>pa:", <esc>pa)<esc>', { desc = "Add console.log" })

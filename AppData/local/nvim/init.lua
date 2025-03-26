@@ -84,6 +84,7 @@ vim.api.nvim_create_autocmd("FileType", {
 
 -- override nvim-tree cursor and cursorline highlight groups
 -- this is kinda bad. CursorLine is the only thing that worked, but that is used elsewhere (probably)
+-- maybe its a theme error that its not there. see nvchad ui stuff
 vim.cmd([[
   "hi NvimTreeCursorLine guibg=#3a3a3a gui=NONE
   hi CursorLine guibg=#454853 gui=NONE

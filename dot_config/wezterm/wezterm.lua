@@ -65,8 +65,8 @@ wezterm.on("update-status", function(window, _)
 end)
 
 -- BACKGROUND
-config.win32_system_backdrop = "Acrylic"
-config.window_background_opacity = 0.7
+-- config.win32_system_backdrop = "Acrylic"
+config.window_background_opacity = 1
 config.text_background_opacity = 1
 
 -- TABS. some of these are important for tabline plugin
