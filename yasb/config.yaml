@@ -1,0 +1,317 @@
+watch_stylesheet: true
+watch_config: true
+debug: false
+
+komorebi:
+  start_command: "komorebic start --ahk"
+  stop_command: "komorebic stop --ahk"
+  reload_command: "komorebic stop --ahk && komorebic start --ahk"
+
+bars:
+  primary-bar:
+    enabled: true
+    screens: ["*"]
+    class_name: "yasb-bar"
+    alignment:
+      position: "top"
+      center: false
+    blur_effect:
+      enabled: true
+      acrylic: false
+      dark_mode: true
+      round_corners: true
+      border_color: None
+    window_flags:
+      always_on_top: false
+      windows_app_bar: true
+    dimensions:
+      width: "100%"
+      height: 32
+    padding:
+      top: 0
+      left: 6
+      bottom: 0
+      right: 6
+    widgets:
+      left:
+        [
+          "komorebi_workspaces",
+          "komorebi_active_layout",
+          "taskbar",
+          "active_window",
+        ]
+      center: ["apps"]
+      right:
+        [
+          "media",
+          "ai",
+          "wallpapers",
+          "weather",
+          "volume",
+          "bluetooth",
+          "clock",
+          "power_menu",
+        ]
+widgets:
+  active_window:
+    type: "yasb.active_window.ActiveWindowWidget"
+    options:
+      label: "{win[title]}"
+      label_alt: "[class_name='{win[class_name]}' exe='{win[process][name]}' hwnd={win[hwnd]}]"
+      label_no_window: ""
+      label_icon: true
+      label_icon_size: 14
+      max_length: 56
+      max_length_ellipsis: "..."
+      monitor_exclusive: false
+
+  clock:
+    type: "yasb.clock.ClockWidget"
+    options:
+      label: "{%a, %d %b %H:%M}"
+      label_alt: "{%A, %d %B %Y %H:%M:%S}"
+      timezones: []
+
+  komorebi_workspaces:
+    type: "komorebi.workspaces.WorkspaceWidget"
+    options:
+      label_offline: "\u23fc Offline"
+      label_workspace_btn: "\udb81\udc3d"
+      label_workspace_active_btn: ""
+      label_workspace_populated_btn: "\udb81\udc3e"
+      label_default_name: "{index}"
+      label_zero_index: false
+      hide_empty_workspaces: false
+      hide_if_offline: true
+      animation: true
+      container_padding:
+        top: 0
+        left: 8
+        bottom: 0
+        right: 8
+
+  komorebi_active_layout:
+    type: "komorebi.active_layout.ActiveLayoutWidget"
+    options:
+      hide_if_offline: true
+      label: "{icon}"
+      layouts:
+        [
+          "bsp",
+          "columns",
+          "rows",
+          "grid",
+          "vertical_stack",
+          "horizontal_stack",
+          "ultrawide_vertical_stack",
+          "right_main_vertical_stack",
+        ]
+      layout_icons:
+        bsp: "BSP"
+        columns: "COLS"
+        rows: "ROWS"
+        grid: "GRID"
+        vertical_stack: "V-STACK"
+        horizontal_stack: "H-STACK"
+        ultrawide_vertical_stack: "W-STACK"
+        right_main_vertical_stack: "RMV-STACK"
+        monocle: "MONOCLE"
+        maximised: "MAX"
+        floating: "FLOATING"
+        paused: "PAUSED"
+      container_padding:
+        top: 0
+        left: 8
+        bottom: 0
+        right: 8
+      callbacks:
+        on_left: "next_layout"
+        on_middle: "toggle_monocle"
+        on_right: "prev_layout"
+
+  weather:
+    type: "yasb.weather.WeatherWidget"
+    options:
+      label: "<span>{icon}</span> {temp}"
+      label_alt: "{location}: Min {min_temp}, Max {max_temp}, Humidity {humidity}"
+      api_key: "24b6c2cda6d84066b0304531241908"
+      update_interval: 3600
+      hide_decimal: true
+      location: "Norway Trondheim 7040"
+      callbacks:
+        on_left: "toggle_label"
+      icons:
+        sunnyDay: "\udb81\udd99"
+        clearNight: "\udb81\udd99"
+        cloudyDay: "\udb81\udd99"
+        cloudyNight: "\udb81\udd99"
+        rainyDay: "\udb81\udd99"
+        rainyNight: "\udb81\udd99"
+        snowyIcyDay: "\udb81\udd99"
+        snowyIcyNight: "\udb81\udd99"
+        blizzard: "\udb81\udd99"
+        default: "\udb81\udd99"
+
+  volume:
+    type: "yasb.volume.VolumeWidget"
+    options:
+      label: "<span>{icon}</span> {level}"
+      label_alt: "{volume}"
+      volume_icons:
+        - "\ueee8" # Icon for muted
+        - "\uf026" # Icon for 0-10% volume
+        - "\uf027" # Icon for 11-30% volume
+        - "\uf027" # Icon for 31-60% volume
+        - "\uf028" # Icon for 61-100% volume
+      # audio_menu:
+      #   blur: True
+      #   round_corners: True
+      #   round_corners_type: "normal"
+      #   border_color: "System"
+      #   alignment: "right"
+      #   direction: "down"
+      callbacks:
+        # on_left: "toggle_volume_menu"
+        on_right: "toggle_mute"
+
+  bluetooth:
+    type: "yasb.bluetooth.BluetoothWidget"
+    options:
+      label: "<span>{icon}</span>"
+      label_alt: "{device_name}"
+      icons:
+        bluetooth_on: "\udb80\udcaf"
+        bluetooth_off: "\udb80\udcb2"
+        bluetooth_connected: "\udb80\udcb1"
+      callbacks:
+        on_right: "exec cmd.exe /c start ms-settings:bluetooth"
+
+  power_menu:
+    type: "yasb.power_menu.PowerMenuWidget"
+    options:
+      label: "\uf011"
+      uptime: True
+      blur: False
+      blur_background: True
+      animation_duration: 150
+      button_row: 5
+      buttons:
+        shutdown: ["\uf011", "Shut Down"]
+        restart: ["\uead2", "Restart"]
+        signout: ["\udb80\udf43", "Sign out"]
+        hibernate: ["\uf28e", "Hibernate"]
+        sleep: ["\u23fe", "Sleep"]
+        cancel: ["", "Cancel"]
+
+  apps:
+    type: "yasb.applications.ApplicationsWidget"
+    options:
+      container_padding:
+        top: 0
+        left: 8
+        bottom: 0
+        right: 8
+      label: "{data}"
+      app_list:
+        - { icon: "\uf0a2", launch: "notification_center" }
+        - { icon: "\ueb51", launch: "quick_settings" }
+        - {
+            icon: "\uf268",
+            launch: "C:/Users/erlen/AppData/Local/Microsoft/WindowsApps/Arc.exe",
+          }
+        - { icon: "\uf1b6", launch: "C:/Program Files (x86)/Steam/steam.exe" }
+        - {
+            icon: "\uf1ff",
+            launch: "C:\\Users\\erlen\\AppData\\Local\\Discord\\Update.exe --processStart Discord.exe",
+          }
+        - {
+            icon: "\uf1bc",
+            # launch: "C:/Program Files/WindowsApps/SpotifyAB.SpotifyMusic_1.251.345.0_x64__zpdnekdrzrea0/Spotify.exe",
+            launch: "spotify.exe",
+          }
+        - {
+            icon: "\uf395",
+            launch: "C:/Program Files/Docker/Docker/Docker Desktop.exe",
+          }
+        - {
+            icon: "\uf277",
+            launch: "C:/Users/erlen/AppData/Local/Postman/Postman.exe",
+          }
+        - {
+            icon: "\uf14e",
+            launch: "C:/Users/erlen/AppData/Local/MongoDBCompass/MongoDBCompass.exe",
+          }
+        - {
+            icon: "\uf249",
+            launch: "C:/Users/erlen/AppData/Local/Programs/Obsidian/Obsidian.exe",
+          }
+        - {
+            icon: "\uf799",
+            launch: "C:/Users/erlen/AppData/Local/Figma/app-124.6.5/Figma.exe",
+          }
+
+  taskbar:
+    type: "yasb.taskbar.TaskbarWidget"
+    options:
+      animation: true
+      icon_size: 16
+      ignore_apps:
+        processes: []
+        titles: []
+        classes: []
+      container_padding:
+        top: 0
+        left: 0
+        bottom: 0
+        right: 0
+
+  ai:
+    type: "yasb.custom.CustomWidget"
+    options:
+      label: "<span>\udb81\ude74</span>"
+      label_alt: "\udb81\ude74"
+      class_name: "ai-widget"
+      callbacks:
+        on_left: "exec cmd.exe /c start \"C:\\Program Files\\Mozilla Firefox\\firefox.exe\" https://chatgpt.com/"
+
+  wallpapers:
+    type: "yasb.wallpapers.WallpapersWidget"
+    options:
+      label: "<span>\udb83\ude09</span>"
+      image_path: "C:\\Users\\erlen\\Pictures\\Wallpapers"
+      change_automatically: false
+      update_interval: 60
+      gallery:
+        enabled: true
+        blur: true
+        image_width: 220
+        image_per_page: 8
+        show_buttons: false
+        orientation: "portrait"
+        image_spacing: 8
+        lazy_load: true
+        lazy_load_delay: 80
+        lazy_load_fadein: 400
+        image_corner_radius: 20
+        enable_cache: true
+
+  media:
+    type: "yasb.media.MediaWidget"
+    options:
+      label: "{title}"
+      label_alt: "{artist}"
+      max_field_size:
+        label: 24
+        label_alt: 24
+      show_thumbnail: true
+      controls_only: false
+      controls_left: true
+      hide_empty: true
+      thumbnail_alpha: 150
+      thumbnail_padding: 8
+      thumbnail_corner_radius: 0
+      icons:
+        prev_track: "\ue892"
+        next_track: "\ue893"
+        play: "\ue768"
+        pause: "\ue769"

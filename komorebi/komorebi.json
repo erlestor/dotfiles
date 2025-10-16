@@ -1,0 +1,168 @@
+{
+  "$schema": "https://raw.githubusercontent.com/LGUG2Z/komorebi/v0.1.30/schema.json",
+  "app_specific_configuration_path": "$Env:KOMOREBI_CONFIG_HOME/applications.json",
+  "window_hiding_behaviour": "Cloak",
+  "cross_monitor_move_behaviour": "Insert",
+  "default_workspace_padding": 6,
+  "default_container_padding": 2,
+  "border": true,
+  "border_width": 4,
+  "border_offset": -1,
+  "adjust_window_size_when_changing_font_size": false,
+  "stackbar": {
+    "height": 20,
+    "mode": "OnStack",
+    "tabs": {
+      "width": 300,
+      "font_size": 18,
+    },
+  },
+  "animation": {
+    "enabled": false,
+    "duration": 100,
+    "fps": 144
+  },
+  "monitors": [
+    {
+      "workspaces": [
+        {
+          "name": "1",
+          "layout": "BSP"
+        },
+        {
+          "name": "2",
+          "layout": "BSP"
+        },
+        {
+          "name": "3",
+          "layout": "BSP"
+        }
+      ]
+    },
+    {
+      "workspaces": [
+        {
+          "name": "1",
+          "layout": "BSP"
+        },
+        {
+          "name": "2",
+          "layout": "BSP"
+        },
+        {
+          "name": "3",
+          "layout": "BSP"
+        }
+      ]
+    },
+    {
+      "workspaces": [
+        {
+          "name": "1",
+          "layout": "BSP"
+        },
+        {
+          "name": "2",
+          "layout": "BSP"
+        },
+        {
+          "name": "3",
+          "layout": "BSP"
+        }
+      ]
+    }
+  ],
+  "ignore_rules": [
+    {
+      "kind": "Title",
+      "id": "Trackmania",
+      "matching_strategy": "Equals"
+    },
+    {
+      "kind": "Exe",
+      "id": "BakkesMod.exe",
+      "matching_strategy": "Equals"
+    },
+    {
+      "kind": "Title",
+      "id": "Discord Updater",
+      "matching_strategy": "Equals"
+    },
+    {
+      "kind": "Title",
+      "id": "Razer Central",
+      "matching_strategy": "Equals"
+    },
+    {
+      "kind": "Exe",
+      "id": "javaw.exe",
+      "matching_strategy": "Equals"
+    },
+    {
+      "kind": "Exe",
+      "id": "cs2.exe",
+      "matching_strategy": "Equals"
+    },
+    {
+      "kind": "Exe",
+      "id": "Battle.net.exe",
+      "matching_strategy": "Equals"
+    },
+    {
+      "kind": "Class",
+      "id": "MozillaDialogClass",
+      "matching_strategy": "Equals"
+    },
+    {
+      "kind": "Exe",
+      "id": "explorer.exe",
+      "matching_strategy": "Equals"
+    },
+    {
+      "kind": "Exe",
+      "id": "MultiMC.exe",
+      "matching_strategy": "Equals"
+    },
+    {
+      "kind": "Exe",
+      "id": "factorio.exe",
+      "matching_strategy": "Equals"
+    },
+    {
+      "kind": "Exe",
+      "id": "crosvm.exe",
+      "matching_strategy": "Equals"
+    },
+    {
+      "kind": "Exe",
+      "id": "obs64.exe",
+      "matching_strategy": "Equals"
+    },
+    {
+      "kind": "Exe",
+      "id": "AATool.exe",
+      "matching_strategy": "Equals"
+    },
+    {
+      "kind": "Exe",
+      "id": "valheim.exe",
+      "matching_strategy": "Equals"
+    },
+    {
+      "kind": "Exe",
+      "id": "Game.exe",
+      "matching_strategy": "Equals"
+    },
+    {
+      "kind": "Exe",
+      "id": "EADesktop.exe",
+      "matching_strategy": "Equals"
+    },
+    {
+      "kind": "Exe",
+      "id": "bf6event.exe",
+      "matching_strategy": "Equals"
+    },
+  ],
+  "floating_applications": []
+}
