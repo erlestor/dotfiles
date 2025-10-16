@@ -31,7 +31,7 @@ if (Test-Path($ChocolateyProfile)) {
 }
 
 # OH MY POSH PROMPT
-oh-my-posh init pwsh --config "$home/amro.omp.json" | Invoke-Expression
+oh-my-posh init pwsh --config "$home/.config/amro.omp.json" | Invoke-Expression
 
 # IDK
 Set-PSReadLineOption -EditMode Vi
