@@ -22,7 +22,7 @@ map("n", "<leader><leader>l", require("smart-splits").swap_buf_right)
 
 map("n", "<leader>rn", "<leader>cr", { desc = "Rename variable" })
 
--- VIBE CODE WARNING
+-- VIBE CODE start
 -- It's suprisingly fast. Because it always reaches the limit
 -- Move current buffer to first position
 function MoveBufferToFirst()
@@ -75,6 +75,7 @@ function MoveBufferToSecondLast()
   -- Then move previous once to get to second-to-last position
   vim.cmd("BufferLineMovePrev")
 end
+-- VIBE CODE end
 
 -- HARPOON
 local harpoon = require("harpoon")
@@ -92,9 +93,6 @@ end)
 vim.keymap.set("n", "<Leader>ø", function()
   harpoon:list():select(4)
 end)
-
-map("n", "<S-j>", "5j")
-map("n", "<S-k>", "5k") -- TODO: this doesn't work. maybe disable keybind from somewhere else
 
 -- Better binds for hover and diagnostics
 map("n", "gh", function()
@@ -134,9 +132,6 @@ map("v", ">", ">gv")
 --   end
 -- end, { expr = true })
 
--- TELESCOPE
-map("n", "<leader>fl", require("telescope.builtin").resume, { desc = "telescope redo last search" })
-
 -- COPILOT
 -- TODO: add these for whatever autocomplete lazyvim useses
 -- map("n", "<leader>ct", require("copilot.suggestion").toggle_auto_trigger, { desc = "copilot toggle suggestions" })
@@ -152,15 +147,12 @@ map("n", "<leader>q", ":qa<CR>")
 -- Basically snippets
 map("v", "<leader>lg", 'yoconsole.log("<esc>pa:", <esc>pa)<esc>', { desc = "Add console.log" })
 
--- Rebind telescope bind
+-- TELESCOPE
+map("n", "<leader>fl", require("telescope.builtin").resume, { desc = "telescope redo last search" })
 map("n", "<leader>fw", LazyVim.pick("live_grep"), { desc = "Grep (Root Dir)" })
--- Visual mode mapping for searching selected text
 map("v", "<leader>fw", function()
-  -- First, yank the selected text to the default register
   vim.cmd('normal! "fy')
-
-  -- Then, open telescope live_grep and paste the yanked text
   require("telescope.builtin").live_grep({
-    default_text = vim.fn.getreg('"f'), -- Use the yanked text as default
+    default_text = vim.fn.getreg('"f'),
   })
 end, { desc = "Grep selection (Root Dir)" })

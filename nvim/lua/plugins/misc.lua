@@ -143,6 +143,14 @@ return {
     "render-markdown.nvim",
     enabled = false,
   },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      indent = { enable = false }, -- I use guess-indent.nvim instead
+      -- NOTE: always add lazy extra before adding it here
+      ensure_installed = {},
+    },
+  },
   -- Add new plugins
   { "mrjones2014/smart-splits.nvim" },
   {
@@ -179,5 +187,13 @@ return {
     -- "nuxt-goto.nvim",
     -- dir = "~/Documents/nuxt-goto.nvim",
     -- lazy = false,
+  },
+  -- Actual working auto indent with "o" and "enter"
+  {
+    "nmac427/guess-indent.nvim",
+    event = "BufEnter",
+    config = function()
+      require("guess-indent").setup({})
+    end,
   },
 }

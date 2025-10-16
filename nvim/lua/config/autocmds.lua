@@ -7,7 +7,6 @@
 -- Or remove existing autocmds by their group name (which is prefixed with `lazyvim_` for the defaults)
 -- e.g. vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")
 
--- Bind go-to-definition with correct options for nuxt-goto.nvim
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
     -- the buffer where the lsp attached
@@ -18,12 +17,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
     local opts = { noremap = true, silent = true, buffer = buffer }
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
   end,
+  desc = "Bind go-to-definition with correct options for nuxt-goto.nvim",
 })
 
--- Disable spellchecking
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "markdown",
   callback = function()
     vim.opt_local.spell = false
   end,
+  desc = "Disable spellchecking",
 })
