@@ -123,14 +123,20 @@ map("v", "<", "<gv")
 map("v", ">", ">gv")
 
 -- Smart insert in blank line (auto indent)
--- Doesn't work
--- map("n", "i", function()
---   if #vim.fn.getline(".") == 0 then
---     return [["_cc]]
---   else
---     return "i"
---   end
--- end, { expr = true })
+map("n", "i", function()
+  if #vim.fn.getline(".") == 0 then
+    return [["_cc]]
+  else
+    return "i"
+  end
+end, { expr = true })
+map("n", "a", function()
+  if #vim.fn.getline(".") == 0 then
+    return [["_cc]]
+  else
+    return "a"
+  end
+end, { expr = true })
 
 -- COPILOT
 -- TODO: add these for whatever autocomplete lazyvim useses

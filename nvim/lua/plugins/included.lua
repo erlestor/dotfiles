@@ -2,8 +2,13 @@ local custom_theme = require("lualine.themes.ayu_mirage")
 custom_theme.normal.c.bg = "NONE" -- Makes section c transparent in normal mode
 
 return {
+  -- Disable plugins
+  {
+    "render-markdown.nvim",
+    enabled = false,
+  },
   -- Configure existing plugins
-  -- I try to do the bare minimum required. To rely on good defaults
+  -- Try to do the bare minimum required. To rely on good defaults
   {
     "nvim-neo-tree/neo-tree.nvim",
     init = function() end,
@@ -44,11 +49,9 @@ return {
   },
   {
     "nvim-lualine/lualine.nvim",
-    -- enabled = false,
     opts = {
       options = {
         theme = "auto",
-        -- theme = custom_theme,
       },
       sections = {
         lualine_y = {},
@@ -63,6 +66,7 @@ return {
     -- before it was: vue-language-server 3.1.0.
     -- and that fixed my lsp crashing in deploii repo
     ---@class PluginLspOpts
+    -- This was my old options
     -- opts = {
     --   servers = {
     --     vtsls = {
@@ -132,68 +136,17 @@ return {
     "nvim-telescope/telescope.nvim",
     opts = {
       defaults = {
-        -- layout_strategy = "horizontal",
         layout_config = { prompt_position = "top" },
         sorting_strategy = "ascending",
-        -- winblend = 0,
       },
     },
-  },
-  {
-    "render-markdown.nvim",
-    enabled = false,
   },
   {
     "nvim-treesitter/nvim-treesitter",
     opts = {
       indent = { enable = false }, -- I use guess-indent.nvim instead
-      -- NOTE: always add lazy extra before adding it here
+      -- NOTE: always search for lazy extra before adding parsers here
       ensure_installed = {},
     },
-  },
-  -- Add new plugins
-  { "mrjones2014/smart-splits.nvim" },
-  {
-    "rmagatti/auto-session",
-    lazy = false,
-
-    ---enables autocomplete for opts
-    ---@module "auto-session"
-    ---@type AutoSession.Config
-    opts = {
-      suppressed_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
-      bypass_save_filetypes = { "neo-tree", "dashboard", "snacks_dashboard" },
-      -- log_level = 'debug',
-    },
-  },
-  -- pretty-ts-errors.lua
-  -- sick. but doesn't work in vue files
-  -- i can install render-markdown.nvim to make even more pretty
-  -- {
-  --   {
-  --     "youyoumu/pretty-ts-errors.nvim",
-  --     opts = {
-  --       -- your configuration options
-  --       auto_open = false,
-  --     },
-  --   },
-  -- },
-  {
-    "erlestor/nuxt-goto.nvim",
-    branch = "monorepo-support",
-    ft = "vue",
-    event = "BufEnter",
-    -- Enable for dev
-    -- "nuxt-goto.nvim",
-    -- dir = "~/Documents/nuxt-goto.nvim",
-    -- lazy = false,
-  },
-  -- Actual working auto indent with "o" and "enter"
-  {
-    "nmac427/guess-indent.nvim",
-    event = "BufEnter",
-    config = function()
-      require("guess-indent").setup({})
-    end,
   },
 }
