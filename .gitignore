@@ -1,0 +1,16 @@
+/*
+
+!.gitignore
+
+# Add parent directories you need to whitelist here
+.config/*
+!.config/
+
+# Whitelist specific folders
+!.config/wezterm
+!.config/nvim
+!.config/komorebi
+!.config/yasb
+!.config/powershell
+!.config/windows-startup
+!amro.omp.json
