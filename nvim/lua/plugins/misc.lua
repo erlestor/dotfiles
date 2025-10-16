@@ -139,6 +139,10 @@ return {
       },
     },
   },
+  {
+    "render-markdown.nvim",
+    enabled = false,
+  },
   -- Add new plugins
   { "mrjones2014/smart-splits.nvim" },
   {

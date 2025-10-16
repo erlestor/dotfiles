@@ -2,6 +2,7 @@
 
 # Never delete this line
 !.gitignore
+!README.md
 
 # Whitelist here
 !wezterm
