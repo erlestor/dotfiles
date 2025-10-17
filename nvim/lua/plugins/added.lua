@@ -1,6 +1,8 @@
 local custom_theme = require("lualine.themes.ayu_mirage")
 custom_theme.normal.c.bg = "NONE" -- Makes section c transparent in normal mode
 
+-- NOTE: remember to set lazy load settings
+
 return {
   { "mrjones2014/smart-splits.nvim" },
   {
@@ -16,18 +18,6 @@ return {
       -- log_level = 'debug',
     },
   },
-  -- pretty-ts-errors.lua
-  -- sick. but doesn't work in vue files
-  -- i can install render-markdown.nvim to make even more pretty
-  -- {
-  --   {
-  --     "youyoumu/pretty-ts-errors.nvim",
-  --     opts = {
-  --       -- your configuration options
-  --       auto_open = false,
-  --     },
-  --   },
-  -- },
   {
     "erlestor/nuxt-goto.nvim",
     branch = "monorepo-support",

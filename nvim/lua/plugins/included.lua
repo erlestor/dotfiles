@@ -88,6 +88,7 @@ return {
       -- opts.servers.vtsls.settings.typescript.tsserver.maxTsServerMemory = 8192
       table.insert(opts.servers.vtsls.settings.typescript, { tsserver = { maxTsServerMemory = 8192 } })
       opts.inlay_hints.enabled = false
+      -- opts.diagnostics.virtual_text = false
 
       local keys = require("lazyvim.plugins.lsp.keymaps").get()
       keys[#keys + 1] = { "gd", false }
@@ -147,6 +148,20 @@ return {
       indent = { enable = false }, -- I use guess-indent.nvim instead
       -- NOTE: always search for lazy extra before adding parsers here
       ensure_installed = {},
+    },
+  },
+  {
+    "folke/flash.nvim",
+    opts = {
+      search = {
+        multi_window = false,
+        max_length = 2,
+        incremental = true,
+      },
+      highlight = {
+        backdrop = false,
+        matches = true,
+      },
     },
   },
 }
