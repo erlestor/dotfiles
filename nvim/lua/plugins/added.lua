@@ -1,6 +1,3 @@
-local custom_theme = require("lualine.themes.ayu_mirage")
-custom_theme.normal.c.bg = "NONE" -- Makes section c transparent in normal mode
-
 -- NOTE: remember to set lazy load settings
 
 return {
@@ -35,5 +32,8 @@ return {
     config = function()
       require("guess-indent").setup({})
     end,
+  },
+  {
+    "ThePrimeagen/vim-be-good",
   },
 }

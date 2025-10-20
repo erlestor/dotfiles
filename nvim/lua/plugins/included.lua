@@ -1,6 +1,3 @@
-local custom_theme = require("lualine.themes.ayu_mirage")
-custom_theme.normal.c.bg = "NONE" -- Makes section c transparent in normal mode
-
 return {
   -- Disable plugins
   {
@@ -103,6 +100,11 @@ return {
         desc = "Rename (inc-rename.nvim)",
         has = "rename",
       }
+      -- disable shift+k. im using it for next tab
+      keys[#keys + 1] = {
+        "<S-k>",
+        false,
+      }
     end,
   },
   {
@@ -155,8 +157,8 @@ return {
     opts = {
       search = {
         multi_window = false,
-        max_length = 2,
-        incremental = true,
+        -- max_length = 2,
+        -- incremental = true,
       },
       highlight = {
         backdrop = false,
@@ -164,4 +166,28 @@ return {
       },
     },
   },
+  {
+    "akinsho/bufferline.nvim",
+    keys = function()
+      return {
+        { "<S-j>", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev buffer" },
+        { "<S-k>", "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer", nowait = true },
+      }
+    end,
+  },
+  {
+    "folke/tokyonight.nvim",
+    opts = {
+      transparent = true,
+      styles = {
+        sidebars = "transparent",
+        floats = "transparent",
+      },
+    },
+  },
+  -- { "LazyVim/LazyVim",
+  --   opts = {
+  --     colorscheme = "onedarkpro",
+  --   },
+  -- },
 }
