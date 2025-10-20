@@ -103,6 +103,11 @@ return {
         desc = "Rename (inc-rename.nvim)",
         has = "rename",
       }
+      -- disable shift+k. im using it for next tab
+      keys[#keys + 1] = {
+        "<S-k>",
+        false,
+      }
     end,
   },
   {
@@ -164,8 +169,21 @@ return {
       },
     },
   },
-  -- {
-  --   "LazyVim/LazyVim",
+  {
+    "akinsho/bufferline.nvim",
+    keys = function()
+      return {
+        { "<S-j>", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev buffer" },
+        { "<S-k>", "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer", nowait = true },
+      }
+    end,
+  },
+  {
+    "folke/tokyonight.nvim",
+    lazy = false,
+    opts = { style = "moon", transparent = true },
+  },
+  -- { "LazyVim/LazyVim",
   --   opts = {
   --     colorscheme = "onedarkpro",
   --   },

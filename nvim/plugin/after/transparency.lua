@@ -44,7 +44,10 @@ vim.api.nvim_set_hl(0, "NotifyWARNBorder", { bg = "none" })
 vim.api.nvim_set_hl(0, "NotifyTRACEBorder", { bg = "none" })
 vim.api.nvim_set_hl(0, "NotifyDEBUGBorder", { bg = "none" })
 
-vim.api.nvim_set_hl(0, "BufferLineFill", { bg = "none" })
-vim.api.nvim_set_hl(0, "BufferLineBackground", { bg = "none" })
+-- vim.api.nvim_set_hl(0, "BufferLineFill", { bg = "none" })
+-- vim.api.nvim_set_hl(0, "BufferLineBackground", { bg = "none" })
 -- vim.api.nvim_set_hl(0, "BufferLineTab", { bg = "none" })
 -- vim.api.nvim_set_hl(0, "BufferLineTabClose", { bg = "none" })
+
+-- transparent bufferline background
+vim.api.nvim_set_hl(0, "TabLineFill", { bg = "none" })
