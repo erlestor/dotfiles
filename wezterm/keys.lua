@@ -1,7 +1,7 @@
 local wezterm = require("wezterm")
 local act = wezterm.action
 local mux = wezterm.mux
--- local resurrect = wezterm.plugin.require("https://github.com/MLFlexer/resurrect.wezterm")
+local resurrect = wezterm.plugin.require("https://github.com/MLFlexer/resurrect.wezterm")
 
 local is_windows = wezterm.target_triple == "x86_64-pc-windows-msvc"
 
@@ -200,15 +200,15 @@ local keys = {
 	-- RESURRECT
 	-- Might need these for debug
 	-- save session manually. uncomment for debug
-	-- {
-	-- 	mods = "LEADER|SHIFT",
-	-- 	key = "S",
-	-- 	action = wezterm.action_callback(function(_, _)
-	-- 		resurrect.state_manager.save_state(resurrect.workspace_state.get_workspace_state())
-	-- 		resurrect.window_state.save_window_action()
-	-- 		wezterm.log_info("(Resurrect) Workspace saved")
-	-- 	end),
-	-- },
+	{
+		mods = "LEADER|SHIFT",
+		key = "S",
+		action = wezterm.action_callback(function(_, _)
+			resurrect.state_manager.save_state(resurrect.workspace_state.get_workspace_state())
+			resurrect.window_state.save_window_action()
+			wezterm.log_info("(Resurrect) Workspace saved")
+		end),
+	},
 	-- {
 	-- 	-- Delete a saved session using a fuzzy finder
 	-- 	mods = "LEADER|SHIFT",

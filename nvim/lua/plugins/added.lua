@@ -36,4 +36,7 @@ return {
       require("guess-indent").setup({})
     end,
   },
+  {
+    "ThePrimeagen/vim-be-good",
+  },
 }

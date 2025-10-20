@@ -58,29 +58,29 @@ config.window_padding = default_padding
 
 -- 0 padding in neovim or other alt screens
 -- doesn't work with domains :(
-wezterm.on("update-status", function(window, _)
-	local tab = window:active_tab()
-	local panes = tab:panes()
-	local alt_screen_active = false
-
-	for i = 1, #panes, 1 do
-		local pane = panes[i]
-		if pane:is_alt_screen_active() then
-			alt_screen_active = true
-			break
-		end
-	end
-
-	if alt_screen_active then
-		window:set_config_overrides({
-			window_padding = { left = 0, right = 0, top = 0, bottom = 0 },
-		})
-	else
-		window:set_config_overrides({
-			window_padding = default_padding,
-		})
-	end
-end)
+-- wezterm.on("update-status", function(window, _)
+-- 	local tab = window:active_tab()
+-- 	local panes = tab:panes()
+-- 	local alt_screen_active = false
+--
+-- 	for i = 1, #panes, 1 do
+-- 		local pane = panes[i]
+-- 		if pane:is_alt_screen_active() then
+-- 			alt_screen_active = true
+-- 			break
+-- 		end
+-- 	end
+--
+-- 	if alt_screen_active then
+-- 		window:set_config_overrides({
+-- 			window_padding = { left = 0, right = 0, top = 0, bottom = 0 },
+-- 		})
+-- 	else
+-- 		window:set_config_overrides({
+-- 			window_padding = default_padding,
+-- 		})
+-- 	end
+-- end)
 
 -- BACKGROUND
 -- config.win32_system_backdrop = "Acrylic"

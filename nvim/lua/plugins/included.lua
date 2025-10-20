@@ -155,8 +155,8 @@ return {
     opts = {
       search = {
         multi_window = false,
-        max_length = 2,
-        incremental = true,
+        -- max_length = 2,
+        -- incremental = true,
       },
       highlight = {
         backdrop = false,
@@ -164,4 +164,10 @@ return {
       },
     },
   },
+  -- {
+  --   "LazyVim/LazyVim",
+  --   opts = {
+  --     colorscheme = "onedarkpro",
+  --   },
+  -- },
 }
