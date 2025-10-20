@@ -51,3 +51,8 @@ vim.api.nvim_set_hl(0, "NotifyDEBUGBorder", { bg = "none" })
 
 -- transparent bufferline background
 vim.api.nvim_set_hl(0, "TabLineFill", { bg = "none" })
+
+-- custom line number colors
+vim.api.nvim_set_hl(0, "LineNrAbove", { fg = "#526185" })
+vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "black" })
+vim.api.nvim_set_hl(0, "LineNrBelow", { fg = "#526185" })
