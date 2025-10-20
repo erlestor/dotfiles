@@ -121,13 +121,74 @@ resurrect.state_manager.periodic_save({
 })
 resurrect.state_manager.set_max_nlines(5000)
 
+-- fix tab names not resurrecting properly
+-- NOTE: hold up. cli fix for renaming tabs doesn't even work
+--
+-- wezterm.on("resurrect.tab_state.restore_tab.finished", function()
+-- 	local window = wezterm.gui.gui_windows()[1]
+-- 	local tab_id = window:active_tab():tab_id() - 1
+-- 	wezterm.log_info("Tab id:")
+-- 	wezterm.log_info(tab_id)
+--
+-- 	-- now I need workspace_id
+--
+-- 	local state = resurrect.state_manager.load_state(id, "workspace")
+-- 	wezterm.log_info("Workspace state:")
+-- 	wezterm.log_info(workspace_state)
+--
+-- 	-- what im missing: tab title from resurrect, pane
+--
+-- 	-- window:perform_action(
+-- 	-- 	wezterm.action.SpawnCommandInNewTab({
+-- 	-- 		args = {
+-- 	-- 			"wezterm",
+-- 	-- 			"cli",
+-- 	-- 			"set-tab-title",
+-- 	-- 			"--tab-id",
+-- 	-- 			tostring(tab_id),
+-- 	-- 			line,
+-- 	-- 		},
+-- 	-- 	}),
+-- 	-- 	pane
+-- 	-- )
+-- end)
+
 -- SMART WORKSPACE SWITCHER
 local workspace_switcher = wezterm.plugin.require("https://github.com/MLFlexer/smart_workspace_switcher.wezterm")
 
+local function normalizePath(path)
+	-- Replace /home/erlend with ~
+	local normalized = string.gsub(path, "^/home/erlend", "~") -- TODO: fix for windows as well
+	return normalized
+end
+
+local function remove_duplicates(arr)
+	local seen = {}
+	local result = {}
+
+	for _, obj in ipairs(arr) do
+		-- Normalize the ID path for comparison
+		local normalizedId = normalizePath(obj.id)
+
+		if not seen[normalizedId] then
+			seen[normalizedId] = true
+			table.insert(result, obj)
+		end
+	end
+
+	return result
+end
+
 workspace_switcher.get_choices = function(_)
-	return utils.array_concat(workspace_switcher.choices.get_workspace_elements({}), {
+	local choices = utils.array_concat(workspace_switcher.choices.get_workspace_elements({}), {
 		{ id = "config", label = "config" },
 	}, workspace_switcher.choices.get_zoxide_elements({}))
+
+	local choices_without_duplicates = remove_duplicates(choices)
+
+	wezterm.log_info(choices_without_duplicates)
+
+	return choices_without_duplicates
 end
 --
 workspace_switcher.workspace_formatter = function(label)
@@ -143,6 +204,8 @@ end
 wezterm.on("smart_workspace_switcher.workspace_switcher.created", function(window, _, label)
 	local workspace_state = resurrect.workspace_state
 
+	wezterm.log_info("Okay we actually create it")
+
 	-- for some goddamn reason. resurrect can't spawn tabs in the window if we don't wait first
 	wezterm.sleep_ms(100)
 
@@ -150,10 +213,8 @@ wezterm.on("smart_workspace_switcher.workspace_switcher.created", function(windo
 		window = window,
 		relative = true,
 		restore_text = true,
-
 		resize_window = false,
 		on_pane_restore = resurrect.tab_state.default_on_pane_restore,
-
 		close_open_tabs = true,
 		close_open_panes = true,
 	})
@@ -201,7 +262,7 @@ tabline.setup({
 		tabline_x = {},
 		tabline_y = { "battery", { "datetime", padding = 1 } },
 	},
-	extensions = { "resurrect", "smart_workspace_switcher", "quick_domains" },
+	extensions = { "resurrect", "smart_workspace_switcher" },
 })
 tabline.apply_to_config(config)
 

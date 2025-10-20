@@ -1,6 +1,3 @@
-local custom_theme = require("lualine.themes.ayu_mirage")
-custom_theme.normal.c.bg = "NONE" -- Makes section c transparent in normal mode
-
 return {
   -- Disable plugins
   {
@@ -180,10 +177,12 @@ return {
   },
   {
     "folke/tokyonight.nvim",
-    lazy = false,
     opts = {
-      style = "moon",
       transparent = true,
+      styles = {
+        sidebars = "transparent",
+        floats = "transparent",
+      },
     },
   },
   -- { "LazyVim/LazyVim",

@@ -42,9 +42,33 @@ local keys = {
 		mods = "LEADER",
 		action = act.PromptInputLine({
 			description = "Enter new name for tab",
-			action = wezterm.action_callback(function(window, _, line)
+			action = wezterm.action_callback(function(window, pane, line)
 				if line then
-					window:active_tab():set_title(line)
+					window:active_tab():set_title(line) -- buggy with unix domain
+					-- attempted fix:
+					-- TODO:
+					-- we're getting the incorrect window. bcuz promptinputline changes window and pane etc.
+					-- wezterm.log_info("Window ID:")
+					-- wezterm.log_info(window:window_id())
+					-- local tab_id = window:active_tab():tab_id()
+					-- wezterm.log_info("Tab ID:")
+					-- wezterm.log_info(tab_id)
+					--
+					-- wezterm.sleep_ms(1000)
+					--
+					-- window:perform_action(
+					-- 	wezterm.action.SpawnCommandInNewTab({
+					-- 		args = {
+					-- 			"wezterm",
+					-- 			"cli",
+					-- 			"set-tab-title",
+					-- 			"--tab-id",
+					-- 			tostring(tab_id),
+					-- 			line,
+					-- 		},
+					-- 	}),
+					-- 	pane
+					-- )
 				end
 			end),
 		}),
