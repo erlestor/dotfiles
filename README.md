@@ -24,10 +24,12 @@ Install the following apps/tools. Prefer winget on windows
 - [everything powertoys plugin](https://github.com/lin-ycv/EverythingPowerToys/wiki) (I used exe, but try winget)
 - [zoxide](https://github.com/ajeetdsouza/zoxide) (winget)
 - [fzf](https://github.com/junegunn/fzf) (winget)
+- [oh-my-posh](https://ohmyposh.dev/docs/installation/linux) (winget)
 
 ### Omarchy
 
 - [Wezterm](https://wezterm.org/install/linux.html#__tabbed_1_7) (pacman)
+- [oh-my-posh](https://ohmyposh.dev/docs/installation/linux) (pacman)
 
 ## Setup
 
@@ -54,6 +56,11 @@ KOMOREBI_CONFIG_HOME = "C:\Users\erlen\.config\komorebi";
 
 - Clone this repo into `~/.config`
 - Point oh-my-posh to `~/.config/amro.omp.json` in `.bashrc`
+- Add the following line to ~/.bash_profile
+
+```bash
+[[ -f ~/.config/.bashrc ]] && . ~/.config/.bashrc
+```
 
 ## Resources
 
