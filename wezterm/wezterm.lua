@@ -13,7 +13,7 @@ end
 config.max_fps = 144
 
 config.window_close_confirmation = "NeverPrompt"
-config.quit_when_all_windows_are_closed = false
+-- config.quit_when_all_windows_are_closed = false
 
 if is_windows then
 	config.default_prog = { "pwsh", "-NoLogo" }
