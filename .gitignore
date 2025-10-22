@@ -1,6 +1,6 @@
 /*
 
-# Never delete this line
+# Never delete this block
 !.gitignore
 !README.md
 
@@ -12,3 +12,4 @@
 !powershell
 !windows-startup
 !amro.omp.json
+!hypr
