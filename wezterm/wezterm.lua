@@ -1,4 +1,3 @@
-local utils = require("utils")
 local keys = require("keys")
 
 local wezterm = require("wezterm")
@@ -37,8 +36,6 @@ if is_windows then
 	config.window_decorations = "RESIZE"
 end
 
-local colors = wezterm.color.get_builtin_schemes()["OneHalfDark"]
-
 -- FONT
 if is_windows then
 	config.font = wezterm.font("JetBrains Mono Regular", { weight = "Regular" })
@@ -55,6 +52,52 @@ local default_padding = {
 	bottom = 12,
 }
 config.window_padding = default_padding
+
+-- local default_window_frame = {
+-- 	border_left_width = "0.5cell",
+-- 	border_right_width = "0.5cell",
+-- 	border_top_height = "0.25cell",
+-- 	border_bottom_height = "0.25cell",
+-- 	border_left_color = "blue",
+-- 	border_right_color = "blue",
+-- 	border_top_color = "blue",
+-- 	border_bottom_color = "blue",
+-- }
+--
+-- wezterm.on("update-status", function(window, _)
+-- 	local tab = window:active_tab()
+-- 	local panes = tab:panes()
+-- 	local alt_screen_active = false
+--
+-- 	for i = 1, #panes, 1 do
+-- 		local pane = panes[i]
+-- 		if pane:is_alt_screen_active() then
+-- 			alt_screen_active = true
+-- 			break
+-- 		end
+-- 	end
+--
+-- 	if alt_screen_active then
+-- 		window:set_config_overrides({
+-- 			window_padding = { left = 0, right = 0, top = 0, bottom = 0 },
+-- 			window_frame = {
+-- 				border_left_width = "0cell",
+-- 				border_right_width = "0cell",
+-- 				border_top_height = "0cell",
+-- 				border_bottom_height = "0cell",
+-- 				border_left_color = "transparent",
+-- 				border_right_color = "transparent",
+-- 				border_top_color = "transparent",
+-- 				border_bottom_color = "transparent",
+-- 			},
+-- 		})
+-- 	else
+-- 		window:set_config_overrides({
+-- 			window_padding = default_padding,
+-- 			window_frame = default_window_frame,
+-- 		})
+-- 	end
+-- end)
 
 -- 0 padding in neovim or other alt screens
 -- doesn't work with domains :(
@@ -121,6 +164,19 @@ resurrect.state_manager.periodic_save({
 })
 resurrect.state_manager.set_max_nlines(5000)
 
+wezterm.on("es-workspace-switched-with-hotkey", function(window, _)
+	local label = window:active_workspace()
+
+	resurrect.workspace_state.restore_workspace(resurrect.state_manager.load_state(label, "workspace"), {
+		window = window:mux_window(),
+		relative = true,
+		restore_text = true,
+		on_pane_restore = resurrect.tab_state.default_on_pane_restore,
+		close_open_tabs = true,
+		close_open_panes = true,
+	})
+end)
+
 -- fix tab names not resurrecting properly
 -- NOTE: hold up. cli fix for renaming tabs doesn't even work
 --
@@ -153,78 +209,7 @@ resurrect.state_manager.set_max_nlines(5000)
 -- 	-- )
 -- end)
 
--- SMART WORKSPACE SWITCHER
-local workspace_switcher = wezterm.plugin.require("https://github.com/MLFlexer/smart_workspace_switcher.wezterm")
-
-local function normalizePath(path)
-	-- Replace /home/erlend with ~
-	local normalized = string.gsub(path, "^/home/erlend", "~") -- TODO: fix for windows as well
-	return normalized
-end
-
-local function remove_duplicates(arr)
-	local seen = {}
-	local result = {}
-
-	for _, obj in ipairs(arr) do
-		-- Normalize the ID path for comparison
-		local normalizedId = normalizePath(obj.id)
-
-		if not seen[normalizedId] then
-			seen[normalizedId] = true
-			table.insert(result, obj)
-		end
-	end
-
-	return result
-end
-
-workspace_switcher.get_choices = function(_)
-	local choices = utils.array_concat(workspace_switcher.choices.get_workspace_elements({}), {
-		{ id = "config", label = "config" },
-	}, workspace_switcher.choices.get_zoxide_elements({}))
-
-	local choices_without_duplicates = remove_duplicates(choices)
-
-	wezterm.log_info(choices_without_duplicates)
-
-	return choices_without_duplicates
-end
---
-workspace_switcher.workspace_formatter = function(label)
-	return wezterm.format({
-		{ Attribute = { Italic = false } },
-		{ Foreground = { Color = colors.ansi[3] } },
-		{ Background = { Color = colors.background } },
-		{ Text = "󱂬  " .. label },
-	})
-end
-
--- loads the state whenever I create a new workspace
-wezterm.on("smart_workspace_switcher.workspace_switcher.created", function(window, _, label)
-	local workspace_state = resurrect.workspace_state
-
-	wezterm.log_info("Okay we actually create it")
-
-	-- for some goddamn reason. resurrect can't spawn tabs in the window if we don't wait first
-	wezterm.sleep_ms(100)
-
-	workspace_state.restore_workspace(resurrect.state_manager.load_state(label, "workspace"), {
-		window = window,
-		relative = true,
-		restore_text = true,
-		resize_window = false,
-		on_pane_restore = resurrect.tab_state.default_on_pane_restore,
-		close_open_tabs = true,
-		close_open_panes = true,
-	})
-end)
-
--- Saves the state whenever I select a workspace
-wezterm.on("smart_workspace_switcher.workspace_switcher.selected", function(_, _, _)
-	local workspace_state = resurrect.workspace_state
-	resurrect.state_manager.save_state(workspace_state.get_workspace_state())
-end)
+require("smart_workspace_switcher")
 
 -- TABLINE
 -- Kan ta i bruk hvis den støtte renaming av tabs
@@ -232,7 +217,6 @@ local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabl
 tabline.setup({
 	options = {
 		theme = "OneHalfDark",
-		-- I think this is to make things transparent on windows
 		theme_overrides = {
 			normal_mode = {
 				b = { bg = "rgba(0,0,0,0)" },

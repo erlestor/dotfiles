@@ -1,3 +1,5 @@
+local utils = require("utils")
+
 local wezterm = require("wezterm")
 local act = wezterm.action
 local mux = wezterm.mux
@@ -179,17 +181,42 @@ local keys = {
 	{
 		mods = "LEADER",
 		key = "j",
-		action = act.SwitchToWorkspace({ name = "config" }),
+		action = wezterm.action_callback(function(window, pane)
+			local label = "config"
+
+			local workspace_exists = utils.workspace_exists(label)
+
+			window:perform_action(act.SwitchToWorkspace({ name = label }), pane)
+
+			if workspace_exists then
+				return
+			end
+
+			wezterm.sleep_ms(100)
+			window:perform_action(act.EmitEvent("es-workspace-switched-with-hotkey"), pane)
+		end),
 	},
 	{
 		mods = "LEADER",
 		key = "k",
 		action = wezterm.action_callback(function(window, pane)
+			local label = ""
 			if is_windows then
-				window:perform_action(act.SwitchToWorkspace({ name = [[~\Documents\Koding\cot\deploii]] }), pane)
+				label = [[~\Documents\Koding\cot\deploii]]
 			else
-				window:perform_action(act.SwitchToWorkspace({ name = "~/Documents/cot/deploii" }), pane)
+				label = "~/Documents/koding/cot/deploii"
 			end
+
+			local workspace_exists = utils.workspace_exists(label)
+
+			window:perform_action(act.SwitchToWorkspace({ name = label }), pane)
+
+			if workspace_exists then
+				return
+			end
+
+			wezterm.sleep_ms(100)
+			window:perform_action(act.EmitEvent("es-workspace-switched-with-hotkey"), pane)
 		end),
 	},
 

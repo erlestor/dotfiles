@@ -56,7 +56,7 @@ KOMOREBI_CONFIG_HOME = "C:\Users\erlen\.config\komorebi";
 
 - Clone this repo into `~/.config`
 - Point oh-my-posh to `~/.config/amro.omp.json` in `.bashrc`
-- Add the following line to ~/.bash_profile
+- Delete `~/.bashrc` and add the following line to `~/.bash_profile`
 
 ```bash
 [[ -f ~/.config/.bashrc ]] && . ~/.config/.bashrc

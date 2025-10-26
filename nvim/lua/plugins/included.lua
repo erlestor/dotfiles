@@ -12,7 +12,7 @@ return {
     opts = {
       filesystem = {
         filtered_items = {
-          visible = true, -- This is what you want: If you set this to `true`, all "hide" just mean "dimmed out"
+          visible = true,
           hide_dotfiles = false,
           hide_gitignored = true,
           bind_to_cwd = true,
@@ -149,7 +149,9 @@ return {
     opts = {
       indent = { enable = false }, -- I use guess-indent.nvim instead
       -- NOTE: always search for lazy extra before adding parsers here
-      ensure_installed = {},
+      ensure_installed = {
+        "scss",
+      },
     },
   },
   {
@@ -182,6 +184,16 @@ return {
       styles = {
         sidebars = "transparent",
         floats = "transparent",
+      },
+    },
+  },
+  {
+    "saghen/blink.cmp",
+    opts = {
+      completion = {
+        ghost_text = {
+          enabled = false,
+        },
       },
     },
   },
