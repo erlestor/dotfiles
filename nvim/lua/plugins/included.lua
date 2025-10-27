@@ -15,8 +15,8 @@ return {
           visible = true,
           hide_dotfiles = false,
           hide_gitignored = true,
-          bind_to_cwd = true,
         },
+        bind_to_cwd = false,
       },
       window = {
         width = 35,
@@ -197,7 +197,8 @@ return {
       },
     },
   },
-  -- { "LazyVim/LazyVim",
+  -- {
+  --   "LazyVim/LazyVim",
   --   opts = {
   --     colorscheme = "onedarkpro",
   --   },

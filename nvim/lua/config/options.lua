@@ -11,3 +11,6 @@ vim.opt.relativenumber = true
 
 -- Reccommended by rmgatti/auto-session
 vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+
+-- Always use cwd for lazyvim project detection
+vim.g.root_spec = { "cwd" }

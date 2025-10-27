@@ -125,13 +125,15 @@ map("v", "<leader>lg", 'yoconsole.log("<esc>pa:", <esc>pa)<esc>', { desc = "Add 
 
 -- TELESCOPE
 map("n", "<leader>fl", require("telescope.builtin").resume, { desc = "telescope redo last search" })
-map("n", "<leader>fw", LazyVim.pick("live_grep"), { desc = "Grep (Root Dir)" })
+map("n", "<leader>ff", LazyVim.pick("files", { root = false }), { desc = "Find Files (cwd)" })
+map("n", "<leader>fw", LazyVim.pick("live_grep", { root = false }), { desc = "Grep (cwd)" })
 map("v", "<leader>fw", function()
   vim.cmd('normal! "fy')
   require("telescope.builtin").live_grep({
     default_text = vim.fn.getreg('"f'),
+    root = false,
   })
-end, { desc = "Grep selection (Root Dir)" })
+end, { desc = "Grep selection (cwd)" })
 
 -- VIBE CODE start
 -- It's suprisingly fast. Because it always reaches the limit
