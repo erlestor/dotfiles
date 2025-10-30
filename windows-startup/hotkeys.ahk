@@ -6,7 +6,8 @@
 LWin & Enter::Run "C:\Program Files\WezTerm\wezterm-gui.exe"
 LWin & b::Run "zen.exe"
 LWin & m::Run "spotify.exe"
-LWin & d::Run "C:/Program Files/Docker/Docker/Docker Desktop.exe"
+LWin & d::Run "C:\Users\erlen\AppData\Local\Discord\app-1.0.9212\Discord.exe"
+; LWin & LShift & d::Run "C:\Program Files\Docker\Docker\Docker Desktop.exe"
 LWin & f::Run "explorer.exe"
 
 ; ---------------------------------------------------------------------------------------------------------
