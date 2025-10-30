@@ -15,7 +15,6 @@ Komorebic(cmd) {
 #HotIf
 
 LWin & w::Komorebic("close")
-!q::Komorebic("close")
 !m::Komorebic("minimize")
 
 ; Focus windows
@@ -28,8 +27,8 @@ LWin & w::Komorebic("close")
 ;!+]::Komorebic("cycle-focus next")
 
 ; Focus displays
-!a::Komorebic("cycle-monitor previous")
-!d::Komorebic("cycle-monitor next")
+!a::Komorebic("cycle-monitor next")
+!d::Komorebic("cycle-monitor previous")
 
 ; Move windows
 !+h::Komorebic("move left")
@@ -73,9 +72,18 @@ LWin & w::Komorebic("close")
 !c::Komorebic("cycle-layout next")
 
 ; Workspaces
-!1::Komorebic("focus-workspaces 0")
-!2::Komorebic("focus-workspaces 1")
-!3::Komorebic("focus-workspaces 2")
+!1::Komorebic("focus-workspace 0")
+!2::Komorebic("focus-workspace 1")
+!3::Komorebic("focus-workspace 2")
+!4::Komorebic("focus-workspace 3")
+!5::Komorebic("focus-workspace 4")
+
+; Change workspace on all monitors. Disabled because it conflicts with my symbol layer
+; <^>!1::Komorebic("focus-workspaces 0")
+; <^>!2::Komorebic("focus-workspaces 1")
+; <^>!3::Komorebic("focus-workspaces 2")
+; <^>!4::Komorebic("focus-workspaces 3")
+; <^>!5::Komorebic("focus-workspaces 4")
 
 ; Move windows across workspaces
 !+1::{

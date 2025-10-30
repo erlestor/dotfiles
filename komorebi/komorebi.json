@@ -9,13 +9,14 @@
   "border_width": 4,
   "border_offset": -1,
   "adjust_window_size_when_changing_font_size": false,
+  "focus_follows_mouse": "Windows",
   "stackbar": {
     "height": 20,
     "mode": "OnStack",
     "tabs": {
       "width": 300,
-      "font_size": 18,
-    },
+      "font_size": 18
+    }
   },
   "animation": {
     "enabled": false,
@@ -36,6 +37,14 @@
         {
           "name": "3",
           "layout": "BSP"
+        },
+        {
+          "name": "4",
+          "layout": "BSP"
+        },
+        {
+          "name": "5",
+          "layout": "BSP"
         }
       ]
     },
@@ -52,6 +61,14 @@
         {
           "name": "3",
           "layout": "BSP"
+        },
+        {
+          "name": "4",
+          "layout": "BSP"
+        },
+        {
+          "name": "5",
+          "layout": "BSP"
         }
       ]
     },
@@ -67,6 +84,14 @@
         },
         {
           "name": "3",
+          "layout": "BSP"
+        },
+        {
+          "name": "4",
+          "layout": "BSP"
+        },
+        {
+          "name": "5",
           "layout": "BSP"
         }
       ]
@@ -163,6 +188,11 @@
       "id": "bf6event.exe",
       "matching_strategy": "Equals"
     },
+    {
+      "kind": "Exe",
+      "id": "Notepad.exe",
+      "matching_strategy": "Equals"
+    }
   ],
   "floating_applications": []
 }
