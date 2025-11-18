@@ -14,5 +14,9 @@ function wssh() {
   wezterm connect SSHMUX:"$1"
 }
 
+# Hyprmcsr
+export PATH="$PATH:/home/erlen/Programs/hyprmcsr/bin"
+source /home/erlen/Programs/hyprmcsr/tab-completions/hyprmcsr.bash-completion
+
 # PROMPT
 eval "$(oh-my-posh init bash --config "$HOME/.config/amro.omp.json")"
