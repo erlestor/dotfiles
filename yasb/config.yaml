@@ -33,23 +33,23 @@ bars:
       bottom: 0
       right: 6
     widgets:
-      left:
-        [
-          "komorebi_workspaces",
+      left: [
           "komorebi_active_layout",
-          "taskbar",
-          "active_window",
+          "komorebi_workspaces",
+          # "taskbar",
+          # "active_window",
         ]
-      center: ["apps"]
-      right:
-        [
-          "media",
-          "ai",
+      # center: ["apps"]
+      center: ["clock"]
+      right: [
+          # "media",
+          # "ai",
           "wallpapers",
-          "weather",
+          # "weather",
+          "wifi",
           "volume",
           "bluetooth",
-          "clock",
+          # "clock",
           "power_menu",
         ]
 widgets:
@@ -155,8 +155,8 @@ widgets:
   volume:
     type: "yasb.volume.VolumeWidget"
     options:
-      label: "<span>{icon}</span> {level}"
-      label_alt: "{volume}"
+      label: "<span>{icon}</span>"
+      label_alt: "<span>{icon}</span>"
       volume_icons:
         - "\ueee8" # Icon for muted
         - "\uf026" # Icon for 0-10% volume
@@ -164,27 +164,26 @@ widgets:
         - "\uf027" # Icon for 31-60% volume
         - "\uf028" # Icon for 61-100% volume
       # audio_menu:
-      #   blur: True
-      #   round_corners: True
+      #   blur: true
+      #   round_corners: true
       #   round_corners_type: "normal"
       #   border_color: "System"
       #   alignment: "right"
       #   direction: "down"
       callbacks:
         # on_left: "toggle_volume_menu"
-        on_right: "toggle_mute"
+        on_right: "toggle_volume_menu"
 
   bluetooth:
     type: "yasb.bluetooth.BluetoothWidget"
     options:
       label: "<span>{icon}</span>"
-      label_alt: "{device_name}"
       icons:
         bluetooth_on: "\udb80\udcaf"
         bluetooth_off: "\udb80\udcb2"
         bluetooth_connected: "\udb80\udcb1"
       callbacks:
-        on_right: "exec cmd.exe /c start ms-settings:bluetooth"
+        on_left: "exec cmd.exe /c start ms-settings:bluetooth"
 
   power_menu:
     type: "yasb.power_menu.PowerMenuWidget"
@@ -250,30 +249,6 @@ widgets:
             launch: "C:/Users/erlen/AppData/Local/Figma/app-124.6.5/Figma.exe",
           }
 
-  taskbar:
-    type: "yasb.taskbar.TaskbarWidget"
-    options:
-      animation: true
-      icon_size: 16
-      ignore_apps:
-        processes: []
-        titles: []
-        classes: []
-      container_padding:
-        top: 0
-        left: 0
-        bottom: 0
-        right: 0
-
-  ai:
-    type: "yasb.custom.CustomWidget"
-    options:
-      label: "<span>\udb81\ude74</span>"
-      label_alt: "\udb81\ude74"
-      class_name: "ai-widget"
-      callbacks:
-        on_left: "exec cmd.exe /c start \"C:\\Program Files\\Mozilla Firefox\\firefox.exe\" https://chatgpt.com/"
-
   wallpapers:
     type: "yasb.wallpapers.WallpapersWidget"
     options:
@@ -295,23 +270,33 @@ widgets:
         image_corner_radius: 20
         enable_cache: true
 
-  media:
-    type: "yasb.media.MediaWidget"
+  wifi:
+    type: "yasb.wifi.WifiWidget"
     options:
-      label: "{title}"
-      label_alt: "{artist}"
-      max_field_size:
-        label: 24
-        label_alt: 24
-      show_thumbnail: true
-      controls_only: false
-      controls_left: true
-      hide_empty: true
-      thumbnail_alpha: 150
-      thumbnail_padding: 8
-      thumbnail_corner_radius: 0
-      icons:
-        prev_track: "\ue892"
-        next_track: "\ue893"
-        play: "\ue768"
-        pause: "\ue769"
+      label: "<span>{wifi_icon}</span>"
+      label_alt: "{wifi_name} {wifi_strength}%"
+      update_interval: 5000
+      callbacks:
+        on_left: "toggle_menu"
+        on_middle: "exec cmd.exe /c start ms-settings:network"
+        on_right: "toggle_label"
+      # get_exact_wifi_strength: false # Optional. Will require location access permission if true.
+      ethernet_icon: "\ueba9"
+      wifi_icons: [
+          "\udb82\udd2e", # Icon for 0% strength
+          "\udb82\udd1f", # Icon for 1-24% strength
+          "\udb82\udd22", # Icon for 25-49% strength
+          "\udb82\udd25", # Icon for 50-74% strength
+          "\udb82\udd28", # Icon for 75-100% strength
+        ]
+      # menu_config:
+      #   blur: true
+      #   round_corners: true
+      #   round_corners_type: "normal"
+      #   border_color: "System"
+      #   alignment: "right"
+      #   direction: "down"
+      #   offset_top: 6
+      #   offset_left: 0
+      #   wifi_icons_secured: ["\ue670", "\ue671", "\ue672", "\ue673"]
+      #   wifi_icons_unsecured: ["\uec3c", "\uec3d", "\uec3e", "\uec3f"]

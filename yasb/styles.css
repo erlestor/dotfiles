@@ -184,7 +184,9 @@
 }
 .volume-widget .icon {
   color: var(--blue);
-  margin: 1px 2px 0 0;
+  /* margin: 1px 2px 0 0; */
+  margin: 0;
+  padding: 0;
 }
 .github-widget .icon {
   font-size: 14px;
@@ -192,11 +194,6 @@
 }
 .github-widget .icon.new-notification {
   color: var(--red);
-}
-.weather-widget,
-.github-widget,
-.volume-widget {
-  padding: 0 6px;
 }
 .weather-widget .icon {
   font-size: 18px;
@@ -237,7 +234,7 @@
 /*  font-size: 14px;*/
 /*}*/
 .wallpapers-widget {
-  padding: 0 6px 0 6px;
+  padding: 0 0;
 }
 .wallpapers-gallery-window {
   background-color: rgba(85, 42, 240, 0.01);
@@ -338,4 +335,24 @@
 .clock-widget {
   margin: 0;
   padding: 0;
+}
+
+/* Fuck it I'll just override stuff here */
+.power-menu-widget,
+.bluetooth-widget,
+.volume-widget,
+.wifi-widget,
+.wallpapers-widget {
+  padding: 0 !important;
+  margin: 4px 8px !important;
+}
+
+.wifi-widget {
+  padding-top: 3px;
+}
+.volume-widget {
+  padding-top: 2px;
+}
+.bluetooth-widget {
+  padding-top: 2px;
 }

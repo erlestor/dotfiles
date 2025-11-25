@@ -12,6 +12,7 @@ Komorebic(cmd) {
 !s::return
 !d::return
 !v::return
+LWin & w::return
 #HotIf
 
 LWin & w::Komorebic("close")

@@ -14,15 +14,27 @@ LWin & f::Run "explorer.exe"
 ; Minecraft speedrunning
 
 #HotIf WinActive("ahk_exe javaw.exe")
+; Misc shit rly
 XButton2::F3
 z::F3
 h::0
 <::h
 Alt::Esc
 ; To walk while using f3 menu without triggering commands
-a::j
-s::k
-d::m
+; Avoid a,d,b,g,c
+; a::j
+; d::m
+; Testing search craft
+; we need. b,e,a,w,o
+q::i
+e::o
+s::e
+d::b
+f::k
+g::d
+z::p
+; Also avoid f3 conflicts when walking. problem for left (a) and right (d/b)
+XButton2 & a::a
 ; For ground zero
 Numpad1::MButton
 Numpad2::RButton

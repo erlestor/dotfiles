@@ -9,7 +9,6 @@
   "border_width": 4,
   "border_offset": -1,
   "adjust_window_size_when_changing_font_size": false,
-  "focus_follows_mouse": "Windows",
   "stackbar": {
     "height": 20,
     "mode": "OnStack",
