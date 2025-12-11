@@ -50,3 +50,6 @@ $env:EDITOR = "nvim"
 # ZOXIDE
 Invoke-Expression (& { (zoxide init powershell | Out-String) })
 Set-Alias cd z -Option AllScope
+
+# Mise
+mise activate pwsh | Out-String | Invoke-Expression
