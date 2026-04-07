@@ -35,7 +35,8 @@ map("n", "<C-u>", "<C-u>zz")
 map("n", "n", "nzzzv")
 map("n", "N", "Nzzzv")
 
-map("x", "<leader>p", '"_dP', { desc = "Paste over text without overriding register" })
+map("x", "p", '"_dP', { desc = "Paste over text without overriding register" })
+-- map("x", "<leader>p", '"_dP', { desc = "Paste over text without overriding register" })
 
 -- q is used for macros, but since I haven't learned to use them it's just annoying
 map("n", "q", "nop")
@@ -188,6 +189,7 @@ function MoveBufferToSecondLast()
   -- Then move previous once to get to second-to-last position
   vim.cmd("BufferLineMovePrev")
 end
+
 -- VIBE CODE end
 
 -- HARPOON

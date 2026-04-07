@@ -64,55 +64,47 @@ return {
     -- and that fixed my lsp crashing in deploii repo
     ---@class PluginLspOpts
     -- This was my old options
-    -- opts = {
-    --   servers = {
-    --     vtsls = {
-    --       settings = {
-    --         typescript = {
-    --           tsserver = {
-    --             -- if typescript is struggling in monorepos
-    --             -- try turning this number up
-    --             -- allthough if the lsp needs so much ram for one project, something's broken
-    --             maxTsServerMemory = 8192,
-    --           },
-    --         },
-    --       },
-    --     },
-    --   },
-    -- },
-    -- THIS WORKS BUT WITH ERROR
-    opts = function(_, opts)
-      -- opts.servers.vtsls.settings.typescript.tsserver.maxTsServerMemory = 8192
-      table.insert(opts.servers.vtsls.settings.typescript, { tsserver = { maxTsServerMemory = 8192 } })
-      opts.inlay_hints.enabled = false
-      -- opts.diagnostics.virtual_text = false
-
-      local keys = require("lazyvim.plugins.lsp.keymaps").get()
-      keys[#keys + 1] = { "gd", false }
-      -- another bind for <leader>cr
-      keys[#keys + 1] = {
-        "<leader>rn",
-        function()
-          local inc_rename = require("inc_rename")
-          return ":" .. inc_rename.config.cmd_name .. " " .. vim.fn.expand("<cword>")
-        end,
-        expr = true,
-        desc = "Rename (inc-rename.nvim)",
-        has = "rename",
-      }
-      -- disable shift+k. im using it for next tab
-      keys[#keys + 1] = {
-        "<S-k>",
-        false,
-      }
-    end,
+    opts = {
+      inlay_hints = {
+        enabled = false
+      },
+      servers = {
+        ['*'] = {
+          keys = {
+            { "gd",    false }, -- i have overwritten goto definition with nuxt_goto
+            { "<S-k>", false }, -- i use gh instead for checking types
+            {
+              "<leader>rn",
+              function()
+                local inc_rename = require("inc_rename")
+                return ":" .. inc_rename.config.cmd_name .. " " .. vim.fn.expand("<cword>")
+              end,
+              expr = true,
+              desc = "Rename (inc-rename.nvim)",
+              has = "rename",
+            },
+          }
+        },
+        vtsls = {
+          settings = {
+            typescript = {
+              tsserver = {
+                -- if typescript is struggling in monorepos, try turning this number up
+                -- allthough if the lsp needs so much ram for one project, something's broken
+                maxTsServerMemory = 8192,
+              },
+            },
+          },
+        },
+      },
+    },
   },
   {
     "folke/noice.nvim",
     opts = {
       presets = {
-        bottom_search = false, -- use a classic bottom cmdline for search
-        command_palette = false, -- position the cmdline and popupmenu together
+        bottom_search = false,         -- use a classic bottom cmdline for search
+        command_palette = false,       -- position the cmdline and popupmenu together
         long_message_to_split = false, -- long messages will be sent to a split
         -- inc_rename = true, -- enables an input dialog for inc-rename.nvim
         -- lsp_doc_border = true, -- add a border to hover docs and signature help
@@ -173,7 +165,7 @@ return {
     keys = function()
       return {
         { "<S-j>", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev buffer" },
-        { "<S-k>", "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer", nowait = true },
+        { "<S-k>", "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer" },
       }
     end,
   },

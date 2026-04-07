@@ -1,0 +1,63 @@
+{
+  "onStart": [
+    "prismlauncher -l Ranked",
+    "obs",
+    "hyprmcsr run-jar ninjabrain-bot"
+  ],
+  "onDestroy": [],
+  "onToggleBinds": [],
+  "binds": {
+    "toggleBinds": ",HOME",
+    "modeSwitch": {
+      "tall": ",less",
+      "boat-eye": ",bar",
+      "planar-abuse": ",B"
+    },
+    "custom": {}
+  },
+  "modeSwitch": {
+    "default": {
+      "size": "fullscreen",
+      "sensitivity": "0.0",
+      "onExit": [],
+      "onEnter": []
+    },
+    "modes": {
+      "normal": {},
+      "tall": {
+        "size": "383x1440"
+      },
+      "boat-eye": {
+        "size": "384x16384",
+        "sensitivity": "-0.9375",
+        "onEnter": [
+          "~/.local/bin/obs-cli item show --scene BoatEyeScene GameCapture"
+        ],
+        "onExit": [
+          "~/.local/bin/obs-cli item hide --scene BoatEyeScene GameCapture"
+        ]
+      },
+      "planar-abuse": {
+        "size": "2560x400"
+      }
+    }
+  },
+  "minecraft": {
+    "onStart": [],
+    "windowTitleRegex": "Minecraft* 1.16.1 - MCSR Ranked",
+    "prismLauncher": {
+      "autoReplaceWrapperCommand": {
+        "enabled": true,
+        "innerCommand": "obs-gamecapture"
+      },
+      "instanceId": "Ranked",
+      "autoLaunch": false,
+      "flatpak": false
+    },
+    "observeState": {
+      "enabled": true
+    }
+  },
+  "autoDestroyOnExit": true,
+  "requireSudo": true
+}
