@@ -1,40 +1,47 @@
 {
   "onStart": [
-    "prismlauncher -l Ranked",
     "obs",
-    "hyprmcsr run-jar ninjabrain-bot"
+    "hyprmcsr run-jar ninjabrain-bot",
+    "killall -SIGUSR1 waybar",
+    "~/.config/hidconsole -i C547 1101073D001C2000000000000000000000000000"
   ],
-  "onDestroy": [],
+  "onDestroy": [
+    "hyprctl dispatch closewindow class:ninjabrainbot-Main",
+    "killall -SIGUSR1 waybar",
+    "hyprctl keyword input:sensitivity 0",
+    "~/.config/hidconsole -i C547 1101073D00038400000000000000000000000000"
+  ],
   "onToggleBinds": [],
   "binds": {
     "toggleBinds": ",HOME",
     "modeSwitch": {
       "tall": ",less",
       "boat-eye": ",bar",
-      "planar-abuse": ",B"
+      "planar-abuse": ",l"
     },
     "custom": {}
   },
   "modeSwitch": {
     "default": {
       "size": "fullscreen",
-      "sensitivity": "0.0",
+      "sensitivity": "-0.875",
       "onExit": [],
       "onEnter": []
     },
     "modes": {
-      "normal": {},
+      "normal": {
+        "size": "fullscreen"
+      },
       "tall": {
-        "size": "383x1440"
+        "size": "400x1440"
       },
       "boat-eye": {
-        "size": "384x16384",
-        "sensitivity": "-0.9375",
+        "size": "400x16384",
         "onEnter": [
-          "~/.local/bin/obs-cli item show --scene BoatEyeScene GameCapture"
+          "~/.config/hidconsole -i C547 1101073D00006400000000000000000000000000"
         ],
         "onExit": [
-          "~/.local/bin/obs-cli item hide --scene BoatEyeScene GameCapture"
+          "~/.config/hidconsole -i C547 1101073D001C2000000000000000000000000000"
         ]
       },
       "planar-abuse": {
@@ -44,14 +51,14 @@
   },
   "minecraft": {
     "onStart": [],
-    "windowTitleRegex": "Minecraft* 1.16.1 - MCSR Ranked",
+    "windowTitleRegex": "MCSR",
     "prismLauncher": {
       "autoReplaceWrapperCommand": {
         "enabled": true,
         "innerCommand": "obs-gamecapture"
       },
       "instanceId": "Ranked",
-      "autoLaunch": false,
+      "autoLaunch": true,
       "flatpak": false
     },
     "observeState": {
