@@ -62,6 +62,20 @@ KOMOREBI_CONFIG_HOME = "C:\Users\erlen\.config\komorebi";
 [[ -f ~/.config/.bashrc ]] && . ~/.config/.bashrc
 ```
 
+#### MCSR
+
+- Install hyprmcsr and keyd
+- If sensitivity setting doesn't work. Install solaar and see: [this issue](https://github.com/pwr-Solaar/Solaar/issues/3073#issuecomment-3707125179)
+- Add a default.conf to /etc/keyd with this:
+
+```conf
+[ids]
+
+*
+
+[main]
+```
+
 ## Resources
 
 ### How to symlink (windows)
