@@ -9,7 +9,8 @@
     "hyprctl dispatch closewindow class:ninjabrainbot-Main",
     "killall -SIGUSR1 waybar",
     "hyprctl keyword input:sensitivity 0",
-    "~/.config/hidconsole -i C547 1101073D00038400000000000000000000000000"
+    "~/.config/hidconsole -i C547 1101073D00038400000000000000000000000000",
+    "hyprctl dispatch closewindow match:title Minecraft\\*\\s1\\.16\\.1+\\s-\\sMCSR\\sRanked"
   ],
   "onToggleBinds": [],
   "binds": {
