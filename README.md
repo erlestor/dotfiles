@@ -104,7 +104,7 @@ Open powershell as administrator and run:
 New-Item -ItemType SymbolicLink -Path c:/users/xxx/xxx -Target c:/users/xxx/.config/xxx
 ```
 
-### Fix mongodb compass not saving passwords
+### Fix mongodb compass not saving passwords (omarchy)
 
 Run
 
