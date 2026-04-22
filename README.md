@@ -103,3 +103,17 @@ Open powershell as administrator and run:
 ```
 New-Item -ItemType SymbolicLink -Path c:/users/xxx/xxx -Target c:/users/xxx/.config/xxx
 ```
+
+### Fix mongodb compass not saving passwords
+
+Run
+
+```bash
+cp /usr/share/applications/mongodb-compass.desktop ~/.local/share/applications/mongodb-compass.desktop
+nvim ~/.local/share/applications/mongodb-compass.desktop
+```
+
+Change the Exec line to
+```bash
+Exec=mongodb-compass --password-store=gnome-libsecret --ignore-additional-command-line-flags %U
+```
