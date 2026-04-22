@@ -20,5 +20,8 @@ function wssh() {
 export PATH="$PATH:/home/erlen/hyprmcsr/bin"
 source /home/erlen/Programs/hyprmcsr/tab-completions/hyprmcsr.bash-completion
 
-# PROMPT
+# Mise
+eval "$(mise activate bash)"
+
+# Prompt. Keep at the bottom
 eval "$(oh-my-posh init bash --config "$HOME/.config/amro.omp.json")"
