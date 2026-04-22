@@ -56,7 +56,24 @@ KOMOREBI_CONFIG_HOME = "C:\Users\erlen\.config\komorebi";
 ### Linux
 
 - Clone this repo into `~/.config`
-- Point oh-my-posh to `~/.config/amro.omp.json` in `.bashrc`
+```bash
+git clone https://github.com/erlestor/dotfiles /tmp/dotfiles-tmp # 1. Clone to a temp location
+mv /tmp/dotfiles-tmp/.git ~/.config/ # 2. Drop the .git folder into .config — making it the repo
+cd ~/.config
+git status # 3. Preview what git sees before touching anything
+git reset --hard HEAD # 4. Overwrite tracked files with repo versions, leave everything else alone
+rm -rf /tmp/dotfiles-tmp # 5. Clean up the temp dir
+```
+
+- Install these packages: cpio, cmake, git, meson and gcc
+- Run these commands
+
+```bash
+hyprpm add https://github.com/zjeffer/split-monitor-workspaces # Add the plugin repository
+hyprpm enable split-monitor-workspaces # Enable the plugin
+hyprpm reload # Reload the plugins
+```
+
 - Delete `~/.bashrc` and add the following line to `~/.bash_profile`
 
 ```bash
