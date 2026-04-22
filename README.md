@@ -57,12 +57,12 @@ KOMOREBI_CONFIG_HOME = "C:\Users\erlen\.config\komorebi";
 
 - Clone this repo into `~/.config`
 ```bash
-git clone https://github.com/erlestor/dotfiles /tmp/dotfiles-tmp # 1. Clone to a temp location
-mv /tmp/dotfiles-tmp/.git ~/.config/ # 2. Drop the .git folder into .config — making it the repo
+git clone https://github.com/erlestor/dotfiles /tmp/dotfiles-tmp # Clone to a temp location
+mv /tmp/dotfiles-tmp/.git ~/.config/ # Drop the .git folder into .config — making it the repo
 cd ~/.config
-git status # 3. Preview what git sees before touching anything
-git reset --hard HEAD # 4. Overwrite tracked files with repo versions, leave everything else alone
-rm -rf /tmp/dotfiles-tmp # 5. Clean up the temp dir
+git status # Preview what git sees before touching anything
+git reset --hard HEAD # Overwrite tracked files with repo versions, leave everything else alone
+rm -rf /tmp/dotfiles-tmp # Clean up the temp dir
 ```
 
 - Install these packages: cpio, cmake, git, meson and gcc
