@@ -30,7 +30,7 @@ Install the following apps/tools. Prefer winget on windows
 
 - [Wezterm](https://wezterm.org/install/linux.html#__tabbed_1_7) (pacman)
 - [oh-my-posh](https://ohmyposh.dev/docs/installation/linux) (pacman)
-- [split-workspaces]([https://wiki.hypr.land/Plugins/Using-Plugins/#hyprpm](https://github.com/zjeffer/split-monitor-workspaces))
+- [split-workspaces](https://github.com/zjeffer/split-monitor-workspaces) (hyprpm)
 
 ## Setup
 
