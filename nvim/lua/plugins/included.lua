@@ -1,7 +1,7 @@
 return {
   -- Disable plugins
   {
-    "render-markdown.nvim",
+    "MeanderingProgrammer/render-markdown.nvim",
     enabled = false,
   },
   -- Configure existing plugins
@@ -66,12 +66,12 @@ return {
     -- This was my old options
     opts = {
       inlay_hints = {
-        enabled = false
+        enabled = false,
       },
       servers = {
-        ['*'] = {
+        ["*"] = {
           keys = {
-            { "gd",    false }, -- i have overwritten goto definition with nuxt_goto
+            { "gd", false }, -- i have overwritten goto definition with nuxt_goto
             { "<S-k>", false }, -- i use gh instead for checking types
             {
               "<leader>rn",
@@ -83,7 +83,7 @@ return {
               desc = "Rename (inc-rename.nvim)",
               has = "rename",
             },
-          }
+          },
         },
         vtsls = {
           settings = {
@@ -103,8 +103,8 @@ return {
     "folke/noice.nvim",
     opts = {
       presets = {
-        bottom_search = false,         -- use a classic bottom cmdline for search
-        command_palette = false,       -- position the cmdline and popupmenu together
+        bottom_search = false, -- use a classic bottom cmdline for search
+        command_palette = false, -- position the cmdline and popupmenu together
         long_message_to_split = false, -- long messages will be sent to a split
         -- inc_rename = true, -- enables an input dialog for inc-rename.nvim
         -- lsp_doc_border = true, -- add a border to hover docs and signature help

@@ -1,61 +1,21 @@
 # Dotfiles
 
-- Here I put all the configuration files that I share between machines.
+- Here I put all the configuration files that stray away from defaults
 - This repo is made to be put inside the $home/.config folder
 - Used on windows 11 and linux (omarchy)
 
-## Installation
+## Omarchy
 
-Install the following apps/tools. Prefer winget on windows
-
-### Windows
-
-- [Neovim](https://nvchad.com/docs/quickstart/install/)
-  - Follow instructions, up until nvchad specific config
-  - Run `npm i -g tree-sitter-cli`
-- [Wezterm](https://wezfurlong.org/wezterm/install/windows.html) (winget)
-- Powershell 7 (winget)
-- [Autohotkey v2](https://www.autohotkey.com/) (exe)
-- [Yasb](https://github.com/amnweb/yasb)
-  - Run and enable autostart
-- [Komorebi](https://lgug2z.github.io/komorebi/installation.html)
-  - Make a startup script with target: "C:\Program Files\komorebi\bin\komorebic.exe" start --ahk
-- [everything](https://www.voidtools.com/downloads/) (I used exe, but try winget)
-- [everything powertoys plugin](https://github.com/lin-ycv/EverythingPowerToys/wiki) (I used exe, but try winget)
-- [zoxide](https://github.com/ajeetdsouza/zoxide) (winget)
-- [fzf](https://github.com/junegunn/fzf) (winget)
-- [oh-my-posh](https://ohmyposh.dev/docs/installation/linux) (winget)
-
-### Omarchy
+### Installation
 
 - [Wezterm](https://wezterm.org/install/linux.html#__tabbed_1_7) (pacman)
 - [oh-my-posh](https://ohmyposh.dev/docs/installation/linux) (pacman)
 - [split-workspaces](https://github.com/zjeffer/split-monitor-workspaces) (hyprpm)
 
-## Setup
-
-### Windows
-
-- Clone this repo into ´~/.config´
-- Make sure to add powershell 7 to path and remove system32 powershell path
-- Add these environment variables (via windows search -> environment variables):
-
-```ts
-KOMOREBI_AHK_EXE = "C:/Program Files/AutoHotkey/v2/AutoHotkey64";
-KOMOREBI_CONFIG_HOME = "C:\Users\erlen\.config\komorebi";
-```
-
-- Make these soft symlinks (delete any file/folder which exists already at that location):
-
-```
-~/.config/nvim -> ~/appdata/local/nvim
-~/.config/powershell/profile.ps1 -> ~/documents/powershell/profile.ps1
-~/.config/windows-startup/hotkeys.ahk -> ~/appdata/roaming/microsoft/windows/start menu/programs/startup/hotkeys.ahk
-```
-
-### Linux
+### Setup
 
 - Clone this repo into `~/.config`
+
 ```bash
 git clone https://github.com/erlestor/dotfiles /tmp/dotfiles-tmp # Clone to a temp location
 mv /tmp/dotfiles-tmp/.git ~/.config/ # Drop the .git folder into .config — making it the repo
@@ -94,17 +54,7 @@ hyprpm reload # Reload the plugins
 [main]
 ```
 
-## Resources
-
-### How to symlink (windows)
-
-Open powershell as administrator and run:
-
-```
-New-Item -ItemType SymbolicLink -Path c:/users/xxx/xxx -Target c:/users/xxx/.config/xxx
-```
-
-### Fix mongodb compass not saving passwords (omarchy)
+#### Fix mongodb compass not saving passwords
 
 Run
 
@@ -114,6 +64,56 @@ nvim ~/.local/share/applications/mongodb-compass.desktop
 ```
 
 Change the Exec line to
+
 ```bash
 Exec=mongodb-compass --password-store=gnome-libsecret --ignore-additional-command-line-flags %U
+```
+
+## Windows
+
+### Installation
+
+Prefer winget if you can
+
+- [Neovim](https://nvchad.com/docs/quickstart/install/)
+  - Follow instructions, up until nvchad specific config
+  - Run `npm i -g tree-sitter-cli`
+- [Wezterm](https://wezfurlong.org/wezterm/install/windows.html) (winget)
+- Powershell 7 (winget)
+- [Autohotkey v2](https://www.autohotkey.com/) (exe)
+- [Yasb](https://github.com/amnweb/yasb)
+  - Run and enable autostart
+- [Komorebi](https://lgug2z.github.io/komorebi/installation.html)
+  - Make a startup script with target: "C:\Program Files\komorebi\bin\komorebic.exe" start --ahk
+- [everything](https://www.voidtools.com/downloads/) (I used exe, but try winget)
+- [everything powertoys plugin](https://github.com/lin-ycv/EverythingPowerToys/wiki) (I used exe, but try winget)
+- [zoxide](https://github.com/ajeetdsouza/zoxide) (winget)
+- [fzf](https://github.com/junegunn/fzf) (winget)
+- [oh-my-posh](https://ohmyposh.dev/docs/installation/linux) (winget)
+
+### Setup
+
+- Clone this repo into ´~/.config´
+- Make sure to add powershell 7 to path and remove system32 powershell path
+- Add these environment variables (via windows search -> environment variables):
+
+```ts
+KOMOREBI_AHK_EXE = "C:/Program Files/AutoHotkey/v2/AutoHotkey64";
+KOMOREBI_CONFIG_HOME = "C:\Users\erlen\.config\komorebi";
+```
+
+- Make these soft symlinks (delete any file/folder which exists already at that location):
+
+```txt
+~/.config/nvim -> ~/appdata/local/nvim
+~/.config/powershell/profile.ps1 -> ~/documents/powershell/profile.ps1
+~/.config/windows-startup/hotkeys.ahk -> ~/appdata/roaming/microsoft/windows/start menu/programs/startup/hotkeys.ahk
+```
+
+#### How to symlink
+
+Open powershell as administrator and run:
+
+```powershell
+New-Item -ItemType SymbolicLink -Path c:/users/xxx/xxx -Target c:/users/xxx/.config/xxx
 ```
