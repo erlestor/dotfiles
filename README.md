@@ -42,8 +42,7 @@ hyprpm reload # Reload the plugins
 
 #### MCSR
 
-- Install hyprmcsr and keyd
-- If sensitivity setting doesn't work. Install solaar and see: [this issue](https://github.com/pwr-Solaar/Solaar/issues/3073#issuecomment-3707125179)
+- Install [hyprmcsr](https://github.com/Relacibo/hyprmcsr/blob/main/docs/001-install-and-setup.md), prismlauncher (pacman) and keyd (pacman)
 - Add a default.conf to /etc/keyd with this:
 
 ```conf
@@ -53,6 +52,9 @@ hyprpm reload # Reload the plugins
 
 [main]
 ```
+
+- Set up your instance
+- If sensitivity setting doesn't work. Install solaar and see: [this issue](https://github.com/pwr-Solaar/Solaar/issues/3073#issuecomment-3707125179)
 
 #### Fix mongodb compass not saving passwords
 
