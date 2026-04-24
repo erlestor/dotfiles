@@ -17,7 +17,7 @@ function wssh() {
 }
 
 # Hyprmcsr
-export PATH="$PATH:/home/erlen/hyprmcsr/bin"
+export PATH="$PATH:/home/erlen/Programs/hyprmcsr/bin"
 source /home/erlen/Programs/hyprmcsr/tab-completions/hyprmcsr.bash-completion
 
 # Mise
