@@ -1,7 +1,7 @@
 {
     "name": "Untitled",
     "DesktopAudioDevice1": {
-        "prev_ver": 536936448,
+        "prev_ver": 536936449,
         "name": "Desktop Audio",
         "uuid": "87dc27ec-3793-4ef2-afb7-3b1db79b543f",
         "id": "pulse_output_capture",
@@ -32,7 +32,7 @@
         "private_settings": {}
     },
     "AuxAudioDevice1": {
-        "prev_ver": 536936448,
+        "prev_ver": 536936449,
         "name": "Mic/Aux",
         "uuid": "e3e8f95d-6a89-4455-b423-a6bbc298e2f5",
         "id": "pulse_input_capture",
@@ -64,7 +64,7 @@
     },
     "sources": [
         {
-            "prev_ver": 536936448,
+            "prev_ver": 536936449,
             "name": "Overrlay",
             "uuid": "b6f972d7-1049-4784-afc5-c5771873b555",
             "id": "image_source",
@@ -90,7 +90,7 @@
             "private_settings": {}
         },
         {
-            "prev_ver": 536936448,
+            "prev_ver": 536936449,
             "name": "Minecraft",
             "uuid": "290c9b59-4ea3-4fe4-a617-174d362bf146",
             "id": "vkcapture-source",
@@ -118,7 +118,7 @@
             "private_settings": {}
         },
         {
-            "prev_ver": 536936448,
+            "prev_ver": 536936449,
             "name": "Pie",
             "uuid": "e9e42f0a-91fd-42ad-8c5e-3150eea365bb",
             "id": "vkcapture-source",
@@ -145,7 +145,7 @@
             "private_settings": {},
             "filters": [
                 {
-                    "prev_ver": 536936448,
+                    "prev_ver": 536936449,
                     "name": "Luma Key",
                     "uuid": "edf2764d-2020-4765-b1d0-d3a762c79dd1",
                     "id": "luma_key_filter",
@@ -172,7 +172,7 @@
                     "private_settings": {}
                 },
                 {
-                    "prev_ver": 536936448,
+                    "prev_ver": 536936449,
                     "name": "Color Key",
                     "uuid": "cfc16157-4ff1-40b5-8145-c46ce86089d9",
                     "id": "color_key_filter",
@@ -202,7 +202,7 @@
             ]
         },
         {
-            "prev_ver": 536936448,
+            "prev_ver": 536936449,
             "name": "Entity counter",
             "uuid": "a7784b83-6476-490f-adfe-731413b562e7",
             "id": "vkcapture-source",
@@ -229,7 +229,7 @@
             "private_settings": {},
             "filters": [
                 {
-                    "prev_ver": 536936448,
+                    "prev_ver": 536936449,
                     "name": "Luma Key",
                     "uuid": "01ecfde1-2fc3-45cd-ae1b-3e1e1fbd7cf6",
                     "id": "luma_key_filter",
@@ -258,7 +258,7 @@
             ]
         },
         {
-            "prev_ver": 536936448,
+            "prev_ver": 536936449,
             "name": "Pie - Blockentities - 1",
             "uuid": "53e82c91-27fe-4247-aaec-edc824332096",
             "id": "vkcapture-source",
@@ -285,7 +285,7 @@
             "private_settings": {},
             "filters": [
                 {
-                    "prev_ver": 536936448,
+                    "prev_ver": 536936449,
                     "name": "Luma Key",
                     "uuid": "e5e0ea1e-39a1-45dc-a649-1064c2c8b0cf",
                     "id": "luma_key_filter",
@@ -312,7 +312,7 @@
                     "private_settings": {}
                 },
                 {
-                    "prev_ver": 536936448,
+                    "prev_ver": 536936449,
                     "name": "Color Key",
                     "uuid": "28d5d1ea-3d8e-4114-b2dc-1c0b5f6ef969",
                     "id": "color_key_filter",
@@ -342,7 +342,7 @@
             ]
         },
         {
-            "prev_ver": 536936448,
+            "prev_ver": 536936449,
             "name": "Projector",
             "uuid": "a078f698-12f5-4e1b-8b06-4f6df5c938dc",
             "id": "scene",
@@ -602,7 +602,7 @@
             "private_settings": {}
         },
         {
-            "prev_ver": 536936448,
+            "prev_ver": 536936449,
             "name": "BoatEyeScene",
             "uuid": "37a5f45c-9719-4c88-b2c6-12b648fd8990",
             "id": "scene",
@@ -786,15 +786,7 @@
             "fade_to_black": true
         }
     ],
-    "saved_projectors": [
-        {
-            "name": "Projector",
-            "monitor": 1,
-            "type": 1,
-            "geometry": "AdnQywADAAAAAAeAAAAAAAAADGwAAAVtAAAHgAAAAAAAABF/AAAFnwAAAAECAAAACgAAAAeAAAAAAAAADGwAAAVt",
-            "alwaysOnTopOverridden": false
-        }
-    ],
+    "saved_projectors": [],
     "preview_locked": false,
     "scaling_enabled": false,
     "scaling_level": -16,
