@@ -74,6 +74,7 @@ Exec=mongodb-compass --password-store=gnome-libsecret --ignore-additional-comman
 #### Arduino IDE setup
 
 - Install arduino-ide-bin (pacman)
+- Follow section 2.1 in the [arch wiki](https://wiki.archlinux.org/title/Arduino#Accessing_serial)
 - Run:
 
 ```bash
