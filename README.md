@@ -58,17 +58,33 @@ hyprpm reload # Reload the plugins
 
 #### Fix mongodb compass not saving passwords
 
-Run
+- Run:
 
 ```bash
 cp /usr/share/applications/mongodb-compass.desktop ~/.local/share/applications/mongodb-compass.desktop
 nvim ~/.local/share/applications/mongodb-compass.desktop
 ```
 
-Change the Exec line to
+- Change the Exec line to:
 
 ```bash
 Exec=mongodb-compass --password-store=gnome-libsecret --ignore-additional-command-line-flags %U
+```
+
+#### Arduino IDE setup
+
+- Install arduino-ide-bin (pacman)
+- Run:
+
+```bash
+cp /usr/share/applications/arduino-ide-v2.desktop ~/.local/share/applications/arduino-ide-v2.desktop
+nvim ~/.local/share/applications/arduino-ide-v2.desktop
+```
+
+- Change the Exec line to:
+
+```bash
+Exec=rm ~/.arduinoIDE/arduino-cli.yaml & arduino-ide %U
 ```
 
 ## Windows
