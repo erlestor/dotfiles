@@ -11,7 +11,8 @@
     "custom/screenrecording-indicator",
   ],
   "modules-right": [
-    "group/tray-expander",
+    // "group/tray-expander", // hide tray icons behind hover
+    "tray", // show all tray icons always
     "bluetooth",
     "network",
     "pulseaudio",
@@ -150,13 +151,13 @@
     "on-click": "omarchy-toggle-idle",
     "exec": "$OMARCHY_PATH/default/waybar/indicators/idle.sh",
     "signal": 9,
-    "return-type": "json"
+    "return-type": "json",
   },
   "custom/notification-silencing-indicator": {
     "on-click": "omarchy-toggle-notification-silencing",
     "exec": "$OMARCHY_PATH/default/waybar/indicators/notification-silencing.sh",
     "signal": 10,
-    "return-type": "json"
+    "return-type": "json",
   },
   "tray": {
     "icon-size": 12,
