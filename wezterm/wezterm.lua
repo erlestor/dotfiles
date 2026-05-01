@@ -127,8 +127,6 @@ config.window_padding = default_padding
 
 -- BACKGROUND
 -- config.win32_system_backdrop = "Acrylic"
--- config.window_background_opacity = 1
--- config.text_background_opacity = 1
 config.window_background_opacity = 1
 config.text_background_opacity = 1
 
@@ -220,6 +218,7 @@ tabline.setup({
 		theme_overrides = {
 			normal_mode = {
 				b = { bg = "rgba(0,0,0,0)" },
+				c = { bg = "rgba(0,0,0,0)" },
 				y = { bg = "rgba(0,0,0,0)" },
 			},
 			tab = {
