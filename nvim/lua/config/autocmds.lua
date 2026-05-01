@@ -24,8 +24,9 @@ vim.api.nvim_create_autocmd("FileType", {
   pattern = "markdown",
   callback = function()
     vim.opt_local.spell = false
+    vim.opt_local.conceallevel = 0
   end,
-  desc = "Disable spellchecking",
+  desc = "Disable spellchecking and show all symbols",
 })
 
 -- :hi StatusLine guibg=NONE works, but i don't know how to do it after lualine attaches

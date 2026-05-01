@@ -21,20 +21,20 @@ end
 -- COLORS
 config.color_scheme = "OneHalfDark"
 
-if is_windows then
-	config.colors = {
-		tab_bar = {
-			background = "rgba(0,0,0,0)",
-		},
-		background = "#1e1f2a",
-	}
-	config.foreground_text_hsb = {
-		hue = 1.0,
-		saturation = 1.0,
-		brightness = 1.2,
-	}
-	config.window_decorations = "RESIZE"
-end
+-- if is_windows then
+config.colors = {
+	tab_bar = {
+		background = "rgba(0,0,0,0)",
+	},
+	background = "#1e1f2a",
+}
+config.foreground_text_hsb = {
+	hue = 1.0,
+	saturation = 1.0,
+	brightness = 1.2,
+}
+config.window_decorations = "RESIZE"
+-- end
 
 -- FONT
 if is_windows then
