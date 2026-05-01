@@ -5,14 +5,6 @@ local config = wezterm.config_builder()
 
 local is_windows = wezterm.target_triple == "x86_64-pc-windows-msvc"
 
--- load plugins
-require("plugins/resurrect") -- Remember tabs and panes when opening workspace
-require("plugins/smart_workspace_switcher") -- Use CTRL + F to open a directory in a new workspace
-local apply_tabline = require("plugins/tabline") -- Nice tab bar
-apply_tabline(config)
-local apply_smart_splits = require("plugins/smart_splits") -- Nice tab bar
-apply_smart_splits(config)
-
 if not is_windows then
 	config.enable_wayland = false
 end
@@ -78,9 +70,22 @@ config.default_gui_startup_args = { "connect", "sessions" }
 config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 2000 }
 config.keys = keys
 
--- PADDING
-config.window_padding = { left = 0, right = 0, top = 12, bottom = 12 }
+-- PLUGINS
+require("plugins/resurrect") -- Remember tabs and panes when opening workspace
+require("plugins/smart_workspace_switcher") -- Use CTRL + F to open a directory in a new workspace
+local apply_tabline = require("plugins/tabline") -- Nice tab bar
+apply_tabline(config)
+local apply_smart_splits = require("plugins/smart_splits") -- Nice tab bar
+apply_smart_splits(config)
 
+-- PADDING
+-- - it's at the bottom because tabline overrides window_padding to 0
+-- - it's all a compromise between how neovim looks with padding vs the prompt
+config.window_padding = { left = "0.5cell", right = "0.5cell", top = "2px", bottom = 0 }
+-- config.window_padding = { left = 0, right = 0, top = 0, bottom = 0 }
+
+-- MY INSANE ATTEMPT AT MAKING NEOVIM HAVE 0 PADDING AND EVERYTHING ELSE 12px
+-- it does work, however it gives some visual glitches (lualine jumping around) and doesn't work with clicking on tabs with the mouse
 -- this is complete madness wtf. Im doing all this just so I can have a bit of padding around my prompt in bash
 
 -- config.status_update_interval = 500 -- ms, i was fucking around with this for faster padding switching
