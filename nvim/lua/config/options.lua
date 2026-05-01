@@ -14,3 +14,6 @@ vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,
 
 -- Always use cwd for lazyvim project detection
 vim.g.root_spec = { "cwd" }
+
+-- Avoid neovim artifacts in wezterm after closing it
+vim.opt.termsync = false

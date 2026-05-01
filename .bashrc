@@ -27,9 +27,24 @@ alias lg="lazygit"
 #   printf '\x1b]1337;SetUserVar=NVIM=%s\x07' "$(printf '0' | base64)"
 # }
 
+# avoid visual bug where neovim still shows in terminal after closing (alongside prompt)
+# n() { command nvim "$@"; clear; }
+# nvim() { command nvim "$@"; clear; }
+
 function wssh() {
   wezterm connect SSHMUX:"$1"
 }
+
+set -o vi
+export POSH_VI_MODE="INSERT"
+
+function _update_vi_mode() {
+  case $READLINE_MARK in
+    *) ;;
+  esac
+}
+# Use bind to detect mode switch (bash 5+)
+bind 'set show-mode-in-prompt on'   # optional: shows a built-in indicator too
 
 # Hyprmcsr
 export PATH="$PATH:/home/erlen/Programs/hyprmcsr/bin"
