@@ -5,6 +5,14 @@ local config = wezterm.config_builder()
 
 local is_windows = wezterm.target_triple == "x86_64-pc-windows-msvc"
 
+-- load plugins
+require("plugins/resurrect") -- Remember tabs and panes when opening workspace
+require("plugins/smart_workspace_switcher") -- Use CTRL + F to open a directory in a new workspace
+local apply_tabline = require("plugins/tabline") -- Nice tab bar
+apply_tabline(config)
+local apply_smart_splits = require("plugins/smart_splits") -- Nice tab bar
+apply_smart_splits(config)
+
 if not is_windows then
 	config.enable_wayland = false
 end
@@ -12,7 +20,6 @@ end
 config.max_fps = 144
 
 config.window_close_confirmation = "NeverPrompt"
--- config.quit_when_all_windows_are_closed = false
 
 if is_windows then
 	config.default_prog = { "pwsh", "-NoLogo" }
@@ -21,7 +28,6 @@ end
 -- COLORS
 config.color_scheme = "OneHalfDark"
 
--- if is_windows then
 config.colors = {
 	tab_bar = {
 		background = "rgba(0,0,0,0)",
@@ -31,10 +37,11 @@ config.colors = {
 config.foreground_text_hsb = {
 	hue = 1.0,
 	saturation = 1.0,
-	brightness = 1.2,
+	brightness = 1.1,
 }
-config.window_decorations = "RESIZE"
--- end
+if is_windows then
+	config.window_decorations = "RESIZE"
+end
 
 -- FONT
 if is_windows then
@@ -43,87 +50,6 @@ else
 	config.font = wezterm.font("JetBrains Mono", { weight = "Regular" })
 end
 config.font_size = 12.0
-
--- PADDING
-local default_padding = {
-	left = 12,
-	right = 12,
-	top = 12,
-	bottom = 12,
-}
-config.window_padding = default_padding
-
--- local default_window_frame = {
--- 	border_left_width = "0.5cell",
--- 	border_right_width = "0.5cell",
--- 	border_top_height = "0.25cell",
--- 	border_bottom_height = "0.25cell",
--- 	border_left_color = "blue",
--- 	border_right_color = "blue",
--- 	border_top_color = "blue",
--- 	border_bottom_color = "blue",
--- }
---
--- wezterm.on("update-status", function(window, _)
--- 	local tab = window:active_tab()
--- 	local panes = tab:panes()
--- 	local alt_screen_active = false
---
--- 	for i = 1, #panes, 1 do
--- 		local pane = panes[i]
--- 		if pane:is_alt_screen_active() then
--- 			alt_screen_active = true
--- 			break
--- 		end
--- 	end
---
--- 	if alt_screen_active then
--- 		window:set_config_overrides({
--- 			window_padding = { left = 0, right = 0, top = 0, bottom = 0 },
--- 			window_frame = {
--- 				border_left_width = "0cell",
--- 				border_right_width = "0cell",
--- 				border_top_height = "0cell",
--- 				border_bottom_height = "0cell",
--- 				border_left_color = "transparent",
--- 				border_right_color = "transparent",
--- 				border_top_color = "transparent",
--- 				border_bottom_color = "transparent",
--- 			},
--- 		})
--- 	else
--- 		window:set_config_overrides({
--- 			window_padding = default_padding,
--- 			window_frame = default_window_frame,
--- 		})
--- 	end
--- end)
-
--- 0 padding in neovim or other alt screens
--- doesn't work with domains :(
--- wezterm.on("update-status", function(window, _)
--- 	local tab = window:active_tab()
--- 	local panes = tab:panes()
--- 	local alt_screen_active = false
---
--- 	for i = 1, #panes, 1 do
--- 		local pane = panes[i]
--- 		if pane:is_alt_screen_active() then
--- 			alt_screen_active = true
--- 			break
--- 		end
--- 	end
---
--- 	if alt_screen_active then
--- 		window:set_config_overrides({
--- 			window_padding = { left = 0, right = 0, top = 0, bottom = 0 },
--- 		})
--- 	else
--- 		window:set_config_overrides({
--- 			window_padding = default_padding,
--- 		})
--- 	end
--- end)
 
 -- BACKGROUND
 -- config.win32_system_backdrop = "Acrylic"
@@ -152,112 +78,86 @@ config.default_gui_startup_args = { "connect", "sessions" }
 config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 2000 }
 config.keys = keys
 
--- RESURRECT
-local resurrect = wezterm.plugin.require("https://github.com/MLFlexer/resurrect.wezterm")
-resurrect.state_manager.periodic_save({
-	interval_seconds = 60 * 15, -- every 15 minutes
-	save_tabs = true,
-	save_windows = true,
-	save_workspaces = true,
-})
-resurrect.state_manager.set_max_nlines(5000)
+-- PADDING
+config.window_padding = { left = 0, right = 0, top = 12, bottom = 12 }
 
-wezterm.on("es-workspace-switched-with-hotkey", function(window, _)
-	local label = window:active_workspace()
+-- this is complete madness wtf. Im doing all this just so I can have a bit of padding around my prompt in bash
 
-	resurrect.workspace_state.restore_workspace(resurrect.state_manager.load_state(label, "workspace"), {
-		window = window:mux_window(),
-		relative = true,
-		restore_text = true,
-		on_pane_restore = resurrect.tab_state.default_on_pane_restore,
-		close_open_tabs = true,
-		close_open_panes = true,
-	})
-end)
-
--- fix tab names not resurrecting properly
--- NOTE: hold up. cli fix for renaming tabs doesn't even work
+-- config.status_update_interval = 500 -- ms, i was fucking around with this for faster padding switching
 --
--- wezterm.on("resurrect.tab_state.restore_tab.finished", function()
--- 	local window = wezterm.gui.gui_windows()[1]
--- 	local tab_id = window:active_tab():tab_id() - 1
--- 	wezterm.log_info("Tab id:")
--- 	wezterm.log_info(tab_id)
+-- config.window_padding = { left = 12, right = 12, top = 12, bottom = 12 }
 --
--- 	-- now I need workspace_id
---
--- 	local state = resurrect.state_manager.load_state(id, "workspace")
--- 	wezterm.log_info("Workspace state:")
--- 	wezterm.log_info(workspace_state)
---
--- 	-- what im missing: tab title from resurrect, pane
---
--- 	-- window:perform_action(
--- 	-- 	wezterm.action.SpawnCommandInNewTab({
--- 	-- 		args = {
--- 	-- 			"wezterm",
--- 	-- 			"cli",
--- 	-- 			"set-tab-title",
--- 	-- 			"--tab-id",
--- 	-- 			tostring(tab_id),
--- 	-- 			line,
--- 	-- 		},
--- 	-- 	}),
--- 	-- 	pane
--- 	-- )
+-- wezterm.on("user-var-changed", function(window, pane, name, value)
+-- 	if name == "NVIM" then
+-- 		local overrides = window:get_config_overrides() or {}
+-- 		if value == "1" then
+-- 			overrides.window_padding = { left = 0, right = 0, top = 0, bottom = 0 }
+-- 		else
+-- 			overrides.window_padding = { left = 12, right = 12, top = 12, bottom = 12 }
+-- 		end
+-- 		window:set_config_overrides(overrides)
+-- 	end
 -- end)
-
-require("smart_workspace_switcher")
-
--- TABLINE
--- Kan ta i bruk hvis den støtte renaming av tabs
-local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
-tabline.setup({
-	options = {
-		theme = "OneHalfDark",
-		theme_overrides = {
-			normal_mode = {
-				b = { bg = "rgba(0,0,0,0)" },
-				c = { bg = "rgba(0,0,0,0)" },
-				y = { bg = "rgba(0,0,0,0)" },
-			},
-			tab = {
-				active = { fg = "#ffffff", bg = "rgba(0,0,0,0)" },
-				inactive = { fg = "#61afef", bg = "rgba(0,0,0,0)" },
-				inactive_hover = { bg = "rgba(0,0,0,0)" },
-			},
-		},
-		section_separators = "",
-		component_separators = "",
-		tab_separators = "",
-	},
-	sections = {
-		tabline_a = {},
-		tabline_c = {},
-		tab_active = {
-			{ "index", padding = { left = 1, right = 0 } },
-			{ "tab", icons_enabled = false },
-		},
-		tab_inactive = {
-			{ "index", padding = { left = 1, right = 0 } },
-			{ "tab", icons_enabled = false },
-		},
-		tabline_x = {},
-		tabline_y = { "battery", { "datetime", padding = 1 } },
-	},
-	extensions = { "resurrect", "smart_workspace_switcher" },
-})
-tabline.apply_to_config(config)
-
--- SMART SPLITS
-local smart_splits = wezterm.plugin.require("https://github.com/mrjones2014/smart-splits.nvim")
-smart_splits.apply_to_config(config, {
-	-- use keys "move" and "resize" to use seprate direction keys for move vs resize
-	direction_keys = { "h", "j", "k", "l" },
-	modifiers = {
-		move = "CTRL",
-		resize = "CTRL|SHIFT|ALT",
-	},
-})
+--
+-- local function get_padding(is_nvim)
+-- 	if is_nvim then
+-- 		return { left = 0, right = 0, top = 0, bottom = 0 }
+-- 	else
+-- 		return { left = 12, right = 12, top = 12, bottom = 12 }
+-- 	end
+-- end
+--
+-- local function apply_padding_for_tab(window, target_tab)
+-- 	if not target_tab then
+-- 		return
+-- 	end
+-- 	local vars = target_tab:active_pane():get_user_vars()
+-- 	local overrides = window:get_config_overrides() or {}
+-- 	overrides.window_padding = get_padding(vars.NVIM == "1")
+-- 	window:set_config_overrides(overrides)
+-- end
+--
+-- -- Absolute tab switching (Ctrl+1 through Ctrl+9)
+-- for i = 1, 9 do
+-- 	table.insert(config.keys, {
+-- 		key = tostring(i),
+-- 		mods = "LEADER",
+-- 		action = wezterm.action_callback(function(window, pane)
+-- 			local tabs = window:mux_window():tabs()
+-- 			apply_padding_for_tab(window, tabs[i])
+-- 			window:perform_action(wezterm.action.ActivateTab(i - 1), pane)
+-- 		end),
+-- 	})
+-- end
+-- -- Relative tab switching
+-- local function relative_tab_action(delta)
+-- 	return wezterm.action_callback(function(window, pane)
+-- 		local tabs = window:mux_window():tabs()
+-- 		local current = window:active_tab():tab_id()
+-- 		local current_index = 1
+-- 		for i, tab in ipairs(tabs) do
+-- 			if tab:tab_id() == current then
+-- 				current_index = i
+-- 				break
+-- 			end
+-- 		end
+-- 		-- Wrapping arithmetic
+-- 		local target_index = ((current_index - 1 + delta) % #tabs) + 1
+-- 		apply_padding_for_tab(window, tabs[target_index])
+-- 		window:perform_action(wezterm.action.ActivateTabRelative(delta), pane)
+-- 	end)
+-- end
+--
+-- table.insert(config.keys, {
+-- 	key = "p", -- whatever your prev-tab key is
+-- 	mods = "LEADER",
+-- 	action = relative_tab_action(-1),
+-- })
+--
+-- table.insert(config.keys, {
+-- 	key = "n", -- whatever your next-tab key is
+-- 	mods = "LEADER",
+-- 	action = relative_tab_action(1),
+-- })
 
 return config

@@ -28,11 +28,3 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
   desc = "Disable spellchecking and show all symbols",
 })
-
--- :hi StatusLine guibg=NONE works, but i don't know how to do it after lualine attaches
--- vim.api.nvim_create_autocmd("ColorScheme", {
---   pattern = "*",
---   callback = function()
---     vim.cmd("hi StatusLine guibg=NONE")
---   end,
--- })
