@@ -4,10 +4,10 @@
 local map = vim.keymap.set
 
 -- SMART SPLITS WEZTERM
-map("n", "<A-h>", require("smart-splits").resize_left)
-map("n", "<A-j>", require("smart-splits").resize_down)
-map("n", "<A-k>", require("smart-splits").resize_up)
-map("n", "<A-l>", require("smart-splits").resize_right)
+map("n", "<C-S-M-h>", require("smart-splits").resize_left)
+map("n", "<C-S-M-j>", require("smart-splits").resize_down)
+map("n", "<C-S-M-k>", require("smart-splits").resize_up)
+map("n", "<C-S-M-l>", require("smart-splits").resize_right)
 -- moving between splits
 map("n", "<C-h>", require("smart-splits").move_cursor_left)
 map("n", "<C-j>", require("smart-splits").move_cursor_down)

@@ -12,25 +12,6 @@ alias c="clear"
 alias p="pnpm"
 alias lg="lazygit"
 
-# more goddamn padding fuckery
-# printf '\x1b]1337;SetUserVar=NVIM=%s\x07' "$(printf '0' | base64)"
-#
-# # trying to fix padding in bash and no padding in neovim
-# n() {
-#   printf '\x1b]1337;SetUserVar=NVIM=%s\x07' "$(printf '1' | base64)"
-#   command nvim "$@"
-#   printf '\x1b]1337;SetUserVar=NVIM=%s\x07' "$(printf '0' | base64)"
-# }
-# nvim() {
-#   printf '\x1b]1337;SetUserVar=NVIM=%s\x07' "$(printf '1' | base64)"
-#   command nvim "$@"
-#   printf '\x1b]1337;SetUserVar=NVIM=%s\x07' "$(printf '0' | base64)"
-# }
-
-# avoid visual bug where neovim still shows in terminal after closing (alongside prompt)
-# n() { command nvim "$@"; clear; }
-# nvim() { command nvim "$@"; clear; }
-
 function wssh() {
   wezterm connect SSHMUX:"$1"
 }
@@ -50,8 +31,8 @@ bind 'set show-mode-in-prompt on'   # optional: shows a built-in indicator too
 export PATH="$PATH:/home/erlen/Programs/hyprmcsr/bin"
 source /home/erlen/Programs/hyprmcsr/tab-completions/hyprmcsr.bash-completion
 
-# Mise
-eval "$(mise activate bash)"
+# Mise - not needec because omarchy defaults
+# eval "$(mise activate bash)"
 
 # Prompt. Keep at the bottom
 eval "$(oh-my-posh init bash --config "$HOME/.config/amro.omp.json")"

@@ -1,7 +1,7 @@
 -- NOTE: remember to set lazy load settings
 
 return {
-  { "mrjones2014/smart-splits.nvim" },
+  { "mrjones2014/smart-splits.nvim", lazy = false },
   {
     "rmagatti/auto-session",
     lazy = false,
