@@ -29,7 +29,7 @@ config.colors = {
 config.foreground_text_hsb = {
 	hue = 1.0,
 	saturation = 1.0,
-	brightness = 1.1,
+	brightness = 1.0,
 }
 if is_windows then
 	config.window_decorations = "RESIZE"
