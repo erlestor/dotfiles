@@ -9,10 +9,10 @@
 ### Installation
 
 - [oh-my-posh](https://ohmyposh.dev/docs/installation/linux) (pacman)
-- [split-workspaces](https://github.com/zjeffer/split-monitor-workspaces) (hyprpm)
 
 #### Dependencies
 
+- sesh-bin (aur). for tmux sesh plugin
 - entr (pacman). for tmux-autoreload
 
 ### Setup
@@ -90,7 +90,7 @@ nvim ~/.local/share/applications/arduino-ide-v2.desktop
 - Change the Exec line to:
 
 ```bash
-Exec=rm ~/.arduinoIDE/arduino-cli.yaml & arduino-ide %U
+Exec=arduino-ide %U --ozone-platform=x11
 ```
 
 ## Windows
