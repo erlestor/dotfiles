@@ -8,9 +8,12 @@
 
 ### Installation
 
-- [Wezterm](https://wezterm.org/install/linux.html#__tabbed_1_7) (pacman)
 - [oh-my-posh](https://ohmyposh.dev/docs/installation/linux) (pacman)
 - [split-workspaces](https://github.com/zjeffer/split-monitor-workspaces) (hyprpm)
+
+#### Dependencies
+
+- entr (pacman). for tmux-autoreload
 
 ### Setup
 
@@ -39,6 +42,8 @@ hyprpm reload # Reload the plugins
 ```bash
 [[ -f ~/.config/.bashrc ]] && . ~/.config/.bashrc
 ```
+
+- Load tmux plugins: open terminal and press "prefix + I"
 
 #### MCSR
 
