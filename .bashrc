@@ -12,8 +12,8 @@ alias c="clear"
 alias p="pnpm"
 alias lg="lazygit"
 
-function wssh() {
-  wezterm connect SSHMUX:"$1"
+function cdn() {
+  cd "$1" && nvim .
 }
 
 set -o vi

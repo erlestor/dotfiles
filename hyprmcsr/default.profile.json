@@ -3,14 +3,15 @@
     "obs",
     "hyprmcsr run-jar ninjabrain-bot",
     "killall -SIGUSR1 waybar",
-    "~/.config/hidconsole -i C547 1101073D001C2000000000000000000000000000"
+    "hyprctl keyword input:sensitivity -0.875",
+    "~/.config/hidconsole -i C547 1101073E001C2000000000000000000000000000"
   ],
   "onDestroy": [
     "hyprctl dispatch closewindow class:ninjabrainbot-Main",
     "killall -SIGUSR1 waybar",
     "hyprctl keyword input:sensitivity 0",
-    "~/.config/hidconsole -i C547 1101073D00038400000000000000000000000000",
-    "hyprctl dispatch closewindow match:title Minecraft\\*\\s1\\.16\\.1+\\s-\\sMCSR\\sRanked"
+    "~/.config/hidconsole -i C547 1101073E00038400000000000000000000000000",
+    "hyprctl dispatch closewindow pid:$(hyprctl clients -j | jq -r '.[] | select(.class | test(\"Minecraft\")) | .pid')"
   ],
   "onToggleBinds": [],
   "binds": {
@@ -39,10 +40,10 @@
       "boat-eye": {
         "size": "400x16384",
         "onEnter": [
-          "~/.config/hidconsole -i C547 1101073D00006400000000000000000000000000"
+          "~/.config/hidconsole -i C547 1101073E00006400000000000000000000000000"
         ],
         "onExit": [
-          "~/.config/hidconsole -i C547 1101073D001C2000000000000000000000000000"
+          "~/.config/hidconsole -i C547 1101073E001C2000000000000000000000000000"
         ]
       },
       "planar-abuse": {
