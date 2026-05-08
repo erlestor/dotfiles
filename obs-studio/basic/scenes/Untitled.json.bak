@@ -348,8 +348,8 @@
             "id": "vkcapture-source",
             "versioned_id": "vkcapture-source",
             "settings": {
-                "show_cursor": false,
-                "window": "java"
+                "window": "java",
+                "show_cursor": false
             },
             "mixers": 0,
             "sync": 0,
@@ -430,9 +430,9 @@
                     "id": "luma_key_filter",
                     "versioned_id": "luma_key_filter_v2",
                     "settings": {
+                        "luma_max": 0.2928,
                         "luma_min": 0.2829,
-                        "luma_min_smooth": 0.0,
-                        "luma_max": 0.2928
+                        "luma_min_smooth": 0.0
                     },
                     "mixers": 0,
                     "sync": 0,
@@ -627,8 +627,8 @@
             "id": "vkcapture-source",
             "versioned_id": "vkcapture-source",
             "settings": {
-                "show_cursor": false,
-                "window": "java"
+                "window": "java",
+                "show_cursor": false
             },
             "mixers": 0,
             "sync": 0,
@@ -794,8 +794,8 @@
             "id": "vkcapture-source",
             "versioned_id": "vkcapture-source",
             "settings": {
-                "show_cursor": false,
-                "window": "java"
+                "window": "java",
+                "show_cursor": false
             },
             "mixers": 0,
             "sync": 0,
@@ -876,8 +876,8 @@
                     "id": "luma_key_filter",
                     "versioned_id": "luma_key_filter_v2",
                     "settings": {
-                        "luma_min": 0.4441,
-                        "luma_max": 0.4572
+                        "luma_max": 0.4572,
+                        "luma_min": 0.4441
                     },
                     "mixers": 0,
                     "sync": 0,
@@ -1543,10 +1543,10 @@
                 "libobs.hide_scene_item.18": [],
                 "libobs.show_scene_item.19": [],
                 "libobs.hide_scene_item.19": [],
-                "libobs.show_scene_item.20": [],
-                "libobs.hide_scene_item.20": [],
                 "libobs.show_scene_item.21": [],
-                "libobs.hide_scene_item.21": []
+                "libobs.hide_scene_item.21": [],
+                "libobs.show_scene_item.20": [],
+                "libobs.hide_scene_item.20": []
             },
             "deinterlace_mode": 0,
             "deinterlace_field_order": 0,
@@ -1744,13 +1744,13 @@
             "name": "Projector",
             "monitor": 1,
             "type": 1,
-            "geometry": "AdnQywADAAAAAAeAAAAAAAAAEWcAAAWHAAAHgAAAAAAAABF/AAAFnwAAAAECAAAACgAAAAeAAAAAAAAAEWcAAAWH",
+            "geometry": "AdnQywADAAAAAAeAAAAAAAAADGwAAAWHAAAHgAAAAAAAABF/AAAFnwAAAAECAAAACgAAAAeAAAAAAAAADGwAAAWH",
             "alwaysOnTopOverridden": false
         }
     ],
     "preview_locked": false,
     "scaling_enabled": false,
-    "scaling_level": -10,
+    "scaling_level": -22,
     "scaling_off_x": 0.0,
     "scaling_off_y": 0.0,
     "modules": {

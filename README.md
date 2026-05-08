@@ -43,12 +43,19 @@ hyprpm reload # Reload the plugins
 [[ -f ~/.config/.bashrc ]] && . ~/.config/.bashrc
 ```
 
+- Run this to install tpm (tmux plugin manager)
+
+```bash
+git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
+```
+
 - Load tmux plugins: open terminal and press "prefix + I"
 
 #### MCSR
 
-- Install [hyprmcsr](https://github.com/Relacibo/hyprmcsr/blob/main/docs/001-install-and-setup.md), prismlauncher (pacman) and keyd (pacman)
-- Add a default.conf to /etc/keyd with this:
+- Install [hyprmcsr](https://github.com/Relacibo/hyprmcsr/blob/main/docs/001-install-and-setup.md), prismlauncher (pacman) and [keyd](https://github.com/rvaiya/keyd) (pacman)
+- Follow keyd instructions closely. And restart after usermod command
+- This is my /etc/keyd/default.conf:
 
 ```conf
 [ids]
@@ -59,7 +66,9 @@ hyprpm reload # Reload the plugins
 ```
 
 - Set up your instance
-- If sensitivity setting doesn't work. Install solaar and see: [this issue](https://github.com/pwr-Solaar/Solaar/issues/3073#issuecomment-3707125179)
+- Set up ninjabrainbot. See [this video](https://www.youtube.com/watch?v=l1Z2t9e6Qko) for boat eye settings
+- If sensitivity setting doesn't work. Install solaar and see: [this issue](https://github.com/pwr-Solaar/Solaar/issues/3073#issuecomment-3707125179). Just one command is needed
+- My window rules in hyprland and commands in hyprmcsr config are very specific. So double check those
 
 #### Fix mongodb compass not saving passwords
 
