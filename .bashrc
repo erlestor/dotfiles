@@ -29,7 +29,6 @@ bind 'set show-mode-in-prompt on'   # optional: shows a built-in indicator too
 
 # Hyprmcsr
 export PATH="$PATH:/home/erlen/Programs/hyprmcsr/bin"
-source /home/erlen/Programs/hyprmcsr/tab-completions/hyprmcsr.bash-completion
 
 # Mise - not needec because omarchy defaults
 # eval "$(mise activate bash)"
