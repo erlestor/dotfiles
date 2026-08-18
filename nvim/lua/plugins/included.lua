@@ -85,6 +85,8 @@ return {
             },
           },
         },
+        html = {},
+        cssls = {},
         vtsls = {
           settings = {
             typescript = {
