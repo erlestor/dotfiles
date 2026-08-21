@@ -16,16 +16,17 @@ function cdn() {
   cd "$1" && nvim .
 }
 
-set -o vi
-export POSH_VI_MODE="INSERT"
+# Vim mode
+# set -o vi
+# export POSH_VI_MODE="INSERT"
 
-function _update_vi_mode() {
-  case $READLINE_MARK in
-    *) ;;
-  esac
-}
+# function _update_vi_mode() {
+#   case $READLINE_MARK in
+#     *) ;;
+#   esac
+# }
 # Use bind to detect mode switch (bash 5+)
-bind 'set show-mode-in-prompt on'   # optional: shows a built-in indicator too
+# bind 'set show-mode-in-prompt on'   # optional: shows a built-in indicator too
 
 # Hyprmcsr
 export PATH="$PATH:/home/erlen/Programs/hyprmcsr/bin"
