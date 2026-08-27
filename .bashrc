@@ -16,6 +16,10 @@ function cdn() {
   cd "$1" && nvim .
 }
 
+function sd() {
+  cd ~ && cd $(find | fzf)
+}
+
 # Vim mode
 # set -o vi
 # export POSH_VI_MODE="INSERT"
