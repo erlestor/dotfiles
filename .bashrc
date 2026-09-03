@@ -40,3 +40,8 @@ export PATH="$PATH:/home/erlen/Programs/hyprmcsr/bin"
 
 # Prompt. Keep at the bottom
 eval "$(oh-my-posh init bash --config "$HOME/.config/amro.omp.json")"
+
+function lfcd() {
+  cd "$(command lf --print-last-dir)"
+}
+alias lf="lfcd"
