@@ -1,7 +1,7 @@
 {
     "name": "Untitled",
     "DesktopAudioDevice1": {
-        "prev_ver": 536936450,
+        "prev_ver": 537001986,
         "name": "Desktop Audio",
         "uuid": "87dc27ec-3793-4ef2-afb7-3b1db79b543f",
         "id": "pulse_output_capture",
@@ -32,13 +32,13 @@
         "private_settings": {}
     },
     "AuxAudioDevice1": {
-        "prev_ver": 536936450,
+        "prev_ver": 537001986,
         "name": "Mic/Aux",
         "uuid": "e3e8f95d-6a89-4455-b423-a6bbc298e2f5",
         "id": "pulse_input_capture",
         "versioned_id": "pulse_input_capture",
         "settings": {
-            "device_id": "default"
+            "device_id": "alsa_input.usb-Razer_Razer_BlackShark_V2_Pro-00.mono-fallback"
         },
         "mixers": 255,
         "sync": 0,
@@ -46,7 +46,7 @@
         "volume": 1.0,
         "balance": 0.5,
         "enabled": true,
-        "muted": true,
+        "muted": false,
         "push-to-mute": false,
         "push-to-mute-delay": 0,
         "push-to-talk": false,
@@ -64,7 +64,7 @@
     },
     "sources": [
         {
-            "prev_ver": 536936450,
+            "prev_ver": 537001986,
             "name": "Overrlay",
             "uuid": "b6f972d7-1049-4784-afc5-c5771873b555",
             "id": "image_source",
@@ -90,7 +90,7 @@
             "private_settings": {}
         },
         {
-            "prev_ver": 536936450,
+            "prev_ver": 537001986,
             "name": "Minecraft",
             "uuid": "290c9b59-4ea3-4fe4-a617-174d362bf146",
             "id": "vkcapture-source",
@@ -118,7 +118,7 @@
             "private_settings": {}
         },
         {
-            "prev_ver": 536936450,
+            "prev_ver": 537001986,
             "name": "Pie",
             "uuid": "e9e42f0a-91fd-42ad-8c5e-3150eea365bb",
             "id": "vkcapture-source",
@@ -145,7 +145,7 @@
             "private_settings": {},
             "filters": [
                 {
-                    "prev_ver": 536936450,
+                    "prev_ver": 537001986,
                     "name": "Luma Key",
                     "uuid": "edf2764d-2020-4765-b1d0-d3a762c79dd1",
                     "id": "luma_key_filter",
@@ -172,7 +172,7 @@
                     "private_settings": {}
                 },
                 {
-                    "prev_ver": 536936450,
+                    "prev_ver": 537001986,
                     "name": "Color Key",
                     "uuid": "cfc16157-4ff1-40b5-8145-c46ce86089d9",
                     "id": "color_key_filter",
@@ -202,7 +202,7 @@
             ]
         },
         {
-            "prev_ver": 536936450,
+            "prev_ver": 537001986,
             "name": "Entity counter",
             "uuid": "a7784b83-6476-490f-adfe-731413b562e7",
             "id": "vkcapture-source",
@@ -229,7 +229,7 @@
             "private_settings": {},
             "filters": [
                 {
-                    "prev_ver": 536936450,
+                    "prev_ver": 537001986,
                     "name": "Luma Key",
                     "uuid": "01ecfde1-2fc3-45cd-ae1b-3e1e1fbd7cf6",
                     "id": "luma_key_filter",
@@ -258,7 +258,7 @@
             ]
         },
         {
-            "prev_ver": 536936450,
+            "prev_ver": 537001986,
             "name": "Pie - Blockentities - Base",
             "uuid": "53e82c91-27fe-4247-aaec-edc824332096",
             "id": "vkcapture-source",
@@ -285,7 +285,7 @@
             "private_settings": {},
             "filters": [
                 {
-                    "prev_ver": 536936450,
+                    "prev_ver": 537001986,
                     "name": "Luma Key",
                     "uuid": "e5e0ea1e-39a1-45dc-a649-1064c2c8b0cf",
                     "id": "luma_key_filter",
@@ -312,7 +312,7 @@
                     "private_settings": {}
                 },
                 {
-                    "prev_ver": 536936450,
+                    "prev_ver": 537001986,
                     "name": "Color Key",
                     "uuid": "28d5d1ea-3d8e-4114-b2dc-1c0b5f6ef969",
                     "id": "color_key_filter",
@@ -342,7 +342,7 @@
             ]
         },
         {
-            "prev_ver": 536936450,
+            "prev_ver": 537001986,
             "name": "Pie - Blockentities - 1",
             "uuid": "53fefd7d-092c-4737-8e7b-6948682409f6",
             "id": "vkcapture-source",
@@ -369,7 +369,7 @@
             "private_settings": {},
             "filters": [
                 {
-                    "prev_ver": 536936450,
+                    "prev_ver": 537001986,
                     "name": "Luma Key",
                     "uuid": "8788054e-e73f-4a9e-8b28-ce6458b37a9b",
                     "id": "luma_key_filter",
@@ -396,7 +396,7 @@
                     "private_settings": {}
                 },
                 {
-                    "prev_ver": 536936450,
+                    "prev_ver": 537001986,
                     "name": "Color Key",
                     "uuid": "d561e30e-3077-4dbb-a05c-11bc86c47a85",
                     "id": "color_key_filter",
@@ -424,7 +424,7 @@
                     "private_settings": {}
                 },
                 {
-                    "prev_ver": 536936450,
+                    "prev_ver": 537001986,
                     "name": "Orange",
                     "uuid": "4cf3e8db-2c14-4bae-ac6c-0eee2f701c1f",
                     "id": "luma_key_filter",
@@ -454,7 +454,7 @@
             ]
         },
         {
-            "prev_ver": 536936450,
+            "prev_ver": 537001986,
             "name": "Pie- Blockentities - 2",
             "uuid": "530ea56e-aabc-4472-8d9d-5a1871a755aa",
             "id": "vkcapture-source",
@@ -481,7 +481,7 @@
             "private_settings": {},
             "filters": [
                 {
-                    "prev_ver": 536936450,
+                    "prev_ver": 537001986,
                     "name": "Luma Key",
                     "uuid": "06324e1d-fa4f-4ffe-87f9-7e1b7bc3a6ff",
                     "id": "luma_key_filter",
@@ -508,7 +508,7 @@
                     "private_settings": {}
                 },
                 {
-                    "prev_ver": 536936450,
+                    "prev_ver": 537001986,
                     "name": "Color Key",
                     "uuid": "13e3ba12-aef6-4a11-9d99-443a5739367a",
                     "id": "color_key_filter",
@@ -536,7 +536,7 @@
                     "private_settings": {}
                 },
                 {
-                    "prev_ver": 536936450,
+                    "prev_ver": 537001986,
                     "name": "Luma Key 2",
                     "uuid": "159c2105-7655-442b-b675-d7ace663d4ff",
                     "id": "luma_key_filter",
@@ -563,7 +563,7 @@
                     "private_settings": {}
                 },
                 {
-                    "prev_ver": 536936450,
+                    "prev_ver": 537001986,
                     "name": "Color Key 2",
                     "uuid": "493c175d-22a7-4fa0-bb47-95ae1dc0eeda",
                     "id": "color_key_filter",
@@ -591,7 +591,7 @@
                     "private_settings": {}
                 },
                 {
-                    "prev_ver": 536936450,
+                    "prev_ver": 537001986,
                     "name": "Orange",
                     "uuid": "803a99c6-e733-466d-a17a-e82f22103457",
                     "id": "luma_key_filter",
@@ -621,7 +621,7 @@
             ]
         },
         {
-            "prev_ver": 536936450,
+            "prev_ver": 537001986,
             "name": "Pie - Blockentities - 3",
             "uuid": "4191c0e9-9ccc-4e7e-82de-90d250aec13a",
             "id": "vkcapture-source",
@@ -648,7 +648,7 @@
             "private_settings": {},
             "filters": [
                 {
-                    "prev_ver": 536936450,
+                    "prev_ver": 537001986,
                     "name": "Luma Key",
                     "uuid": "bb15348b-eaba-4d81-a047-7edb2e113842",
                     "id": "luma_key_filter",
@@ -675,7 +675,7 @@
                     "private_settings": {}
                 },
                 {
-                    "prev_ver": 536936450,
+                    "prev_ver": 537001986,
                     "name": "Color Key",
                     "uuid": "82c29cb7-c7fc-4b9d-a684-ecb74ec01798",
                     "id": "color_key_filter",
@@ -703,7 +703,7 @@
                     "private_settings": {}
                 },
                 {
-                    "prev_ver": 536936450,
+                    "prev_ver": 537001986,
                     "name": "Luma Key 2",
                     "uuid": "519d85e9-ff18-4f1f-af39-1826cfa0233e",
                     "id": "luma_key_filter",
@@ -730,7 +730,7 @@
                     "private_settings": {}
                 },
                 {
-                    "prev_ver": 536936450,
+                    "prev_ver": 537001986,
                     "name": "Color Key 2",
                     "uuid": "ec711938-39c1-4650-b658-1aa180dc0f45",
                     "id": "color_key_filter",
@@ -758,7 +758,7 @@
                     "private_settings": {}
                 },
                 {
-                    "prev_ver": 536936450,
+                    "prev_ver": 537001986,
                     "name": "Orange",
                     "uuid": "e6a62883-8e64-414b-94dd-2de7839fa1df",
                     "id": "luma_key_filter",
@@ -788,7 +788,7 @@
             ]
         },
         {
-            "prev_ver": 536936450,
+            "prev_ver": 537001986,
             "name": "Pie - Unspecified - 3",
             "uuid": "c9d9a744-756b-4232-96e5-b1654423029a",
             "id": "vkcapture-source",
@@ -815,7 +815,7 @@
             "private_settings": {},
             "filters": [
                 {
-                    "prev_ver": 536936450,
+                    "prev_ver": 537001986,
                     "name": "Luma Key",
                     "uuid": "acb2897b-5f6a-461c-8b00-114f6da243fb",
                     "id": "luma_key_filter",
@@ -842,7 +842,7 @@
                     "private_settings": {}
                 },
                 {
-                    "prev_ver": 536936450,
+                    "prev_ver": 537001986,
                     "name": "Color Key",
                     "uuid": "8cb3ce57-3df8-4d96-a5a7-68147fb5a9e1",
                     "id": "color_key_filter",
@@ -870,7 +870,7 @@
                     "private_settings": {}
                 },
                 {
-                    "prev_ver": 536936450,
+                    "prev_ver": 537001986,
                     "name": "Green",
                     "uuid": "f711d837-b57c-4b5b-8007-85fb1039c048",
                     "id": "luma_key_filter",
@@ -899,7 +899,7 @@
             ]
         },
         {
-            "prev_ver": 536936450,
+            "prev_ver": 537001986,
             "name": "Pie - Unspecified - 2",
             "uuid": "b5d9f401-5246-484a-ab52-3a75b5c232ea",
             "id": "vkcapture-source",
@@ -926,7 +926,7 @@
             "private_settings": {},
             "filters": [
                 {
-                    "prev_ver": 536936450,
+                    "prev_ver": 537001986,
                     "name": "Luma Key",
                     "uuid": "9f71e561-d7d9-456c-b60d-04452f98e23b",
                     "id": "luma_key_filter",
@@ -953,7 +953,7 @@
                     "private_settings": {}
                 },
                 {
-                    "prev_ver": 536936450,
+                    "prev_ver": 537001986,
                     "name": "Color Key",
                     "uuid": "3a11f192-1239-40dd-87d5-68a7ca7cfe1d",
                     "id": "color_key_filter",
@@ -981,7 +981,7 @@
                     "private_settings": {}
                 },
                 {
-                    "prev_ver": 536936450,
+                    "prev_ver": 537001986,
                     "name": "Green",
                     "uuid": "c7466d38-9b47-4d9d-90dc-391c53283490",
                     "id": "luma_key_filter",
@@ -1010,7 +1010,35 @@
             ]
         },
         {
-            "prev_ver": 536936450,
+            "prev_ver": 537001986,
+            "name": "Video Capture Device (V4L2)",
+            "uuid": "6482a0f7-cf14-4264-ac3c-b181a207b471",
+            "id": "v4l2_input",
+            "versioned_id": "v4l2_input",
+            "settings": {
+                "device_id": "/dev/video0",
+                "input": 0,
+                "pixelformat": 1448695129
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {},
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 537001986,
             "name": "Projector",
             "uuid": "a078f698-12f5-4e1b-8b06-4f6df5c938dc",
             "id": "scene",
@@ -1555,7 +1583,7 @@
             "private_settings": {}
         },
         {
-            "prev_ver": 536936450,
+            "prev_ver": 537001986,
             "name": "BoatEyeScene",
             "uuid": "37a5f45c-9719-4c88-b2c6-12b648fd8990",
             "id": "scene",
@@ -1699,6 +1727,95 @@
             "monitoring_type": 0,
             "canvas_uuid": "6c69626f-6273-4c00-9d88-c5136d61696e",
             "private_settings": {}
+        },
+        {
+            "prev_ver": 537001986,
+            "name": "KUN WEBCAM",
+            "uuid": "6045c09c-98f7-48cd-a40f-d9d9a5087f1e",
+            "id": "scene",
+            "versioned_id": "scene",
+            "settings": {
+                "id_counter": 2,
+                "custom_size": false,
+                "items": [
+                    {
+                        "name": "Video Capture Device (V4L2)",
+                        "source_uuid": "6482a0f7-cf14-4264-ac3c-b181a207b471",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "scale_ref": {
+                            "x": 2560.0,
+                            "y": 1440.0
+                        },
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 2,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "pos_rel": {
+                            "x": -1.7777777910232544,
+                            "y": -1.0
+                        },
+                        "scale": {
+                            "x": 2.0,
+                            "y": 2.0
+                        },
+                        "scale_rel": {
+                            "x": 2.0,
+                            "y": 2.0
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "bounds_rel": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 300
+                        },
+                        "hide_transition": {
+                            "duration": 300
+                        },
+                        "private_settings": {}
+                    }
+                ]
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {
+                "OBSBasic.SelectScene": [],
+                "libobs.show_scene_item.2": [],
+                "libobs.hide_scene_item.2": []
+            },
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "canvas_uuid": "6c69626f-6273-4c00-9d88-c5136d61696e",
+            "private_settings": {}
         }
     ],
     "groups": [],
@@ -1708,10 +1825,13 @@
         },
         {
             "name": "Projector"
+        },
+        {
+            "name": "KUN WEBCAM"
         }
     ],
-    "current_scene": "Projector",
-    "current_program_scene": "Projector",
+    "current_scene": "KUN WEBCAM",
+    "current_program_scene": "KUN WEBCAM",
     "canvases": [],
     "current_transition": "Fade",
     "transition_duration": 300,
@@ -1739,18 +1859,10 @@
             "fade_to_black": true
         }
     ],
-    "saved_projectors": [
-        {
-            "name": "Projector",
-            "monitor": 1,
-            "type": 1,
-            "geometry": "AdnQywADAAAAAAeAAAAAAAAAEWcAAAWHAAAHgAAAAAAAABF/AAAFnwAAAAECAAAACgAAAAeAAAAAAAAAEWcAAAWH",
-            "alwaysOnTopOverridden": false
-        }
-    ],
+    "saved_projectors": [],
     "preview_locked": false,
     "scaling_enabled": false,
-    "scaling_level": -22,
+    "scaling_level": -16,
     "scaling_off_x": 0.0,
     "scaling_off_y": 0.0,
     "modules": {
@@ -1766,6 +1878,10 @@
             "autoStartRecordTimer": false,
             "pauseRecordTimer": true
         }
+    },
+    "resolution": {
+        "x": 2560,
+        "y": 1440
     },
     "version": 2
 }

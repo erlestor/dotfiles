@@ -85,6 +85,7 @@ return {
             },
           },
         },
+        biome = {},
         html = {},
         cssls = {},
         vtsls = {
