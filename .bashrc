@@ -38,10 +38,17 @@ export PATH="$PATH:/home/erlen/Programs/hyprmcsr/bin"
 # Mise - not needec because omarchy defaults
 # eval "$(mise activate bash)"
 
-# Prompt. Keep at the bottom
-eval "$(oh-my-posh init bash --config "$HOME/.config/amro.omp.json")"
-
 function lfcd() {
   cd "$(command lf --print-last-dir)"
 }
 alias lf="lfcd"
+
+# let pnpm install packages globally even with mise
+export PNPM_HOME='/home/erlen/.local/share/pnpm'
+case ":$PATH:" in
+  *":$PNPM_HOME/bin:"*) ;;
+  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
+esac
+
+# Prompt. Keep at the bottom
+eval "$(oh-my-posh init bash --config "$HOME/.config/amro.omp.json")"
