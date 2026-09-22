@@ -44,6 +44,64 @@ git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
 
 - Load tmux plugins: open terminal and press "prefix + I"
 
+#### NTNU VPN
+
+- Install networkmanager-openconnect
+- Install tray VPN plugin `omarchy plugin add https://github.com/dstankovd/omarchy-openvpn.git --enable`
+- Add the following with `sudo nvim /etc/NetworkManager/system-connections/NTNU-VPN.nmconnection`
+
+```
+[connection]
+id=NTNU-VPN
+uuid=cd280eb7-4b51-47c7-bcb8-6ce6951bb721
+type=vpn
+autoconnect=false
+
+[vpn]
+authtype=password
+autoconnect-flags=0
+certsigs-flags=0
+cookie-flags=2
+disable_udp=no
+enable_csd_trojan=no
+gateway=vpn2.ntnu.no
+gateway-flags=2
+gnutls_priorities=NORMAL:-VERS-ALL:+VERS-TLS1.2
+gwcert-flags=2
+lasthost-flags=0
+pem_passphrase_fsid=no
+prevent_invalid_cert=no
+protocol=anyconnect
+resolve-flags=2
+stoken_source=disabled
+useragent=AnyConnect Linux
+usergroup=SSO
+service-type=org.freedesktop.NetworkManager.openconnect
+
+[vpn-secrets]
+lasthost=vpn2.ntnu.no
+
+[ipv4]
+method=auto
+
+[ipv6]
+addr-gen-mode=stable-privacy
+method=auto
+
+[proxy]
+```
+
+- Add the following with `sudo nvim /etc/gnutls/config`
+
+```
+[overrides]
+disable-version = tsl1.0
+disable-version = tsl1.1
+disable-version = tsl1.3
+```
+
+- Reboot pc
+
 #### MCSR
 
 - Install [hyprmcsr](https://github.com/Relacibo/hyprmcsr/blob/main/docs/001-install-and-setup.md), prismlauncher (pacman) and [keyd](https://github.com/rvaiya/keyd) (pacman)
