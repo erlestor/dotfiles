@@ -1,14 +1,19 @@
 #:schema https://github.com/joshmedeski/sesh/raw/main/sesh.schema.json
-[[session]]
-name = "Config 🔨"
-path = "~/config"
+[[wildcard]]
+pattern = "*"
+startup_command = "~/.config/tmux/plugins/tmux-persist/scripts/restore.sh"
+
+[default_session]
+startup_command = "ls"
 
 [[session]]
-name = "Deploii 💻️"
+name = "Config"
+path = "~/.config"
+startup_command = "~/.config/tmux/plugins/tmux-persist/scripts/restore.sh"
+icon = "🔨"
+
+[[session]]
+name = "Deploii"
 path = "~/Documents/koding/cot/deploii"
-# startup_command = "sesh window ~/Documents/koding/cot/deploii"
-
-# [[window]]
-# name = "neovim"
-# path = "~/Documents/koding/cot/deploii"
-# startup_script = "nvim"
+startup_command = "~/.config/tmux/plugins/tmux-persist/scripts/restore.sh"
+icon = "💻️"
