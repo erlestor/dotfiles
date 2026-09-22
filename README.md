@@ -36,18 +36,14 @@ rm -rf /tmp/dotfiles-tmp # Clean up the temp dir
 [[ -f ~/.config/.bashrc ]] && . ~/.config/.bashrc
 ```
 
-- Run this to install tpm (tmux plugin manager)
-
-```bash
-git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
-```
+- Run this to install tpm (tmux plugin manager) with `git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm`
 
 - Load tmux plugins: open terminal and press "prefix + I"
 
 #### NTNU VPN
 
-- Install networkmanager-openconnect
-- Install tray VPN plugin `omarchy plugin add https://github.com/dstankovd/omarchy-openvpn.git --enable`
+- Install networkmanager-openconnect from pacman
+- Install tray VPN plugin `omarchy plugin add https://github.com/jkoestinger/omarchy-vpn.git --enable`
 - Add the following with `sudo nvim /etc/NetworkManager/system-connections/NTNU-VPN.nmconnection`
 
 ```
@@ -100,7 +96,7 @@ disable-version = tsl1.1
 disable-version = tsl1.3
 ```
 
-- Reboot pc
+- If still not working: reboot pc
 
 #### MCSR
 
