@@ -1,19 +1,19 @@
 #:schema https://github.com/joshmedeski/sesh/raw/main/sesh.schema.json
-[[wildcard]]
-pattern = "*"
-startup_command = "~/.config/tmux/plugins/tmux-persist/scripts/restore.sh"
+#[[wildcard]]
+#pattern = "*"
+## startup_command = "~/.config/tmux/plugins/tmux-persist/scripts/restore.sh"
+#
+#[default_session]
+#startup_command = "ls"
 
-[default_session]
-startup_command = "ls"
-
-[[session]]
-name = "Config"
-path = "~/.config"
-startup_command = "~/.config/tmux/plugins/tmux-persist/scripts/restore.sh"
-icon = "🔨"
-
-[[session]]
-name = "Deploii"
-path = "~/Documents/koding/cot/deploii"
-startup_command = "~/.config/tmux/plugins/tmux-persist/scripts/restore.sh"
-icon = "💻️"
+# [[session]]
+# name = "Config"
+# path = "~/.config"
+# # startup_command = "~/.config/tmux/plugins/tmux-persist/scripts/restore.sh"
+# icon = "🔨"
+#
+# [[session]]
+# name = "Deploii"
+# path = "~/Documents/koding/cot/deploii"
+# # startup_command = "~/.config/tmux/plugins/tmux-persist/scripts/restore.sh"
+# icon = "💻️"
