@@ -28,14 +28,7 @@ git reset --hard HEAD # Overwrite tracked files with repo versions, leave everyt
 rm -rf /tmp/dotfiles-tmp # Clean up the temp dir
 ```
 
-- Install these packages: cpio, cmake, git, meson and gcc
-- Run these commands
-
-```bash
-hyprpm add https://github.com/zjeffer/split-monitor-workspaces # Add the plugin repository
-hyprpm enable split-monitor-workspaces # Enable the plugin
-hyprpm reload # Reload the plugins
-```
+- Follow the installations instructions for [split-monitor-workspaces](https://github.com/zjeffer/split-monitor-workspaces#installation)
 
 - Delete `~/.bashrc` and add the following line to `~/.bash_profile`
 

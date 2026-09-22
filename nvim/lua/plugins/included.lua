@@ -192,10 +192,4 @@ return {
       },
     },
   },
-  -- {
-  --   "LazyVim/LazyVim",
-  --   opts = {
-  --     colorscheme = "onedarkpro",
-  --   },
-  -- },
 }

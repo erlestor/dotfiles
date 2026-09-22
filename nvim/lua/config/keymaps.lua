@@ -38,12 +38,11 @@ map("n", "N", "Nzzzv")
 map("x", "p", '"_dP', { desc = "Paste over text without overriding register" })
 -- map("x", "<leader>p", '"_dP', { desc = "Paste over text without overriding register" })
 
--- q is used for macros, but since I haven't learned to use them it's just annoying
+-- Disable macros
 map("n", "q", "nop")
 map("n", "Q", "nop")
 
 -- simpler go to start or end of line
--- TODO: add these somehow. Right now tabs are used by shift+hl
 map("n", "H", "^")
 map("n", "L", "$")
 
