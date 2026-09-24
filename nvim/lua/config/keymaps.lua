@@ -3,7 +3,7 @@
 -- Add any additional keymaps here
 local map = vim.keymap.set
 
--- SMART SPLITS WEZTERM
+-- SMART SPLITS WEZTERM AND TMUX
 map("n", "<C-S-M-h>", require("smart-splits").resize_left)
 map("n", "<C-S-M-j>", require("smart-splits").resize_down)
 map("n", "<C-S-M-k>", require("smart-splits").resize_up)
@@ -35,7 +35,7 @@ map("n", "<C-u>", "<C-u>zz")
 map("n", "n", "nzzzv")
 map("n", "N", "Nzzzv")
 
-map("x", "p", '"_dP', { desc = "Paste over text without overriding register" })
+map("x", "p", '"_dP', { desc = "Paste over text without overriding register by default" })
 -- map("x", "<leader>p", '"_dP', { desc = "Paste over text without overriding register" })
 
 -- Disable macros
@@ -65,11 +65,6 @@ map("n", "a", function()
     return "a"
   end
 end, { expr = true })
-
--- COPILOT
--- TODO: add these for whatever autocomplete lazyvim useses
--- map("n", "<leader>ct", require("copilot.suggestion").toggle_auto_trigger, { desc = "copilot toggle suggestions" })
--- map("n", "<leader>cc", ":CopilotChatOpen<CR>", { desc = "Copilot open chat" })
 
 -- Buffers
 ---@param buf number?

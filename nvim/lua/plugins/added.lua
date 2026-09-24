@@ -10,8 +10,8 @@ return {
     ---@module "auto-session"
     ---@type AutoSession.Config
     opts = {
-      suppressed_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
       bypass_save_filetypes = { "neo-tree", "dashboard", "snacks_dashboard" },
+      -- suppressed_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
       -- log_level = 'debug',
     },
   },
@@ -26,6 +26,7 @@ return {
     -- lazy = false,
   },
   -- Actual working auto indent with "o" and "enter"
+  -- maybe? idk if it actually does anything
   {
     "nmac427/guess-indent.nvim",
     event = "BufEnter",
@@ -35,5 +36,6 @@ return {
   },
   {
     "ThePrimeagen/vim-be-good",
+    cmd = "VimBeGood",
   },
 }

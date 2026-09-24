@@ -25,6 +25,7 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = function()
     vim.opt_local.spell = false
     vim.opt_local.conceallevel = 0
+    vim.g.markdown_recommended_style = 0
   end,
   desc = "Disable spellchecking and show all symbols",
 })
