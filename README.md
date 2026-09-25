@@ -4,6 +4,43 @@
 - This repo is made to be put inside the $home/.config folder
 - Used on windows 11 and linux (omarchy)
 
+## Mac
+
+- make this pretty later
+- same instructions as for omarchy for cloning dotfiles. honestly tho can just clone directly and rename folder because no .config folder exists on mac by default
+- installed neovim. follow lazyvim instructions for requirements. all the things are just "brew install X". no flags. same for nerd font. alacritty installed through .dmg file
+- i installed aerospace, zen and linearmouse so far. add configs to dotfiles repo btw
+- i switched caps lock to escape
+- changed some settings too, but not many tbh. not so important yet. hide dock, turned off lower screen brightness on low battery
+- installed mise en place with the shell script. and installed npm pnpm and node globally (npm is needed for Mason in neovim (lsp))
+- there are some problems with sharing config with omarchy, but not that i notice really. Themeing. In .local/state/omarchy/current/theme there aer some files that omarchy uses and includes in configs. So for neovim and alacritty etc. not important, but i might just import those for styling. keybinds are weird. like i bind ctrl or alt to stuff on linux, but doesnt make sense on mac. idk. lets just get the general setup first. mvp.
+- installed tmux (brew install tmux). og sesh (brew install sesh)
+
+### IKKE SLETT NOKKA HERFRA FØR DU HAR DOKUMENTERT DET OVER
+### Todo viktig
+- sett opp tmux
+  - launche by default i alacritty config. endre command i omarchy bindings te å bare åpne alacritty (den bruke foot for alt anna heldigvis)
+  - en ting te, men æ glemt det
+
+- installer zoxide. sett com alias for cd som omarchy
+- installer docker
+- installer postman og mongodb compass
+- installer obsidian
+
+- sett opp deploii progging
+- sett opp propulse progging
+- sett opp skole ting
+
+- sett opp bindings for å launche apps med enkel keybinds
+
+
+### Todo mindre viktig
+- bruk samme ls som i omarchy. den e vakker
+- key repeat e for treigt i neovim f.eks.
+- enten bruk bash på mac eller zsh på omarchy
+- vil del custom config for prompt, aliases, osv.
+- fikse litt på aerospace
+
 ## Omarchy
 
 ### Installation
