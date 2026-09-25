@@ -82,7 +82,7 @@ o.bind("SUPER + SHIFT + B", "Browser (private)", { omarchy = "browser --private"
 o.bind("SUPER + F", "File manager", { omarchy = "nautilus" })
 o.bind("SUPER + SHIFT + F", "File manager (cwd)", { omarchy = "nautilus-cwd" })
 o.bind("SUPER + RETURN", "Terminal", {
-	launch = "alacritty --working-directory=$(omarchy-cmd-terminal-cwd) -e tmux new-session -A -s default",
+	launch = "alacritty --working-directory=$(omarchy-cmd-terminal-cwd)",
 })
 o.bind("SUPER + SHIFT + RETURN", "SSH Deploii", {
 	launch = 'alacritty --working-directory=$(omarchy-cmd-terminal-cwd) -e ssh deploii -t "tmux -f ~/.config/tmux/tmux.conf new-session -A -s erlend"',
