@@ -5,6 +5,7 @@ TERM = "xterm-256color"
 
 [terminal]
 osc52 = "CopyPaste"
+shell = { program = "tmux", args = ["new-session", "-A", "-s", "default"] }
 
 [font]
 normal = { family = "JetBrainsMono Nerd Font" }
