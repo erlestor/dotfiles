@@ -4,8 +4,14 @@
 - This repo is made to be put inside the $home/.config folder
 - Used on windows 11 and linux (omarchy)
 
-## Mac
+## Tanker om å forbedre readme her
+- æ gjør jo litt custom setup for ting som ikke e i dotfiles repo. så langt har æ holdt instruka te ting i dotfiles only
+- men typ. det å sett opp obsidian, ssh osv e jo litt ekstra ass. kan jo ha sånn "ekstra" seksjon med bonus ting
+- for ssh kan æ jo ha ssh config her. også en felles key for alle datamaskinan og serveran æ ska ssh te. så alt æ treng å gjør e å bare flytt den key'n over te ny pc
+- hadd vært litt sick å ha .sh script for å intaller alt æ treng. slipp å dokumenter i readme da. ulempe e at det må maintaines hvis æ endre på ka æ bruke eller package endre installation method. men tbh det hold sæ jo for det meste likt uansett
+- gidde virkelig ikke chezmoi selv om det hadd løst non problema. stow også i guess, men ærig talt. kor mange ting må æ endre på utafor .config?
 
+## Mac
 - make this pretty later
 - same instructions as for omarchy for cloning dotfiles. honestly tho can just clone directly and rename folder because no .config folder exists on mac by default
 - installed neovim. follow lazyvim instructions for requirements. all the things are just "brew install X". no flags. same for nerd font. alacritty installed through .dmg file
