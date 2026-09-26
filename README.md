@@ -9,7 +9,7 @@
 - make this pretty later
 - same instructions as for omarchy for cloning dotfiles. honestly tho can just clone directly and rename folder because no .config folder exists on mac by default
 - installed neovim. follow lazyvim instructions for requirements. all the things are just "brew install X". no flags. same for nerd font. alacritty installed through .dmg file
-- i installed aerospace, zen and linearmouse so far. add configs to dotfiles repo btw
+- i installed aerospace, zen and linearmouse. add configs to dotfiles repo btw
 - i switched caps lock to escape
 - changed some settings too, but not many tbh. not so important yet. hide dock, turned off lower screen brightness on low battery
 - installed mise en place with the shell script. and installed npm pnpm and node globally (npm is needed for Mason in neovim (lsp))
@@ -19,27 +19,27 @@
 
 ### IKKE SLETT NOKKA HERFRA FØR DU HAR DOKUMENTERT DET OVER
 ### Todo viktig
-- sett opp tmux
-  - launche by default i alacritty config. endre command i omarchy bindings te å bare åpne alacritty (den bruke foot for alt anna heldigvis)
-  - en ting te, men æ glemt det
 
-- installer postman og mongodb compass
-- installer obsidian
-
-- sett opp deploii progging
+- legg te linearmouse config te dotfiles
+- sett opp deploii ting
+  - mangle ssh te server, mail, teams
 - sett opp propulse progging
+  - logg inn på gitlab, slack osv
+  - clone propulse-intern repo. kopier .env og sql dump fra gamle laptop. kjør pg kommando for å loade inn sql fila i postgres container
 - sett opp skole ting
-
+  - ripes.dk web app, logg inn på ting, mail, vpn? (treng ikke på laptop da)
 - sett opp bindings for å launche apps med enkel keybinds
-
+  - discord, spotify
 
 ### Todo mindre viktig
+- sjekk ut OmniVM. Ser bedre ut. Bare teste. ønske spesifikt at det ska se smoother ut og vær litt rasker (spamme terminala på aerospace, ser helt fucked ut)
 - installer lazydocker. for å manage volumes og images som ikke blir brukt osv
 - bruk samme ls som i omarchy. den e vakker
 - key repeat e for treigt i neovim f.eks.
 - enten bruk bash på mac eller zsh på omarchy. i det minste legg .zshrc i .config og synce med dotfiles repo
 - vil del custom config for prompt, aliases, osv.
-- fikse litt på aerospace
+- fikse litt på aerospace? hvis ikke omnivm e bedre
+- se på artiklan på zen. flere gode tips der
 
 ## Omarchy
 
