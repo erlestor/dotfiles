@@ -26,7 +26,10 @@
 ### IKKE SLETT NOKKA HERFRA FØR DU HAR DOKUMENTERT DET OVER
 ### Todo viktig
 
-- legg te linearmouse config te dotfiles
+- legg te linearmouse config te dotfiles. og omniwm
+- ha en quit hotkey som ikke drar focuse et random vindu etterpå
+- sett opp bindings for å launche apps med enkel keybinds
+  - discord, spotify
 - sett opp deploii ting
   - mangle ssh te server, mail, teams
 - sett opp propulse progging
@@ -34,8 +37,7 @@
   - clone propulse-intern repo. kopier .env og sql dump fra gamle laptop. kjør pg kommando for å loade inn sql fila i postgres container
 - sett opp skole ting
   - ripes.dk web app, logg inn på ting, mail, vpn? (treng ikke på laptop da)
-- sett opp bindings for å launche apps med enkel keybinds
-  - discord, spotify
+
 
 ### Todo mindre viktig
 - sjekk ut OmniVM. Ser bedre ut. Bare teste. ønske spesifikt at det ska se smoother ut og vær litt rasker (spamme terminala på aerospace, ser helt fucked ut)
