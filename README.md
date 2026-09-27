@@ -22,6 +22,8 @@
 - there are some problems with sharing config with omarchy, but not that i notice really. Themeing. In .local/state/omarchy/current/theme there aer some files that omarchy uses and includes in configs. So for neovim and alacritty etc. not important, but i might just import those for styling. keybinds are weird. like i bind ctrl or alt to stuff on linux, but doesnt make sense on mac. idk. lets just get the general setup first. mvp.
 - installed tmux (brew install tmux). og sesh (brew install sesh)
 - installert docker med colima: (brew install docker og brew install colima og brew services start colima)
+- installert omniwm istedenfor aerospace. alt ligg i config. kan legg te info seksjon om monitor setup, men tror det dukka opp automatisk
+- installert betterdisplays. men det fiksa ingenting  (external skjerm ser ass ut)
 
 ### IKKE SLETT NOKKA HERFRA FØR DU HAR DOKUMENTERT DET OVER
 ### Todo viktig
