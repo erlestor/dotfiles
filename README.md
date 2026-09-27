@@ -36,17 +36,13 @@
   - logg inn på gitlab, slack osv
   - clone propulse-intern repo. kopier .env og sql dump fra gamle laptop. kjør pg kommando for å loade inn sql fila i postgres container
 - sett opp skole ting
-  - ripes.dk web app, logg inn på ting, mail, vpn? (treng ikke på laptop da)
-
+  - ripes.dk web app, logg inn på ting, mail
 
 ### Todo mindre viktig
-- sjekk ut OmniVM. Ser bedre ut. Bare teste. ønske spesifikt at det ska se smoother ut og vær litt rasker (spamme terminala på aerospace, ser helt fucked ut)
 - installer lazydocker. for å manage volumes og images som ikke blir brukt osv
 - bruk samme ls som i omarchy. den e vakker
-- key repeat e for treigt i neovim f.eks.
 - enten bruk bash på mac eller zsh på omarchy. i det minste legg .zshrc i .config og synce med dotfiles repo
 - vil del custom config for prompt, aliases, osv.
-- fikse litt på aerospace? hvis ikke omnivm e bedre
 - se på artiklan på zen. flere gode tips der
 
 ## Omarchy
