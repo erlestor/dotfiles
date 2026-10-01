@@ -17,6 +17,8 @@
 !lf
 !foot
 !waywall
+!scripts
+!systemd
 
 # Mac only
 !aerospace

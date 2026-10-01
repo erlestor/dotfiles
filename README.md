@@ -4,14 +4,16 @@
 - This repo is made to be put inside the $home/.config folder
 - Used on windows 11 and linux (omarchy)
 
-## Tanker om å forbedre readme her
-- æ gjør jo litt custom setup for ting som ikke e i dotfiles repo. så langt har æ holdt instruka te ting i dotfiles only
-- men typ. det å sett opp obsidian, ssh osv e jo litt ekstra ass. kan jo ha sånn "ekstra" seksjon med bonus ting
-- for ssh kan æ jo ha ssh config her. også en felles key for alle datamaskinan og serveran æ ska ssh te. så alt æ treng å gjør e å bare flytt den key'n over te ny pc
-- hadd vært litt sick å ha .sh script for å intaller alt æ treng. slipp å dokumenter i readme da. ulempe e at det må maintaines hvis æ endre på ka æ bruke eller package endre installation method. men tbh det hold sæ jo for det meste likt uansett
-- gidde virkelig ikke chezmoi selv om det hadd løst non problema. stow også i guess, men ærig talt. kor mange ting må æ endre på utafor .config?
+## Todo
+
+- [ ] Bruk felles shell for mac og linux. Savne en del ting fra omarchy i mac terminal no
+- [ ] Legg te ssh config og guide for keys. Bruk samme key overalt
+- [ ] Legg te guides for andre apps?
 
 ## Mac
+
+### Messy notes
+
 - make this pretty later
 - same instructions as for omarchy for cloning dotfiles. honestly tho can just clone directly and rename folder because no .config folder exists on mac by default
 - installed neovim. follow lazyvim instructions for requirements. all the things are just "brew install X". no flags. same for nerd font. alacritty installed through .dmg file
@@ -23,9 +25,10 @@
 - installed tmux (brew install tmux). og sesh (brew install sesh)
 - installert docker med colima: (brew install docker og brew install colima og brew services start colima)
 - installert omniwm istedenfor aerospace. alt ligg i config. kan legg te info seksjon om monitor setup, men tror det dukka opp automatisk
-- installert betterdisplays. men det fiksa ingenting  (external skjerm ser ass ut)
+- installert betterdisplays. men det fiksa ingenting (external skjerm ser ass ut)
 
 ### IKKE SLETT NOKKA HERFRA FØR DU HAR DOKUMENTERT DET OVER
+
 ### Todo viktig
 
 - legg te linearmouse config te dotfiles. og omniwm
@@ -41,6 +44,7 @@
   - ripes.dk web app, logg inn på ting, mail
 
 ### Todo mindre viktig
+
 - installer lazydocker. for å manage volumes og images som ikke blir brukt osv
 - bruk samme ls som i omarchy. den e vakker
 - enten bruk bash på mac eller zsh på omarchy. i det minste legg .zshrc i .config og synce med dotfiles repo
@@ -52,10 +56,10 @@
 ### Installation
 
 - [oh-my-posh](https://ohmyposh.dev/docs/installation/linux) (pacman)
+- sesh-bin (aur). for tmux sesh plugin
 
 #### Dependencies
 
-- sesh-bin (aur). for tmux sesh plugin
 - entr (pacman). for tmux-autoreload
 
 ### Setup
@@ -89,7 +93,7 @@ rm -rf /tmp/dotfiles-tmp # Clean up the temp dir
 - Install tray VPN plugin `omarchy plugin add https://github.com/jkoestinger/omarchy-vpn.git --enable`
 - Add the following with `sudo nvim /etc/NetworkManager/system-connections/NTNU-VPN.nmconnection`
 
-```
+```conf
 [connection]
 id=NTNU-VPN
 uuid=cd280eb7-4b51-47c7-bcb8-6ce6951bb721
@@ -132,33 +136,21 @@ method=auto
 
 - Add the following with `sudo nvim /etc/gnutls/config`
 
-```
+```conf
 [overrides]
 disable-version = tsl1.0
 disable-version = tsl1.1
 disable-version = tsl1.3
 ```
 
-- If still not working: reboot pc
+- If not working: reboot pc
 
 #### MCSR
 
-- Install [hyprmcsr](https://github.com/Relacibo/hyprmcsr/blob/main/docs/001-install-and-setup.md), prismlauncher (pacman) and [keyd](https://github.com/rvaiya/keyd) (pacman)
-- Follow keyd instructions closely. And restart after usermod command
-- This is my /etc/keyd/default.conf:
-
-```conf
-[ids]
-
-*
-
-[main]
-```
-
-- Set up your instance
-- Set up ninjabrainbot. See [this video](https://www.youtube.com/watch?v=l1Z2t9e6Qko) for boat eye settings
-- If sensitivity setting doesn't work. Install solaar and see: [this issue](https://github.com/pwr-Solaar/Solaar/issues/3073#issuecomment-3707125179). Just one command is needed
-- My window rules in hyprland and commands in hyprmcsr config are very specific. So double check those
+- Install jdk21-openjdk (pacman), prismlauncher (pacman) and [waywall](https://tesselslate.github.io/waywall/00_installation.html) (aur)
+- Set up your instance. Import from mcsr ranked or previous computer and change java version + glfw version
+- Remember to [patch glfw](https://tesselslate.github.io/waywall/00_setup.html)
+- [Set up boateye](<https://its-saanvi.github.io/linux-mcsr/minecraft/wayland/boat-eye.html>
 
 #### Fix mongodb compass not saving passwords
 
