@@ -1,6 +1,5 @@
 # Blacklist everything
 /*
-/obs-studio
 
 # Never delete this block
 !.gitignore
