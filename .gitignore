@@ -1,28 +1,30 @@
+# Blacklist everything
 /*
+/obs-studio
 
 # Never delete this block
 !.gitignore
 !README.md
 
 # Whitelist here
-!wezterm
 !nvim
-!komorebi
-!yasb
-!powershell
-!windows-startup
 !amro.omp.json
 !hypr
-!waybar
 !.bashrc
-!hyprmcsr
-!scripts
-!keyd
-!hidconsole
 !omarchy
 !alacritty
 !tmux
 !sesh
 !lf
 !foot
+!waywall
+
+# Mac only
 !aerospace
+
+# Windows only
+!wezterm
+!komorebi
+!yasb
+!powershell
+!windows-startup

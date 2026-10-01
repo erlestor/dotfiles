@@ -1830,8 +1830,8 @@
             "name": "KUN WEBCAM"
         }
     ],
-    "current_scene": "KUN WEBCAM",
-    "current_program_scene": "KUN WEBCAM",
+    "current_scene": "Projector",
+    "current_program_scene": "Projector",
     "canvases": [],
     "current_transition": "Fade",
     "transition_duration": 300,

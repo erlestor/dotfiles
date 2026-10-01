@@ -1821,13 +1821,13 @@
     "groups": [],
     "scene_order": [
         {
+            "name": "KUN WEBCAM"
+        },
+        {
             "name": "BoatEyeScene"
         },
         {
             "name": "Projector"
-        },
-        {
-            "name": "KUN WEBCAM"
         }
     ],
     "current_scene": "KUN WEBCAM",

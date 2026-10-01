@@ -42,6 +42,7 @@
 -- TUTORIAL
 -- https://wiki.hypr.land/Configuring/Basics/Binds/
 -- - if changing a defualt omarchy keybinding: always unbind the old keybind first
+-- - I use o.bind because it shows up in omarchy's keyboard shortcuts menu (super + k)
 
 -- UNBINDING
 -- apps
@@ -126,8 +127,16 @@ o.bind("ALT + SHIFT + K", "Move window up", hl.dsp.window.move({ direction = "u"
 o.bind("ALT + SHIFT + L", "Move window right", hl.dsp.window.move({ direction = "r" }))
 
 -- MCSR
--- Global hotkeys (by default global hotkeys are not possible)
--- bindn means "non-consuming", eg. it also passes the key to the focused application
-hl.bind("apostrophe", hl.dsp.pass({ window = "class:^(ninjabrainbot-Main)$" }), { non_consuming = true })
-hl.bind("comma", hl.dsp.pass({ window = "class:^(ninjabrainbot-Main)$" }), { non_consuming = true })
-hl.bind("period", hl.dsp.pass({ window = "class:^(ninjabrainbot-Main)$" }), { non_consuming = true })
+-- Turn off all keybinds for the waywall class, except these ones:
+hl.define_submap("passthru", function()
+	hl.bind("SUPER + F12", hl.dsp.submap("reset"))
+	hl.bind("SUPER + W", hl.dsp.window.kill())
+end)
+
+hl.on("window.active", function(w)
+	if w ~= nil and w.class == "waywall" then
+		hl.dispatch(hl.dsp.submap("passthru"))
+	else
+		hl.dispatch(hl.dsp.submap("reset"))
+	end
+end)
