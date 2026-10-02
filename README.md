@@ -2,32 +2,24 @@
 
 - Here I put all the configuration files that stray away from defaults
 - This repo is made to be put inside the $home/.config folder
-- Used on windows 11 and linux (omarchy)
-
-## Todo
-
-- [ ] Bruk felles shell for mac og linux. Savne en del ting fra omarchy i mac terminal no
-- [ ] Legg te ssh config og guide for keys. Bruk samme key overalt
-- [ ] Legg te guides for andre apps?
+- Used on linux (omarchy), mac and windows 11
 
 ## Mac
 
 ### Messy notes - gjør om te fine instruksa
 
-- same instructions as for omarchy for cloning dotfiles. honestly tho can just clone directly and rename folder because no .config folder exists on mac by default
 - i switched caps lock to escape in system settings keybindings
 - changed some settings too, but not many tbh. not so important yet. hide dock, turned off lower screen brightness on low battery
-
-- there are some problems with sharing config with omarchy, but not that i notice really. Themeing. In .local/state/omarchy/current/theme there aer some files that omarchy uses and includes in configs. So for neovim and alacritty etc. not important, but i might just import those for styling. keybinds are weird. like i bind ctrl or alt to stuff on linux, but doesnt make sense on mac. idk. lets just get the general setup first. mvp.
-- installed tmux (brew install tmux). og sesh (brew install sesh)
-- installert docker med colima: (brew install docker og brew install colima og brew services start colima)
 - kjørt `defaults write com.apple.finder AppleShowAllFiles TRUE; killall Finder` for å vis hidden files i finder
+
 - installert obsidian. enabla vim, disabla spellchecking. la te omnisearch, endra search keybinds te å bare bruk omnisearch med ctrl+f. la te remote save. kopiert settings fra stasjonær og autha dropbox
 - installert postman og mongodb compass og figma
-- installert omniwm istedenfor aerospace. alt ligg i config. kan legg te info seksjon om monitor setup, men tror det dukka opp automatisk
 - installert betterdisplays. men det fiksa ingenting (external skjerm ser ass ut)
+- det va nå ekstra piss for å få docker compose te å funk. og buildx. idk tho
 
 ### Installation
+
+- first clone the dotfiles repo inside home folder and rename to .config
 
 - git (brew install git)
 - lazyvim dependencies. see requirements i [lazyvim docs](https://www.lazyvim.org/). alt e brew install X
@@ -35,8 +27,12 @@
 - omniwm
 - linearmouse
 - mise (shell script). install npm globally after for neovim etc
+- tmux (brew install tmux) og sesh (brew install sesh)
+- docker/colima: (brew install docker og brew install colima og brew services start colima)
 
 ### Setup
+
+- clone dotfiles repo inside the home folder and rename to .config
 
 ## Omarchy
 
