@@ -21,7 +21,9 @@
 !systemd
 
 # Mac only
-!aerospace
+!omniwm
+!linearmouse
+!skhd
 
 # Windows only
 !wezterm

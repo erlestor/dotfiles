@@ -12,15 +12,12 @@
 
 ## Mac
 
-### Messy notes
+### Messy notes - gjør om te fine instruksa
 
-- make this pretty later
 - same instructions as for omarchy for cloning dotfiles. honestly tho can just clone directly and rename folder because no .config folder exists on mac by default
-- installed neovim. follow lazyvim instructions for requirements. all the things are just "brew install X". no flags. same for nerd font. alacritty installed through .dmg file
-- i installed aerospace, zen and linearmouse. add configs to dotfiles repo btw
 - i switched caps lock to escape in system settings keybindings
 - changed some settings too, but not many tbh. not so important yet. hide dock, turned off lower screen brightness on low battery
-- installed mise en place with the shell script. and installed npm pnpm and node globally (npm is needed for Mason in neovim (lsp))
+
 - there are some problems with sharing config with omarchy, but not that i notice really. Themeing. In .local/state/omarchy/current/theme there aer some files that omarchy uses and includes in configs. So for neovim and alacritty etc. not important, but i might just import those for styling. keybinds are weird. like i bind ctrl or alt to stuff on linux, but doesnt make sense on mac. idk. lets just get the general setup first. mvp.
 - installed tmux (brew install tmux). og sesh (brew install sesh)
 - installert docker med colima: (brew install docker og brew install colima og brew services start colima)
@@ -30,28 +27,16 @@
 - installert omniwm istedenfor aerospace. alt ligg i config. kan legg te info seksjon om monitor setup, men tror det dukka opp automatisk
 - installert betterdisplays. men det fiksa ingenting (external skjerm ser ass ut)
 
-### IKKE SLETT NOKKA HERFRA FØR DU HAR DOKUMENTERT DET OVER
+### Installation
 
-### Todo mindre viktig
+- git (brew install git)
+- lazyvim dependencies. see requirements i [lazyvim docs](https://www.lazyvim.org/). alt e brew install X
+- alacritty (.dmg file)
+- omniwm
+- linearmouse
+- mise (shell script). install npm globally after for neovim etc
 
-- legg te linearmouse config te dotfiles. og omniwm
-- ha en quit hotkey som ikke drar focuse et random vindu etterpå
-- sett opp bindings for å launche apps med enkel keybinds
-  - discord, spotify
-- sett opp deploii ting
-  - mangle ssh te server, mail, teams
-- sett opp propulse progging
-  - kjør pg kommando for å loade inn sql fila i postgres container
-- sett opp skole ting
-  - ripes.dk web app, logg inn på ting, mail
-
-### Todo mindre viktig
-
-- installer lazydocker. for å manage volumes og images som ikke blir brukt osv
-- bruk samme ls som i omarchy. den e vakker
-- enten bruk bash på mac eller zsh på omarchy. i det minste legg .zshrc i .config og synce med dotfiles repo
-- vil del custom config for prompt, aliases, osv.
-- se på artiklan på zen. flere gode tips der
+### Setup
 
 ## Omarchy
 

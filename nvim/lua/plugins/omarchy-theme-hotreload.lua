@@ -5,6 +5,12 @@ return {
     lazy = false,
     priority = 1000,
     config = function()
+      local has_mac = vim.fn.has("mac") == 1
+
+      if (has_mac) then
+        return
+      end
+
       local transparency_file = vim.fn.stdpath("config") .. "/plugin/after/transparency.lua"
 
       vim.api.nvim_create_autocmd("User", {

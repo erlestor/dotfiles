@@ -10,7 +10,7 @@ return {
     -- This was my old options
     opts = {
       inlay_hints = {
-        enabled = true,
+        enabled = false,
       },
       servers = {
         ["*"] = {
