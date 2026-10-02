@@ -23,14 +23,6 @@
 -- Disable a default binding without replacing it.
 -- hl.unbind("SUPER + SHIFT + B")
 
--- Logitech MX Keys examples:
--- o.bind("SUPER + SHIFT + S", nil, "omarchy-capture-screenshot")
--- o.bind("SUPER + H", nil, "voxtype record toggle")
--- o.bind("SUPER + PERIOD", nil, "omarchy-shell shell toggle omarchy.emojis")
-
--- hl.unbind("SUPER + SPACE")
--- o.bind("SUPER + SPACE", "Omarchy menu", "omarchy-menu toggle root")
-
 -- MY DOCUMENTATION
 -- o.bind implementation (as of now)
 -- function o.bind(keys, description, dispatcher, options)
@@ -42,6 +34,7 @@
 -- TUTORIAL
 -- https://wiki.hypr.land/Configuring/Basics/Binds/
 -- - if changing a defualt omarchy keybinding: always unbind the old keybind first
+-- - I use o.bind because it shows up in omarchy's keyboard shortcuts menu (super + k)
 
 -- UNBINDING
 -- apps
@@ -82,7 +75,7 @@ o.bind("SUPER + SHIFT + B", "Browser (private)", { omarchy = "browser --private"
 o.bind("SUPER + F", "File manager", { omarchy = "nautilus" })
 o.bind("SUPER + SHIFT + F", "File manager (cwd)", { omarchy = "nautilus-cwd" })
 o.bind("SUPER + RETURN", "Terminal", {
-	launch = "alacritty --working-directory=$(omarchy-cmd-terminal-cwd) -e tmux new-session -A -s default",
+	launch = "alacritty --working-directory=$(omarchy-cmd-terminal-cwd)",
 })
 o.bind("SUPER + SHIFT + RETURN", "SSH Deploii", {
 	launch = 'alacritty --working-directory=$(omarchy-cmd-terminal-cwd) -e ssh deploii -t "tmux -f ~/.config/tmux/tmux.conf new-session -A -s erlend"',
@@ -126,8 +119,16 @@ o.bind("ALT + SHIFT + K", "Move window up", hl.dsp.window.move({ direction = "u"
 o.bind("ALT + SHIFT + L", "Move window right", hl.dsp.window.move({ direction = "r" }))
 
 -- MCSR
--- Global hotkeys (by default global hotkeys are not possible)
--- bindn means "non-consuming", eg. it also passes the key to the focused application
-hl.bind("apostrophe", hl.dsp.pass({ window = "class:^(ninjabrainbot-Main)$" }), { non_consuming = true })
-hl.bind("comma", hl.dsp.pass({ window = "class:^(ninjabrainbot-Main)$" }), { non_consuming = true })
-hl.bind("period", hl.dsp.pass({ window = "class:^(ninjabrainbot-Main)$" }), { non_consuming = true })
+-- Turn off all keybinds for the waywall class, except these ones:
+hl.define_submap("passthru", function()
+	hl.bind("SUPER + F12", hl.dsp.submap("reset"))
+	hl.bind("SUPER + W", hl.dsp.window.kill())
+end)
+
+hl.on("window.active", function(w)
+	if w ~= nil and w.class == "waywall" then
+		hl.dispatch(hl.dsp.submap("passthru"))
+	else
+		hl.dispatch(hl.dsp.submap("reset"))
+	end
+end)

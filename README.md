@@ -4,12 +4,20 @@
 - This repo is made to be put inside the $home/.config folder
 - Used on windows 11 and linux (omarchy)
 
+## Todo
+
+- [ ] Bruk felles shell for mac og linux. Savne en del ting fra omarchy i mac terminal no
+- [ ] Legg te ssh config og guide for keys. Bruk samme key overalt
+- [ ] Legg te guides for andre apps?
+
 ## Mac
+
+### Messy notes
 
 - make this pretty later
 - same instructions as for omarchy for cloning dotfiles. honestly tho can just clone directly and rename folder because no .config folder exists on mac by default
 - installed neovim. follow lazyvim instructions for requirements. all the things are just "brew install X". no flags. same for nerd font. alacritty installed through .dmg file
-- i installed aerospace, zen and linearmouse so far. add configs to dotfiles repo btw
+- i installed aerospace, zen and linearmouse. add configs to dotfiles repo btw
 - i switched caps lock to escape in system settings keybindings
 - changed some settings too, but not many tbh. not so important yet. hide dock, turned off lower screen brightness on low battery
 - installed mise en place with the shell script. and installed npm pnpm and node globally (npm is needed for Mason in neovim (lsp))
@@ -19,35 +27,41 @@
 - kjørt `defaults write com.apple.finder AppleShowAllFiles TRUE; killall Finder` for å vis hidden files i finder
 - installert obsidian. enabla vim, disabla spellchecking. la te omnisearch, endra search keybinds te å bare bruk omnisearch med ctrl+f. la te remote save. kopiert settings fra stasjonær og autha dropbox
 - installert postman og mongodb compass og figma
+- installert omniwm istedenfor aerospace. alt ligg i config. kan legg te info seksjon om monitor setup, men tror det dukka opp automatisk
+- installert betterdisplays. men det fiksa ingenting (external skjerm ser ass ut)
 
 ### IKKE SLETT NOKKA HERFRA FØR DU HAR DOKUMENTERT DET OVER
 
-### Todo viktig
+### Todo mindre viktig
 
+- legg te linearmouse config te dotfiles. og omniwm
+- ha en quit hotkey som ikke drar focuse et random vindu etterpå
+- sett opp bindings for å launche apps med enkel keybinds
+  - discord, spotify
+- sett opp deploii ting
+  - mangle ssh te server, mail, teams
 - sett opp propulse progging
+  - kjør pg kommando for å loade inn sql fila i postgres container
 - sett opp skole ting
-
-- sett opp bindings for å launche apps med enkle keybinds
+  - ripes.dk web app, logg inn på ting, mail
 
 ### Todo mindre viktig
 
-- sett opp borders rundt vindua (jankyborders?) og gaps osv.
 - installer lazydocker. for å manage volumes og images som ikke blir brukt osv
 - bruk samme ls som i omarchy. den e vakker
-- key repeat e for treigt i neovim f.eks.
 - enten bruk bash på mac eller zsh på omarchy. i det minste legg .zshrc i .config og synce med dotfiles repo
 - vil del custom config for prompt, aliases, osv.
-- fikse litt på aerospace
+- se på artiklan på zen. flere gode tips der
 
 ## Omarchy
 
 ### Installation
 
 - [oh-my-posh](https://ohmyposh.dev/docs/installation/linux) (pacman)
+- sesh-bin (aur). for tmux sesh plugin
 
 #### Dependencies
 
-- sesh-bin (aur). for tmux sesh plugin
 - entr (pacman). for tmux-autoreload
 
 ### Setup
@@ -81,7 +95,7 @@ rm -rf /tmp/dotfiles-tmp # Clean up the temp dir
 - Install tray VPN plugin `omarchy plugin add https://github.com/jkoestinger/omarchy-vpn.git --enable`
 - Add the following with `sudo nvim /etc/NetworkManager/system-connections/NTNU-VPN.nmconnection`
 
-```
+```conf
 [connection]
 id=NTNU-VPN
 uuid=cd280eb7-4b51-47c7-bcb8-6ce6951bb721
@@ -124,33 +138,21 @@ method=auto
 
 - Add the following with `sudo nvim /etc/gnutls/config`
 
-```
+```conf
 [overrides]
 disable-version = tsl1.0
 disable-version = tsl1.1
 disable-version = tsl1.3
 ```
 
-- If still not working: reboot pc
+- If not working: reboot pc
 
 #### MCSR
 
-- Install [hyprmcsr](https://github.com/Relacibo/hyprmcsr/blob/main/docs/001-install-and-setup.md), prismlauncher (pacman) and [keyd](https://github.com/rvaiya/keyd) (pacman)
-- Follow keyd instructions closely. And restart after usermod command
-- This is my /etc/keyd/default.conf:
-
-```conf
-[ids]
-
-*
-
-[main]
-```
-
-- Set up your instance
-- Set up ninjabrainbot. See [this video](https://www.youtube.com/watch?v=l1Z2t9e6Qko) for boat eye settings
-- If sensitivity setting doesn't work. Install solaar and see: [this issue](https://github.com/pwr-Solaar/Solaar/issues/3073#issuecomment-3707125179). Just one command is needed
-- My window rules in hyprland and commands in hyprmcsr config are very specific. So double check those
+- Install jdk21-openjdk (pacman), prismlauncher (pacman) and [waywall](https://tesselslate.github.io/waywall/00_installation.html) (aur)
+- Set up your instance. Import from mcsr ranked or previous computer and change java version + glfw version
+- Remember to [patch glfw](https://tesselslate.github.io/waywall/00_setup.html)
+- [Set up boateye](<https://its-saanvi.github.io/linux-mcsr/minecraft/wayland/boat-eye.html>
 
 #### Fix mongodb compass not saving passwords
 
@@ -182,6 +184,25 @@ nvim ~/.local/share/applications/arduino-ide-v2.desktop
 
 ```bash
 Exec=arduino-ide %U --ozone-platform=x11
+```
+
+#### Autoswitching audio source when I turn on razer blackshark v2 pro
+
+- install python-evdev (pacman)
+- add
+
+```
+# /etc/udev/rules.d/71-razer-blackshark-input.rules
+SUBSYSTEM=="input", KERNEL=="event*", ATTRS{id/vendor}=="1532", ATTRS{id/product}=="0528", TAG+="uaccess"
+```
+
+- run
+
+```
+sudo udevadm control --reload
+sudo udevadm trigger --subsystem-match=input
+chmod +x ~/.config/scripts/headset-autoswitch
+systemctl --user enable --now headset-autoswitch
 ```
 
 ## Windows

@@ -1,0 +1,110 @@
+#!/usr/bin/env python3
+# ~/.local/bin/headset-autoswitch
+import glob, os, re, selectors, subprocess, time
+from evdev import InputDevice, ecodes
+
+VID, PID = "1532", "0528"
+HEADSET_SINK = re.compile(r"alsa_output\.usb-Razer.*BlackShark")
+SPEAKER_SINK = re.compile(r"alsa_output\.usb-Focusrite")
+ON_VALUES = {1}  # ABS_MISC value meaning "headset on"; flip to {3} if inverted
+DEBUG = True  # logs every event; set False once it works
+
+
+def log(msg):
+    print(msg, flush=True)
+
+
+def find_sink(rx):
+    out = subprocess.run(
+        ["pactl", "list", "short", "sinks"], capture_output=True, text=True
+    ).stdout
+    for line in out.splitlines():
+        parts = line.split("\t")
+        if len(parts) > 1 and rx.search(parts[1]):
+            return parts[1]
+
+
+def switch(on):
+    rx = HEADSET_SINK if on else SPEAKER_SINK
+    for _ in range(10):
+        name = find_sink(rx)
+        if name:
+            subprocess.run(["pactl", "set-default-sink", name])
+            log(f"headset {'on' if on else 'off'} -> {name}")
+            return
+        time.sleep(0.5)
+    log(f"headset {'on' if on else 'off'}: target sink not found")
+
+
+def razer_paths():
+    paths = []
+    for d in glob.glob("/sys/class/input/event*"):
+        try:
+            vid = open(f"{d}/device/id/vendor").read().strip()
+            pid = open(f"{d}/device/id/product").read().strip()
+        except OSError:
+            continue
+        if vid == VID and pid == PID:
+            paths.append("/dev/input/" + os.path.basename(d))
+    return sorted(paths)
+
+
+def open_devices():
+    devs = []
+    for p in razer_paths():
+        try:
+            devs.append(InputDevice(p))
+        except PermissionError:
+            log(f"no permission for {p} (check the udev rule)")
+        except OSError as e:
+            log(f"cannot open {p}: {e}")
+    return devs
+
+
+def initial_state(devs):
+    for d in devs:
+        if ecodes.ABS_MISC in d.capabilities(absinfo=False).get(ecodes.EV_ABS, []):
+            info = d.absinfo(ecodes.ABS_MISC)
+            if info is not None:
+                return info.value in ON_VALUES
+    return None
+
+
+while True:
+    devs = open_devices()
+    if not devs:
+        time.sleep(3)
+        continue
+    log("watching: " + ", ".join(f"{d.path} ({d.name})" for d in devs))
+    by_fd = {d.fd: d for d in devs}
+    sel = selectors.DefaultSelector()
+    for fd in by_fd:
+        sel.register(fd, selectors.EVENT_READ)
+
+    state = initial_state(devs)
+    if state is not None:
+        log(f"initial state: {'on' if state else 'off'}")
+        switch(state)
+    try:
+        while True:
+            for key, _ in sel.select():
+                dev = by_fd[key.fd]
+                for ev in dev.read():
+                    if ev.type == ecodes.EV_SYN:
+                        continue
+                    if DEBUG:
+                        log(
+                            f"{dev.path}: type={ev.type} code={ev.code} value={ev.value}"
+                        )
+                    if ev.type == ecodes.EV_ABS and ev.code == ecodes.ABS_MISC:
+                        new = ev.value in ON_VALUES
+                        if new != state:
+                            state = new
+                            switch(state)
+    except OSError:
+        log("device went away, rescanning")
+        time.sleep(1)
+    finally:
+        sel.close()
+        for d in devs:
+            d.close()

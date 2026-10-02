@@ -1,0 +1,11 @@
+[Unit]
+Description=Switch default sink when headset powers on/off
+After=pipewire.service wireplumber.service
+
+[Service]
+ExecStart=%h/.config/scripts/headset-autoswitch
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=default.target
