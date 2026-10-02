@@ -1,8 +1,60 @@
 return {
-  -- Disable plugins
   {
-    "MeanderingProgrammer/render-markdown.nvim",
-    enabled = false,
+    "neovim/nvim-lspconfig",
+    -- I downgraded vue-language-server with:
+    -- :MasonInstall vue-language-server@2.2.8
+    -- before it was: vue-language-server 3.1.0.
+    -- and that fixed my lsp crashing in deploii repo
+    ---@class PluginLspOpts
+    -- This was my old options
+    opts = {
+      inlay_hints = {
+        enabled = true,
+      },
+      servers = {
+        ["*"] = {
+          keys = {
+            { "gd", false }, -- i have overwritten goto definition with nuxt_goto
+            { "<S-k>", false }, -- i use gh instead for checking types
+            {
+              "<leader>rn",
+              function()
+                local inc_rename = require("inc_rename")
+                return ":" .. inc_rename.config.cmd_name .. " " .. vim.fn.expand("<cword>")
+              end,
+              expr = true,
+              desc = "Rename (inc-rename.nvim)",
+              has = "rename",
+            },
+          },
+        },
+        -- NOTE: always search for lazy extra before adding lsp's here
+        biome = {},
+        html = {},
+        cssls = {},
+        vtsls = {
+          settings = {
+            typescript = {
+              tsserver = {
+                -- if typescript is struggling in monorepos, try turning this number up
+                -- allthough if the lsp needs so much ram for one project, something's broken
+                maxTsServerMemory = 8192,
+              },
+            },
+          },
+        },
+      },
+    },
+  },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      indent = { enable = false }, -- I use guess-indent.nvim instead
+      -- NOTE: always search for lazy extra before adding parsers here
+      ensure_installed = {
+        "scss",
+      },
+    },
   },
   -- Configure existing plugins
   -- Try to do the bare minimum required. To rely on good defaults
@@ -21,6 +73,7 @@ return {
       window = {
         width = 35,
       },
+      -- hide cursor in neo-tree. just show background
       event_handlers = {
         {
           event = "neo_tree_buffer_enter",
@@ -51,54 +104,9 @@ return {
         theme = "auto",
       },
       sections = {
+        lualine_x = {},
         lualine_y = {},
         lualine_z = {},
-      },
-    },
-  },
-  {
-    "neovim/nvim-lspconfig",
-    -- I downgraded vue-language-server with:
-    -- :MasonInstall vue-language-server@2.2.8
-    -- before it was: vue-language-server 3.1.0.
-    -- and that fixed my lsp crashing in deploii repo
-    ---@class PluginLspOpts
-    -- This was my old options
-    opts = {
-      inlay_hints = {
-        enabled = false,
-      },
-      servers = {
-        ["*"] = {
-          keys = {
-            { "gd", false }, -- i have overwritten goto definition with nuxt_goto
-            { "<S-k>", false }, -- i use gh instead for checking types
-            {
-              "<leader>rn",
-              function()
-                local inc_rename = require("inc_rename")
-                return ":" .. inc_rename.config.cmd_name .. " " .. vim.fn.expand("<cword>")
-              end,
-              expr = true,
-              desc = "Rename (inc-rename.nvim)",
-              has = "rename",
-            },
-          },
-        },
-        biome = {},
-        html = {},
-        cssls = {},
-        vtsls = {
-          settings = {
-            typescript = {
-              tsserver = {
-                -- if typescript is struggling in monorepos, try turning this number up
-                -- allthough if the lsp needs so much ram for one project, something's broken
-                maxTsServerMemory = 8192,
-              },
-            },
-          },
-        },
       },
     },
   },
@@ -141,16 +149,6 @@ return {
     },
   },
   {
-    "nvim-treesitter/nvim-treesitter",
-    opts = {
-      indent = { enable = false }, -- I use guess-indent.nvim instead
-      -- NOTE: always search for lazy extra before adding parsers here
-      ensure_installed = {
-        "scss",
-      },
-    },
-  },
-  {
     "folke/flash.nvim",
     opts = {
       search = {
@@ -182,5 +180,10 @@ return {
         },
       },
     },
+  },
+  -- Disable plugins
+  {
+    "MeanderingProgrammer/render-markdown.nvim",
+    enabled = false,
   },
 }

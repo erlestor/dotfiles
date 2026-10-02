@@ -11,8 +11,6 @@ return {
     ---@type AutoSession.Config
     opts = {
       bypass_save_filetypes = { "neo-tree", "dashboard", "snacks_dashboard" },
-      -- suppressed_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
-      -- log_level = 'debug',
     },
   },
   {
@@ -27,6 +25,7 @@ return {
   },
   -- Actual working auto indent with "o" and "enter"
   -- maybe? idk if it actually does anything
+  -- doesnt really seem like it
   {
     "nmac427/guess-indent.nvim",
     event = "BufEnter",

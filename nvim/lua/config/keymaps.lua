@@ -3,7 +3,9 @@
 -- Add any additional keymaps here
 local map = vim.keymap.set
 
--- SMART SPLITS WEZTERM AND TMUX
+-------------------------- SMART SPLITS WEZTERM AND TMUX --------------------------
+-- doesnt even work aha. probably my tmux config or alacritty config tho
+
 map("n", "<C-S-M-h>", require("smart-splits").resize_left)
 map("n", "<C-S-M-j>", require("smart-splits").resize_down)
 map("n", "<C-S-M-k>", require("smart-splits").resize_up)
@@ -22,21 +24,22 @@ map("n", "<leader><leader>l", require("smart-splits").swap_buf_right)
 
 map("n", "<leader>rn", "<leader>cr", { desc = "Rename variable" })
 
--- Hover and diagnostics
+-------------------------- HOVER AND DIAGNOSTICS --------------------------
 map("n", "gh", function()
   require("noice.lsp").hover()
 end, { desc = "Show signature. Type etc." })
 map("n", "gl", vim.diagnostic.open_float)
 
+-------------------------- EDITING --------------------------
 -- stay centered when jumping half page with ctrl + d/u
--- and when going next/previous search result
 map("n", "<C-d>", "<C-d>zz")
 map("n", "<C-u>", "<C-u>zz")
+-- and when going next/previous search result
 map("n", "n", "nzzzv")
 map("n", "N", "Nzzzv")
 
+--  Paste over text without overriding register
 map("x", "p", '"_dP', { desc = "Paste over text without overriding register by default" })
--- map("x", "<leader>p", '"_dP', { desc = "Paste over text without overriding register" })
 
 -- Disable macros
 map("n", "q", "nop")
@@ -46,7 +49,7 @@ map("n", "Q", "nop")
 map("n", "H", "^")
 map("n", "L", "$")
 
--- better indenting. keep selection after indent so i can spam
+-- keep selection after indent so i can spam
 map("v", "<", "<gv")
 map("v", ">", ">gv")
 
@@ -66,59 +69,20 @@ map("n", "a", function()
   end
 end, { expr = true })
 
--- Buffers
----@param buf number?
-local function bufremove(buf)
-  buf = buf or 0
-  buf = buf == 0 and vim.api.nvim_get_current_buf() or buf
+-- Basically snippets
+map("v", "<leader>lg", 'yoconsole.log("<esc>pa:", <esc>pa)<esc>', { desc = "Add console.log" })
 
-  if vim.bo.modified then
-    local choice = vim.fn.confirm(("Save changes to %q?"):format(vim.fn.bufname()), "&Yes\n&No\n&Cancel")
-    if choice == 0 or choice == 3 then -- 0 for <Esc>/<C-c> and 3 for Cancel
-      return
-    end
-    if choice == 1 then -- Yes
-      vim.cmd.write()
-    end
-  end
-
-  for _, win in ipairs(vim.fn.win_findbuf(buf)) do
-    vim.api.nvim_win_call(win, function()
-      if not vim.api.nvim_win_is_valid(win) or vim.api.nvim_win_get_buf(win) ~= buf then
-        return
-      end
-      -- Try using alternate buffer
-      local alt = vim.fn.bufnr("#")
-      if alt ~= buf and vim.fn.buflisted(alt) == 1 then
-        vim.api.nvim_win_set_buf(win, alt)
-        return
-      end
-
-      -- Try using previous buffer
-      local has_previous = pcall(vim.cmd, "bprevious")
-      if has_previous and buf ~= vim.api.nvim_win_get_buf(win) then
-        return
-      end
-
-      -- Create new listed buffer
-      local new_buf = vim.api.nvim_create_buf(true, false)
-      vim.api.nvim_win_set_buf(win, new_buf)
-    end)
-  end
-  if vim.api.nvim_buf_is_valid(buf) then
-    pcall(vim.cmd, "bdelete! " .. buf)
-  end
-end
-map("n", "<leader>x", bufremove, { desc = "Delete current buffer" })
+-------------------------- BUFFERS --------------------------
+map("n", "<leader>x", function()
+  Snacks.bufdelete()
+end, { desc = "Delete current buffer" })
+-- map("n", "<leader>x", bufremove, { desc = "Delete current buffer" })
 map("n", "<leader>bd", "<cmd>%bd<CR>", { desc = "Delete all buffers" })
 
 -- Quit faster
 map("n", "<leader>q", ":qa<CR>")
 
--- Basically snippets
-map("v", "<leader>lg", 'yoconsole.log("<esc>pa:", <esc>pa)<esc>', { desc = "Add console.log" })
-
--- TELESCOPE
+-------------------------- TELESCOPE --------------------------
 map("n", "<leader>fl", require("telescope.builtin").resume, { desc = "telescope redo last search" })
 map("n", "<leader>ff", LazyVim.pick("files", { root = false }), { desc = "Find Files (cwd)" })
 map("n", "<leader>fw", LazyVim.pick("live_grep", { root = false }), { desc = "Grep (cwd)" })

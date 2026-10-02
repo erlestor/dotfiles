@@ -184,6 +184,25 @@ nvim ~/.local/share/applications/arduino-ide-v2.desktop
 Exec=arduino-ide %U --ozone-platform=x11
 ```
 
+#### Autoswitching audio source when I turn on razer blackshark v2 pro
+
+- install python-evdev (pacman)
+- add
+
+```
+# /etc/udev/rules.d/71-razer-blackshark-input.rules
+SUBSYSTEM=="input", KERNEL=="event*", ATTRS{id/vendor}=="1532", ATTRS{id/product}=="0528", TAG+="uaccess"
+```
+
+- run
+
+```
+sudo udevadm control --reload
+sudo udevadm trigger --subsystem-match=input
+chmod +x ~/.config/scripts/headset-autoswitch
+systemctl --user enable --now headset-autoswitch
+```
+
 ## Windows
 
 ### Installation
