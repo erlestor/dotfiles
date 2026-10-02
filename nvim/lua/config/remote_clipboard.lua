@@ -6,6 +6,8 @@
 -- tmux (or the terminal) answers.
 local M = {}
 
+return M -- I think this broke my mac
+
 local function proc_lines(pid, file)
   local ok, lines = pcall(vim.fn.readfile, "/proc/" .. pid .. "/" .. file)
   return ok and lines or {}

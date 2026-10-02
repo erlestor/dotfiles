@@ -88,6 +88,8 @@ return {
         biome = {},
         html = {},
         cssls = {},
+        oxfmt = {},
+        oxlint = {},
         vtsls = {
           settings = {
             typescript = {
@@ -180,6 +182,26 @@ return {
         ghost_text = {
           enabled = false,
         },
+      },
+    },
+  },
+  {
+    "stevearc/conform.nvim",
+    opts = {
+      formatters_by_ft = {
+        json = { "oxfmt" },
+        lua = { "oxfmt" },
+        css = { "oxfmt" },
+        html = { "oxfmt" },
+        python = { "oxfmt" },
+        javascript = { "oxfmt" },
+        javascriptreact = { "oxfmt" },
+        typescript = { "oxfmt" },
+        typescriptreact = { "oxfmt" },
+        markdown = { "oxfmt" },
+        scss = { "oxfmt" },
+        vue = { "oxfmt" },
+        yaml = { "oxfmt" },
       },
     },
   },
