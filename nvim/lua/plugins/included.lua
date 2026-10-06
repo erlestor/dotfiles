@@ -33,8 +33,6 @@ return {
         biome = {},
         html = {},
         cssls = {},
-        oxfmt = {},
-        oxlint = {},
         vtsls = {
           settings = {
             typescript = {
@@ -65,21 +63,7 @@ return {
     "stevearc/conform.nvim",
     opts = {
       -- NOTE: always search for lazy extras before adding formatters here
-      formatters_by_ft = {
-        json = { "oxfmt" },
-        lua = { "oxfmt" },
-        css = { "oxfmt" },
-        html = { "oxfmt" },
-        python = { "oxfmt" },
-        javascript = { "oxfmt" },
-        javascriptreact = { "oxfmt" },
-        typescript = { "oxfmt" },
-        typescriptreact = { "oxfmt" },
-        markdown = { "oxfmt" },
-        scss = { "oxfmt" },
-        vue = { "oxfmt" },
-        yaml = { "oxfmt" },
-      },
+      formatters_by_ft = {},
     },
   },
   -- Configure existing plugins

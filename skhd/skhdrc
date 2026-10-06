@@ -1,1 +1,15 @@
-alt - b : open -an "Zen"
+# TEST THAT SKHD WORKS
+cmd + shift - a : osascript -e 'display notification "skhd works"'
+
+# APPLICATION SHORTCUTS
+alt - return : open -na alacritty
+alt - b : open -na zen
+alt - d : open -a discord
+alt - m : open -a spotify
+alt + shift - m : open -a "mongodb compass"
+alt - o : open -a obsidian
+alt - p : open -a postman
+
+# not really workign
+cmd + shift - w : ~/.config/skhd/close-window.sh
+
