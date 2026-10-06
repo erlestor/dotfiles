@@ -1,6 +1,8 @@
-general.import = [
+[general]
+import = [
   "./tokyo-night.toml",
   "~/.local/state/omarchy/current/theme/alacritty.toml",
+  "./mac.toml",
 ]
 
 [env]
@@ -14,7 +16,6 @@ shell = { program = "tmux", args = ["new-session", "-A", "-s", "default"] }
 normal = { family = "JetBrainsMono Nerd Font" }
 bold = { family = "JetBrainsMono Nerd Font" }
 italic = { family = "JetBrainsMono Nerd Font" }
-size = 12
 
 [window]
 padding.x = 10
