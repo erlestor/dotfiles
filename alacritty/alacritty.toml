@@ -3,6 +3,7 @@ import = [
   "./tokyo-night.toml",
   "~/.local/state/omarchy/current/theme/alacritty.toml",
   "./mac.toml",
+  "./omarchy.toml",
 ]
 
 [env]
