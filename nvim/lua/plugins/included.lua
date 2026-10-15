@@ -30,7 +30,6 @@ return {
           },
         },
         -- NOTE: always search for lazy extra before adding lsp's here
-        biome = {},
         html = {},
         cssls = {},
         vtsls = {

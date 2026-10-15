@@ -195,15 +195,15 @@ showWorkspaceName = false
 useWorkspaceId = false
 
 [workspaceBar]
-backgroundOpacity = 0.1
+backgroundOpacity = 0.0
 deduplicateAppIcons = false
 enabled = true
 excludedBundleIDs = []
 height = 24.0
 hideEmptyWorkspaces = false
-hideInNativeFullscreen = false
+hideInNativeFullscreen = true
 notchActiveZoneWidth = 180.0
-notchMode = "moveBelowMenuBar"
+notchMode = "off"
 position = "overlappingMenuBar"
 reserveLayoutSpace = false
 revealHoldMilliseconds = 200.0
@@ -211,13 +211,13 @@ revealModifier = "off"
 showAccentHighlights = true
 showFloatingWindows = false
 showItemBackgrounds = true
-showLabels = true
+showLabels = false
 solidBlackBackground = false
 systemStatsButton = false
 transparentBackground = false
 windowLevel = "popup"
-xOffset = 0.0
-yOffset = 0.0
+xOffset = 200.0
+yOffset = 6.0
 
 [workspaceBar.iconOverrides]
 
@@ -732,7 +732,7 @@ binding = "Unassigned"
 id = "moveWindowToMonitor.down"
 
 [[hotkeys]]
-binding = "Option+Return"
+binding = "Option+F"
 id = "toggleFullscreen"
 
 [[hotkeys]]

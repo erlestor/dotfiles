@@ -16,6 +16,7 @@
 - installert postman og mongodb compass og figma
 - installert betterdisplays. men det fiksa ingenting (external skjerm ser ass ut)
 - det va nå ekstra piss for å få docker compose te å funk. og buildx. idk tho
+- alacritty: la te mac.toml med font size 16 i config. og mac-tokyo-night.toml med tokyo-night theme fra omarchy
 
 ### Installation
 
