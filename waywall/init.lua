@@ -44,8 +44,8 @@ local cfg = {
 
 	-- ==== MACROS ====
 	-- resolution changes
-	thin = { key = "*-LESS", f3_safe = false, ingame_only = true },
-	wide = { key = "*-B", f3_safe = true, ingame_only = true },
+	thin = { key = "*-LESS", f3_safe = false, ingame_only = false },
+	wide = { key = "*-B", f3_safe = true, ingame_only = false },
 	tall = { key = "*-BAR", f3_safe = false, ingame_only = false },
 
 	-- startup actions
