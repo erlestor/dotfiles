@@ -5,6 +5,14 @@ smw.setup({
 	workspace_count = 5, -- This will create 5 persistent workspaces on each monitor at startup
 })
 
+-- function switchAllMonitorsToWorkspace(workspace_index)
+-- 	local monitors = hl.get_monitors()
+-- 	for index, monitor in ipairs(monitors) do
+-- 		hl.dsp.focus({monitor: index})
+-- 		smw.workspace(workspace_index)
+-- 	end
+-- end
+
 local mainMod = "ALT"
 for i = 1, smw.get_amount_of_workspaces() do
 	local n = tostring(i)
@@ -15,4 +23,6 @@ for i = 1, smw.get_amount_of_workspaces() do
 	hl.bind(mainMod .. " +" .. n, smw.workspace(n))
 	-- Move the active window to the Nth workspace on the currently focused monitor silently (no focus change).
 	hl.bind(mainMod .. " + SHIFT +" .. n, smw.move_to_workspace(n))
+	-- Switch to the Nth workspace on all active monitors
+	-- hl.bind(mainMod .. " +" .. n, switchAllMonitorsToWorkspace(n))
 end
