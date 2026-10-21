@@ -34,6 +34,7 @@
 ### Setup
 
 - clone dotfiles repo inside the home folder and rename to .config
+- run `ln -s ~/.config/.zshrc ~/.zshrc`
 
 ## Omarchy
 

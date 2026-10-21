@@ -24,6 +24,7 @@
 !omniwm
 !linearmouse
 !skhd
+!.zshrc
 
 # Windows only
 !wezterm
