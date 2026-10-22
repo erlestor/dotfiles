@@ -9,7 +9,6 @@ alias e="exit"
 alias c="clear"
 alias p="pnpm"
 alias lg="lazygit"
-alias cat="bat"
 
 function cdn() {
   cd "$1" && nvim .
