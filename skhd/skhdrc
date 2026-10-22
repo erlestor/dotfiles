@@ -10,6 +10,6 @@ alt + shift - m : open -a "mongodb compass"
 alt - o : open -a obsidian
 alt - p : open -a postman
 
-# not really workign
-cmd + shift - w : ~/.config/skhd/close-window.sh
+# not really working
+cmd + shift - w : omni-quit
 
