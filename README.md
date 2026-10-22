@@ -8,10 +8,7 @@
 
 ### Messy notes - gjør om te fine instruksa
 
-- i switched caps lock to escape in system settings keybindings
-- changed some settings too, but not many tbh. not so important yet. hide dock, turned off lower screen brightness on low battery
 - kjørt `defaults write com.apple.finder AppleShowAllFiles TRUE; killall Finder` for å vis hidden files i finder
-
 - installert obsidian. enabla vim, disabla spellchecking. la te omnisearch, endra search keybinds te å bare bruk omnisearch med ctrl+f. la te remote save. kopiert settings fra stasjonær og autha dropbox
 - installert postman og mongodb compass og figma
 - installert betterdisplays. men det fiksa ingenting (external skjerm ser ass ut)
@@ -22,19 +19,30 @@
 
 - first clone the dotfiles repo inside home folder and rename to .config
 
-- git (brew install git)
-- lazyvim dependencies. see requirements i [lazyvim docs](https://www.lazyvim.org/). alt e brew install X
+- bbrew. installer alt anna brew ting derfra
 - alacritty (.dmg file)
-- omniwm
-- linearmouse
+- git (brew)
+- lazyvim dependencies. see requirements i [lazyvim docs](https://www.lazyvim.org/). alt e brew install X
+- omniwm (brew)
+- linearmouse (brew)
 - mise (shell script). install npm globally after for neovim etc
 - tmux (brew install tmux) og sesh (brew install sesh)
 - docker/colima: (brew install docker og brew install colima og brew services start colima)
+- eza (brew)
+- oh my posh (brew)
+- skhd-zig (brew)
 
 ### Setup
 
 - clone dotfiles repo inside the home folder and rename to .config
 - run `ln -s ~/.config/.zshrc ~/.zshrc`
+- rebinde caps lock te escape i system settings
+
+#### System settings
+
+- rebinde caps lock te escape
+- turn off lower screen brightness on low battery
+- hide dock
 
 ## Omarchy
 
@@ -195,15 +203,15 @@ systemctl --user enable --now headset-autoswitch
 Prefer winget if you can
 
 - [Neovim](https://nvchad.com/docs/quickstart/install/)
-  - Follow instructions, up until nvchad specific config
-  - Run `npm i -g tree-sitter-cli`
+   - Follow instructions, up until nvchad specific config
+   - Run `npm i -g tree-sitter-cli`
 - [Wezterm](https://wezfurlong.org/wezterm/install/windows.html) (winget)
 - Powershell 7 (winget)
 - [Autohotkey v2](https://www.autohotkey.com/) (exe)
 - [Yasb](https://github.com/amnweb/yasb)
-  - Run and enable autostart
+   - Run and enable autostart
 - [Komorebi](https://lgug2z.github.io/komorebi/installation.html)
-  - Make a startup script with target: "C:\Program Files\komorebi\bin\komorebic.exe" start --ahk
+   - Make a startup script with target: "C:\Program Files\komorebi\bin\komorebic.exe" start --ahk
 - [everything](https://www.voidtools.com/downloads/) (I used exe, but try winget)
 - [everything powertoys plugin](https://github.com/lin-ycv/EverythingPowerToys/wiki) (I used exe, but try winget)
 - [zoxide](https://github.com/ajeetdsouza/zoxide) (winget)
@@ -217,8 +225,8 @@ Prefer winget if you can
 - Add these environment variables (via windows search -> environment variables):
 
 ```ts
-KOMOREBI_AHK_EXE = "C:/Program Files/AutoHotkey/v2/AutoHotkey64";
-KOMOREBI_CONFIG_HOME = "C:\Users\erlen\.config\komorebi";
+KOMOREBI_AHK_EXE = "C:/Program Files/AutoHotkey/v2/AutoHotkey64"
+KOMOREBI_CONFIG_HOME = "C:\Users\erlen\.config\komorebi"
 ```
 
 - Make these soft symlinks (delete any file/folder which exists already at that location):

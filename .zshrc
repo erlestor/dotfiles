@@ -30,3 +30,6 @@ if command -v eza &> /dev/null; then
   alias lt='eza --tree --level=2 --long --icons --git'
   alias lta='lt -a'
 fi
+
+# prompt
+eval "$(oh-my-posh init zsh --config "$HOME/.config/amro.omp.json")"
