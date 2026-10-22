@@ -100,7 +100,7 @@ o.bind("SUPER + SHIFT + S", "Screenshot region", hl.dsp.exec_cmd("omarchy captur
 
 -- WINDOW MANAGER
 -- move windows with mouse5 on my logitech mouse
-o.bind("mouse:276", "Move window with mouse5", hl.dsp.window.drag(), { mouse = true })
+o.bind("mouse:282", "Move window with mouse5", hl.dsp.window.drag(), { mouse = true })
 
 -- toggle floating and tiling
 o.bind("ALT + F", "Fullscreen current window", hl.dsp.window.fullscreen())
@@ -120,14 +120,15 @@ o.bind("ALT + SHIFT + L", "Move window right", hl.dsp.window.move({ direction = 
 
 -- MCSR
 -- Turn off all keybinds for the waywall class, except these ones:
-hl.define_submap("passthru", function()
+hl.define_submap("mcsr", function()
 	hl.bind("SUPER + F12", hl.dsp.submap("reset"))
 	hl.bind("SUPER + W", hl.dsp.window.kill())
+	hl.bind("mouse:282", function() end)
 end)
 
 hl.on("window.active", function(w)
 	if w ~= nil and w.class == "waywall" then
-		hl.dispatch(hl.dsp.submap("passthru"))
+		hl.dispatch(hl.dsp.submap("mcsr"))
 	else
 		hl.dispatch(hl.dsp.submap("reset"))
 	end

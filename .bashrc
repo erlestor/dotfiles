@@ -11,6 +11,7 @@ alias e="exit"
 alias c="clear"
 alias p="pnpm"
 alias lg="lazygit"
+alias cat="bat"
 
 function cdn() {
   cd "$1" && nvim .
@@ -46,8 +47,8 @@ alias lf="lfcd"
 # let pnpm install packages globally even with mise
 export PNPM_HOME='/home/erlen/.local/share/pnpm'
 case ":$PATH:" in
-  *":$PNPM_HOME/bin:"*) ;;
-  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
+*":$PNPM_HOME/bin:"*) ;;
+*) export PATH="$PNPM_HOME/bin:$PATH" ;;
 esac
 
 # Prompt. Keep at the bottom
