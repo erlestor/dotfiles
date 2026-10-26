@@ -19,6 +19,7 @@
 !waywall
 !scripts
 !systemd
+!ssh
 
 # Mac only
 !omniwm

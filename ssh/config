@@ -1,0 +1,27 @@
+Include /Users/erlen/.colima/ssh_config
+
+Host deploii
+    HostName compiile.no
+    User root
+    Port 52040
+    IdentityFile ~/.ssh/erlend_ssh_global
+    IdentitiesOnly yes
+
+Host ubuntu-server
+    HostName ssh.erlend.uk
+    # User ubuntu-server
+    ProxyCommand cloudflared access ssh --hostname %h
+    # Port 2857
+    # IdentityFile ~/.ssh/erlend_ssh_global
+
+Host gitlab.com
+    HostName gitlab.com
+    User git
+    IdentityFile ~/.ssh/erlend_ssh_global
+    IdentitiesOnly yes
+
+Host git.ntnu.no
+    HostName git.ntnu.no
+    User git
+    IdentityFile ~/.ssh/erlend_ssh_global
+    IdentitiesOnly yes
