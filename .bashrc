@@ -11,7 +11,6 @@ alias e="exit"
 alias c="clear"
 alias p="pnpm"
 alias lg="lazygit"
-alias cat="bat"
 
 function cdn() {
   cd "$1" && nvim .
@@ -37,7 +36,7 @@ function sd() {
 export PATH="$PATH:/home/erlen/Programs/hyprmcsr/bin"
 
 # Mise - not needec because omarchy defaults
-# eval "$(mise activate bash)"
+eval "$(mise activate bash)"
 
 function lfcd() {
   cd "$(command lf --print-last-dir)"
