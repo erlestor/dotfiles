@@ -1,5 +1,5 @@
 {
-  "$schema" : "https:\/\/schema.linearmouse.app\/0.11.4",
+  "$schema" : "https:\/\/schema.linearmouse.app\/0.12.0",
   "schemes" : [
     {
       "buttons" : {
@@ -20,7 +20,14 @@
           "vertical" : 1
         },
         "distance" : {
-          "vertical" : "101.7px"
+          "vertical" : "128px"
+        },
+        "modifiers" : {
+          "vertical" : {
+            "shift" : {
+              "type" : "alterOrientation"
+            }
+          }
         },
         "reverse" : {
           "vertical" : true
@@ -45,7 +52,7 @@
         }
       },
       "logitech" : {
-        "highResolutionWheel" : true
+        "highResolutionWheel" : false
       }
     }
   ]

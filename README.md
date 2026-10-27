@@ -36,6 +36,7 @@
 
 - clone dotfiles repo inside the home folder and rename to .config
 - run `ln -s ~/.config/.zshrc ~/.zshrc`
+- run `ln -s ~/.config/ssh/config ~/.ssh/config`
 - rebinde caps lock te escape i system settings
 
 #### System settings
@@ -79,6 +80,8 @@ rm -rf /tmp/dotfiles-tmp # Clean up the temp dir
 - Run this to install tpm (tmux plugin manager) with `git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm`
 
 - Load tmux plugins: open terminal and press "prefix + I"
+
+- Run `ln -s ~/.config/ssh/config ~/.ssh/config`
 
 #### NTNU VPN
 
