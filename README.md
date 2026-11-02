@@ -8,12 +8,46 @@
 
 ### Messy notes - gjør om te fine instruksa
 
-- kjørt `defaults write com.apple.finder AppleShowAllFiles TRUE; killall Finder` for å vis hidden files i finder
 - installert obsidian. enabla vim, disabla spellchecking. la te omnisearch, endra search keybinds te å bare bruk omnisearch med ctrl+f. la te remote save. kopiert settings fra stasjonær og autha dropbox
-- installert postman og mongodb compass og figma
-- installert betterdisplays. men det fiksa ingenting (external skjerm ser ass ut)
+- installert betterdisplay. men det fiksa ingenting (external skjerm ser ass ut)
 - det va nå ekstra piss for å få docker compose te å funk. og buildx. idk tho
 - alacritty: la te mac.toml med font size 16 i config. og mac-tokyo-night.toml med tokyo-night theme fra omarchy
+- firefox about:config.
+
+```
+// Disable macOS native fullscreen in Firefox
+full-screen-api.macos-native-full-screen = false
+
+// Disable fullscreen transition animations
+full-screen-api.transition-duration.enter = 0 0
+full-screen-api.transition-duration.leave = 0 0
+
+// Make firefox full screen not take up full screen, im unsure about this one
+full-screen-api.ignore-widgets
+```
+
+- macos commands for defaults
+
+```bash
+# disable opening animations. hakke peiling om d funke
+defaults write -g NSAutomaticWindowAnimationsEnabled -bool false
+
+# la mæ quitte finder
+defaults write com.apple.finder QuitMenuItem -bool true; killall Finder
+# vis hidden files i finder
+defaults write com.apple.finder AppleShowAllFiles TRUE; killall Finder
+
+# disable dock animation
+defaults write com.apple.dock autohide-time-modifier -float 0; killall Dock
+
+# finder always show file extensions
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+```
+
+- finder. endra masse settings. settings -> general: default åpne documents. settings -> advanced. folders on top, search current folder
+- finder view options. list view, big icons, skrift 14, fjern "type". use as default
+- `sudo find / -name .DS_Store -delete; killall Finder` for å fjern gamle preferansa
+- cleara sidebar og tags. la te mine favoritta
 
 ### Installation
 

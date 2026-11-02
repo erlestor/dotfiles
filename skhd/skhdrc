@@ -3,13 +3,20 @@ cmd + shift - a : osascript -e 'display notification "skhd works"'
 
 # APPLICATION SHORTCUTS
 alt - return : open -na alacritty
+alt + shift - return : open -na Alacritty --args -e ssh -t deploii "tmux -f ~/.config/tmux/tmux.conf new-session -A -s erlend"
 alt - b : open -na zen
 alt - d : open -a discord
 alt - m : open -a spotify
 alt + shift - m : open -a "mongodb compass"
 alt - o : open -a obsidian
 alt - p : open -a postman
+alt - f : open -a finder
 
 # not really working
 cmd + shift - w : omni-quit
 
+alt - q : ./quit.sh
+
+# Disable/override native macOS shortcut
+cmd - h : true
+cmd + alt - h : true

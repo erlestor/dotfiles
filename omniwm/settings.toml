@@ -92,7 +92,7 @@ mouseMoveModifierKey = "option"
 mouseResizeModifierKey = "option"
 overviewGestureEnabled = false
 overviewGestureFingerCount = 4
-scrollEnabled = true
+scrollEnabled = false
 scrollModifierKey = "optionShift"
 scrollSensitivity = 5.0
 trackpadScrollStyle = "snap"
@@ -101,8 +101,8 @@ windowMoveEnabled = false
 windowMoveFingerCount = 4
 windowResizeEnabled = false
 windowResizeFingerCount = 3
-workspaceSwipeAxis = "vertical"
-workspaceSwipeEnabled = false
+workspaceSwipeAxis = "horizontal"
+workspaceSwipeEnabled = true
 workspaceSwipeFingerCount = 3
 
 [hiddenBar]
@@ -127,7 +127,7 @@ singleWindowFit = "fill"
 visibleContainerCount = 2
 
 [overview]
-enabled = true
+enabled = false
 invertScrollDirection = false
 matchFocusBorder = true
 mouseScrollSpeed = 1.0
@@ -164,7 +164,7 @@ animationDuration = 0.2
 autoHide = false
 backgroundBlurRadius = 0
 backgroundEffect = "standardBlur"
-enabled = true
+enabled = false
 heightPercent = 50.0
 monitorMode = "focusedWindow"
 opacity = 1.0
